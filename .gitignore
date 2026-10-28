@@ -1,0 +1,53 @@
+# Local agent instructions and private working files
+AGENTS.md
+AGENT.md
+agents.md
+agent.md
+.agents/
+.agent/
+.codex/
+.local/
+*.local.md
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+
+# OS, editors, and Office temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+~$*
+*.tmp
+*.bak
+*.log
+
+# MATLAB / Simulink generated files
+*.asv
+*.m~
+slprj/
+sccprj/
+*.slxc
+codegen/
+*_ert_rtw/
+*_grt_rtw/
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Local data and generated experiment outputs
+exp*/data/local/
+exp*/data/raw/
+exp*/results/*
+!exp*/results/.gitkeep
