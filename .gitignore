@@ -54,3 +54,6 @@ exp*/results/*
 
 # Private report templates (working reports remain under .local/expXX/)
 /example/
+
+# Local delivery and backup ZIP archives
+*.[zZ][iI][pP]
