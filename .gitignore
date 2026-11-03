@@ -51,3 +51,6 @@ exp*/data/local/
 exp*/data/raw/
 exp*/results/*
 !exp*/results/.gitkeep
+
+# Private report templates (working reports remain under .local/expXX/)
+/example/
