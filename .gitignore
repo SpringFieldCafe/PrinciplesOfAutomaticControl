@@ -47,13 +47,14 @@ venv/
 .ipynb_checkpoints/
 
 # Local data and generated experiment outputs
-exp*/data/local/
-exp*/data/raw/
-exp*/results/*
-!exp*/results/.gitkeep
+/computer-labs/exp*/data/local/
+/computer-labs/exp*/data/raw/
+/computer-labs/exp*/results/*
+!/computer-labs/exp*/results/.gitkeep
 
-# Private report templates (working reports remain under .local/expXX/)
-/example/
+# Private report templates, filled reports, and delivery packages
+/computer-labs/example/
+/computer-labs/deliverables/
 
 # Local delivery and backup ZIP archives
 *.[zZ][iI][pP]
