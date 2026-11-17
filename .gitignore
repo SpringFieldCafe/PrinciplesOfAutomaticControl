@@ -56,5 +56,11 @@ venv/
 /computer-labs/example/
 /computer-labs/deliverables/
 
+# Private written assignment originals and submission drafts
+/written-assignments/questions/
+/written-assignments/report/*
+!/written-assignments/report/automatic-control-2026-solutions-public.docx
+!/written-assignments/report/interpretation-comparison-public.docx
+
 # Local delivery and backup ZIP archives
 *.[zZ][iI][pP]
