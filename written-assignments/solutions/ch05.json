@@ -1,0 +1,583 @@
+{
+  "chapter": 5,
+  "solutions": [
+    {
+      "id": "E5.4",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "（a）单位负反馈闭环传递函数为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{T(s)=\\frac{2(s+8)}{s^2+6s+16}}."
+        },
+        {
+          "type": "p",
+          "text": "（b）输入 $r(t)=Au(t)$，在零初始条件下，"
+        },
+        {
+          "type": "eq",
+          "latex": "Y(s)=A\\left[\\frac1s-\\frac{s+4}{s^2+6s+16}\\right]."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{y(t)=A\\left[1-e^{-3t}\\left(\\cos\\sqrt7t+\\frac1{\\sqrt7}\\sin\\sqrt7t\\right)\\right],\\quad t\\ge0.}"
+        },
+        {
+          "type": "p",
+          "text": "（c）取 $A>0$，求导定位第一个峰值："
+        },
+        {
+          "type": "eq",
+          "latex": "\\dot y(t)=2Ae^{-3t}\\left[\\cos\\sqrt7t+\\frac5{\\sqrt7}\\sin\\sqrt7t\\right],"
+        },
+        {
+          "type": "eq",
+          "latex": "t_p=\\frac{\\pi-\\arctan(\\sqrt7/5)}{\\sqrt7}=1.003457\\ \\mathrm s."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\mathrm{P.O.}=\\frac{y(t_p)-A}{A}\\,100\\%=\\frac{e^{-3t_p}}{\\sqrt2}\\,100\\%=3.48416\\%}."
+        },
+        {
+          "type": "p",
+          "text": "后续振荡峰值按指数衰减，因此该峰为最大峰。闭环零点 $-8$ 改变峰值，直接使用无零点标准二阶超调公式会遗漏该影响。"
+        },
+        {
+          "type": "p",
+          "text": "（d）闭环极点为 $-3\\pm j\\sqrt7$，由终值定理，"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{y(\\infty)=\\lim_{s\\to0}sY(s)=A}."
+        }
+      ],
+      "checks": [
+        "解析响应求导的峰值与SciPy完整传递函数阶跃响应一致，P.O.=3.484155%。"
+      ]
+    },
+    {
+      "id": "E5.6",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "框图加法点给出 $s^2Y=100[R-Y-KsY]$，故"
+        },
+        {
+          "type": "eq",
+          "latex": "T(s)=\\frac{100}{s^2+100Ks+100},\\quad \\omega_n=10,\\quad\\zeta=5K."
+        },
+        {
+          "type": "p",
+          "text": "（a）以实际位置误差 $e=r-y$ 为准，单位斜坡输入时"
+        },
+        {
+          "type": "eq",
+          "latex": "E(s)=\\frac{s^2+100Ks}{s^2+100Ks+100}\\frac1{s^2}=\\frac{s+100K}{s(s^2+100Ks+100)}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{e_{\\mathrm{ss}}=K\\quad(K>0)}."
+        },
+        {
+          "type": "p",
+          "text": "斜率为 $A$ 的斜坡误差为 $AK$。若考察加法点信号 $r-y-K\\dot y$，其稳态值为零；它与位置误差的定义不同。"
+        },
+        {
+          "type": "p",
+          "text": "（b）无零点二阶系统在 $\\zeta\\ge1$ 时阶跃无超调。为在无超调条件下尽快响应，应选临界阻尼："
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{K=0.2,\\quad T(s)=\\frac{100}{(s+10)^2},\\quad y(t)=1-(1+10t)e^{-10t}}."
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch05/E5.6_poles.png",
+          "caption": "临界阻尼设计的零极点图；−10处为二重极点，系统无有限零点。"
+        },
+        {
+          "type": "p",
+          "text": "$K<0.2$ 时出现共轭复极点并产生超调；$K>0.2$ 时两极点为负实数，其中靠近原点的极点随 $K$ 增大右移，响应变慢。选定 $K=0.2$ 时，全部动态由这两个重合实极点决定，故由临界阻尼可得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\mathrm{P.O.}=0}."
+        }
+      ],
+      "checks": [
+        "完整模型在K=.2时分母等于(s+10)²；用实际位置误差终值核对e_ss=.2。"
+      ]
+    },
+    {
+      "id": "E5.15",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "（a）实际模型的阶跃响应变换为"
+        },
+        {
+          "type": "eq",
+          "latex": "Y(s)=\\frac1s-\\frac1{41(s+50)}-\\frac{10(4s+45)}{41(s^2+10s+50)}."
+        },
+        {
+          "type": "p",
+          "text": "因 $s^2+10s+50=(s+5)^2+25$，反变换得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{y(t)=1-\\frac1{41}e^{-50t}-\\frac{40}{41}e^{-5t}\\cos5t-\\frac{50}{41}e^{-5t}\\sin5t,\\quad t\\ge0.}"
+        },
+        {
+          "type": "p",
+          "text": "（b）两共轭极点为 $-5\\pm j5$，另一个极点 $-50$ 的衰减率为主导极点的10倍。保留直流增益1，以 $s+50\\approx50$ 近似得"
+        },
+        {
+          "type": "eq",
+          "latex": "T_2(s)=\\frac{50}{s^2+10s+50},\\qquad\\boxed{y_2(t)=1-e^{-5t}(\\cos5t+\\sin5t)}."
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch05/E5.15_compare.png",
+          "caption": "完整三阶模型与主导二阶模型的单位阶跃响应。"
+        },
+        {
+          "type": "p",
+          "text": "两模型终值均为1。完整模型峰值时间约 $0.65045\\,\\mathrm s$，超调约 $4.2723\\%$；二阶模型峰值时间 $\\pi/5=0.62832\\,\\mathrm s$，超调 $4.3214\\%$。附加快速极点主要使初始上升略有延迟，保留主导极点可较好描述振荡与峰值幅度。"
+        },
+        {
+          "type": "eq",
+          "latex": "y(t)-y_2(t)=\\frac1{41}\\left[e^{-5t}(\\cos5t-9\\sin5t)-e^{-50t}\\right]."
+        }
+      ],
+      "checks": [
+        "解析式与SciPy完整三阶阶跃响应逐点比较；图表底层数据与最大绝对近似误差已保存。"
+      ]
+    },
+    {
+      "id": "E5.20",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "记前向通道 $F=(s+1)/[s(s+3)]$，反馈增益为 $K_a$。图中给出的 $L=K_aF$ 是环路传递函数。"
+        },
+        {
+          "type": "p",
+          "text": "（a）由 $Y=F(R-K_aY)$ 得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{T(s)=\\frac{Y}{R}=\\frac{s+1}{s^2+(3+K_a)s+K_a}}."
+        },
+        {
+          "type": "p",
+          "text": "闭环在 $K_a>0$ 时稳定。"
+        },
+        {
+          "type": "p",
+          "text": "（b）以实际跟踪误差 $E=R-Y$ 定义，单位斜坡输入时"
+        },
+        {
+          "type": "eq",
+          "latex": "E(s)=\\frac{s^2+(2+K_a)s+K_a-1}{s^2[s^2+(3+K_a)s+K_a]}."
+        },
+        {
+          "type": "eq",
+          "latex": "e(t)=\\left(1-\\frac1{K_a}\\right)t+\\frac3{K_a^2}+\\text{衰减项}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{e_{\\mathrm{ss}}=3\\quad(K_a=1)}."
+        },
+        {
+          "type": "p",
+          "text": "若 $K_a>1$，误差趋于正无穷；若 $0<K_a<1$，误差趋于负无穷。比较点误差 $E_a=R-K_aY$ 的斜坡稳态值则为 $3/K_a$，由其定义直接可得。"
+        },
+        {
+          "type": "p",
+          "text": "（c）对单位阶跃，实际误差终值为"
+        },
+        {
+          "type": "eq",
+          "latex": "e_{\\mathrm{ss,step}}=1-T(0)=1-\\frac1{K_a},\\qquad\\boxed{K_a=1}."
+        }
+      ],
+      "checks": [
+        "展开T在s=0的级数为1/Ka−3s/Ka²+O(s²)，独立验证斜坡误差的线性项与常数项。"
+      ]
+    },
+    {
+      "id": "P5.2",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "（a）将主导极点记为 $s_{1,2}=-\\sigma\\pm j\\omega_d$，其中 $\\sigma=\\zeta\\omega_n$。按主导二阶模型，"
+        },
+        {
+          "type": "eq",
+          "latex": "M_p=e^{-\\pi\\zeta/\\sqrt{1-\\zeta^2}},\\qquad \\zeta=\\frac{-\\ln M_p}{\\sqrt{\\pi^2+\\ln^2M_p}}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{0.455950\\le\\zeta\\le0.591155},\\qquad T_s\\approx\\frac4{\\sigma}\\le0.6\\ \\Longrightarrow\\ \\boxed{\\sigma\\ge\\frac{20}{3}}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{1.364376\\sigma\\le|\\omega_d|\\le1.951981\\sigma,\\qquad\\sigma\\ge6.666667}."
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch05/P5.2_region.png",
+          "caption": "主导二阶近似下的极点配置区域，阴影取两阻尼比边界之间且实部不大于−20/3。"
+        },
+        {
+          "type": "p",
+          "text": "（b）按快速极点实部绝对值至少为主导极点5倍的常用配置准则，记第三极点为 $s_3=-r_3$，则"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{r_3\\ge5\\sigma\\ge\\frac{100}{3}=33.333333\\ \\mathrm{s}^{-1}}."
+        },
+        {
+          "type": "p",
+          "text": "因此边界设计的第三极点取 $s_3=-100/3$。5倍间隔是主导近似的配置准则，完整三阶响应可进一步核算。"
+        },
+        {
+          "type": "p",
+          "text": "（c）先按主导二阶公式令 $\\sigma=20/3$、$\\zeta=0.455950$，得 $\\omega_n^2=213.788038$，并取 $r_3=100/3$。选择无有限零点、直流增益1的三阶闭环："
+        },
+        {
+          "type": "eq",
+          "latex": "T_3(s)=\\frac{r_3\\omega_n^2}{(s+r_3)(s^2+2\\sigma s+\\omega_n^2)}."
+        },
+        {
+          "type": "p",
+          "text": "由 $G=T_3/(1-T_3)$，得到常规主导极点设计"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{G(s)=\\frac{7126.267944}{s(s^2+46.666667s+658.232483)}}."
+        },
+        {
+          "type": "p",
+          "text": "完整三阶响应核算为超调 $17.8027\\%$、2%调节时间约 $0.59701\\,\\mathrm s$，满足前述区间指标。若将（c）的20%和0.6 s均作为完整三阶响应的精确目标，可在同一无零点结构、$r_3=5\\sigma$ 下修正参数。"
+        },
+        {
+          "type": "p",
+          "text": "用无量纲变量 $u=\\sigma t$、$q=\\omega_d/\\sigma$，令峰值满足 $y(u_p)=1.2$、$dy/du(u_p)=0$，并取最后一次2%边界交点。求得"
+        },
+        {
+          "type": "eq",
+          "latex": "q=2.125297458,\\quad u_p=1.708226893,\\quad u_s=3.763168648,\\quad\\sigma=\\frac{u_s}{0.6}=6.271947747."
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_d=13.329754603,\\quad r_3=31.359738737,\\quad\\omega_n^2=217.019686321."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{G_{\\mathrm{exact}}(s)=\\frac{6805.680664}{s(s^2+43.903634s+610.392972)}}."
+        },
+        {
+          "type": "p",
+          "text": "该修正方案的完整闭环响应具有20%超调和0.60000 s的2%调节时间。它采用完整三阶响应直接定标；（a）的直线边界来自二阶近似公式。"
+        }
+      ],
+      "checks": [
+        "常规与精确方案均实际计算完整三阶响应；精确方案峰值1.2，最后2%交点.6s，残差小于1e-10。"
+      ]
+    },
+    {
+      "id": "P5.10",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "（a）令电枢电压指令为 $v_a$、电枢电流为 $i_a$、输出角速度为 $\\omega$。无负载扰动时，电气与机械方程为"
+        },
+        {
+          "type": "eq",
+          "latex": "L_a\\dot i_a+R_ai_a=v_a-e_b,\\quad e_b=K_b\\omega,\\quad J\\dot\\omega+b\\omega=K_mi_a."
+        },
+        {
+          "type": "p",
+          "text": "由此得到反电动势电压负反馈模型："
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch05/P5.10_block.png",
+          "caption": "电枢控制直流电机速度模型；A为反电动势反馈支路的放大增益，原始电机取A=1。"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{\\Omega}{V_a}=\\frac{K_m}{(L_as+R_a)(Js+b)+K_mK_b}\\quad(A=1)."
+        },
+        {
+          "type": "p",
+          "text": "（b）代入给定参数，$\\Omega/V_a=1/(s^2+2s+2)$。以输入电压和反电动势的差 $E=V_a-K_b\\Omega$ 为误差，对单位阶跃电压指令有"
+        },
+        {
+          "type": "eq",
+          "latex": "E(s)=\\frac{s^2+2s+1}{s(s^2+2s+2)},\\qquad\\boxed{e_{\\mathrm{ss}}=\\frac12}."
+        },
+        {
+          "type": "p",
+          "text": "此时 $K_b=1$，若以数值同标度的 $v_a-\\omega$ 表示指令与速度之差，终值同为 $1/2$；幅值为 $V_0$ 的阶跃使误差乘以 $V_0$。"
+        },
+        {
+          "type": "p",
+          "text": "若反馈支路含可调增益 $A$，相应比较点误差 $E_A=V_a-AK_b\\Omega$ 的单位阶跃稳态值为 $1/(1+A)$；以同标度指令与速度之差定义的误差为 $A/(1+A)$。两者在原始电机 $A=1$ 时均为 $1/2$。"
+        },
+        {
+          "type": "p",
+          "text": "（c）令反馈放大器将反电动势乘以正增益 $A$。闭环特征多项式变为"
+        },
+        {
+          "type": "eq",
+          "latex": "D_A(s)=(s+1)^2+A=s^2+2s+1+A,\\quad \\omega_n=\\sqrt{1+A},\\quad\\zeta=\\frac1{\\sqrt{1+A}}."
+        },
+        {
+          "type": "p",
+          "text": "该系统无有限零点，超调为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathrm{P.O.}=100e^{-\\pi/\\sqrt A}\\%\\le15\\%\\quad\\Longrightarrow\\quad\\boxed{0<A\\le\\frac{\\pi^2}{\\ln^2(0.15)}=2.742270}."
+        },
+        {
+          "type": "p",
+          "text": "例如取 $A=2$，超调约 $10.845\\%$；取上界时超调恰为15%。若将该可调放大器放在比较点之后、同时反馈反电动势，则闭环分子改为 $A$，分母仍为 $s^2+2s+1+A$，故本题的超调增益约束相同。"
+        }
+      ],
+      "checks": [
+        "依据电气和机械方程独立消元；在两种放大器位置约定下，分母和归一化超调相同。原题例2.5未提供，答案明示所用增益位置。"
+      ]
+    },
+    {
+      "id": "P5.13",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "取二阶近似模型"
+        },
+        {
+          "type": "eq",
+          "latex": "G_L(s)=\\frac{1+a_1s}{1+b_1s+b_2s^2}."
+        },
+        {
+          "type": "p",
+          "text": "常数项取1以匹配直流增益。原四阶模型在 $s=0$ 附近的展开为"
+        },
+        {
+          "type": "eq",
+          "latex": "G_H(s)=1-\\frac{13}{12}s+\\frac{157}{144}s^2-\\frac{1843}{1728}s^3+O(s^4)."
+        },
+        {
+          "type": "p",
+          "text": "采用低频矩匹配，使 $G_L$ 与 $G_H$ 的常数项及前三次幂系数相同。将分母乘到两侧，要求 $[1+b_1s+b_2s^2]G_H=1+a_1s+O(s^4)$，故"
+        },
+        {
+          "type": "eq",
+          "latex": "\\begin{cases}a_1=b_1-13/12,\\\\b_2-(13/12)b_1+157/144=0,\\\\-(13/12)b_2+(157/144)b_1-1843/1728=0.\\end{cases}"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{a_1=\\frac7{24},\\quad b_1=\\frac{11}{8},\\quad b_2=\\frac{115}{288}}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{G_L(s)=\\frac{(7/24)s+1}{(115/288)s^2+(11/8)s+1}=\\frac{0.730435(s+3.428571)}{(s+1.043478)(s+2.4)}}."
+        },
+        {
+          "type": "p",
+          "text": "系数取题中精度后，分子为 $0.2917s+1$，分母为约 $0.399s^2+1.375s+1$。因此题给二阶模型来自低频展开的四项匹配，其零点与极点随系数求解自然确定。"
+        },
+        {
+          "type": "eq",
+          "latex": "G_H(s)-G_L(s)=O(s^4)\\quad(s\\to0)."
+        }
+      ],
+      "checks": [
+        "SymPy将GH−GL在s=0展开，0至3次项均为0；GL两极点-24/23和-12/5，零点-24/7。"
+      ]
+    },
+    {
+      "id": "P5.15",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "闭环传递函数为"
+        },
+        {
+          "type": "eq",
+          "latex": "T_K(s)=\\frac{K(s+2)}{s^3+6s^2+(15+K)s+50+2K},\\quad y_\\infty=\\frac{2K}{50+2K}."
+        },
+        {
+          "type": "p",
+          "text": "取通常的正增益 $K>0$，三阶劳斯条件 $6(15+K)>50+2K$ 恒成立，故闭环稳定。百分超调按相对于实际稳态值定义："
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathrm{P.O.}(K)=100\\left[\\frac{\\max_{t\\ge0}y_K(t)}{y_\\infty}-1\\right]\\%."
+        },
+        {
+          "type": "p",
+          "text": "为完整计入零点 $-2$ 的影响，以完整三阶模型计算峰值。可将唯一实极点记为 $-p$，另两极点为 $-\\sigma\\pm j\\omega_d$。由系数比较，"
+        },
+        {
+          "type": "eq",
+          "latex": "\\sigma=\\frac{6-p}{2},\\quad \\omega_n^2=\\frac{-2p^2+12p+20}{p-2},\\quad K=\\frac{-p^3+6p^2-15p+50}{p-2},\\quad2<p<5."
+        },
+        {
+          "type": "p",
+          "text": "对每个参数，使用闭环阶跃响应的留数表达式求全部相关极值："
+        },
+        {
+          "type": "eq",
+          "latex": "y_K(t)=\\sum_i r_i e^{\\lambda_it},\\quad\\{\\lambda_i\\}=\\{0,-p,-\\sigma+j\\omega_d,-\\sigma-j\\omega_d\\},\\quad\\dot y_K(t_p)=0."
+        },
+        {
+          "type": "p",
+          "text": "对正增益范围作分段搜索与极小值求解，并将全部振荡峰值纳入比较，得到"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{K_{\\mathrm{opt}}\\approx102.7363,\\qquad\\mathrm{P.O.}_{\\min}\\approx75.8879\\%}."
+        },
+        {
+          "type": "eq",
+          "latex": "s_1=-2.340098,\\quad s_{2,3}=-1.829951\\pm j10.287031,\\quad t_p=0.299428\\ \\mathrm s,"
+        },
+        {
+          "type": "eq",
+          "latex": "y_\\infty=0.804284,\\qquad y_{\\max}=1.414638."
+        },
+        {
+          "type": "p",
+          "text": "例如 $K=20,50,100,200$ 时，完整响应超调分别约为 $84.676\\%$、$77.683\\%$、$75.890\\%$、$77.134\\%$。最优参数使实际超调达到数值极小；极点的二阶阻尼比只描述共轭因子的性质，闭环零点与第三极点共同决定此题的实际峰值。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch05/P5.15_optimum.png",
+          "caption": "完整三阶系统的超调随增益变化及最优增益的阶跃响应。"
+        }
+      ],
+      "checks": [
+        "留数表达式极值搜索与SciPy状态空间阶跃响应独立核对；正增益对数扫描并在全部候选区间细化。"
+      ]
+    },
+    {
+      "id": "P5.20",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "（a）令 $P(s)=(s+6)(s+12)=s^2+18s+72$。由前置增益与反馈关系得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{Y}{R}=\\frac{K_1K}{P(s)+K}."
+        },
+        {
+          "type": "p",
+          "text": "对单位阶跃输入，题设实际跟踪误差为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{E(s)=\\frac{P(s)+K-K_1K}{s[P(s)+K]}}."
+        },
+        {
+          "type": "p",
+          "text": "闭环稳定要求 $K>-72$。在该条件下，"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{e_{\\mathrm{ss}}=1-\\frac{K_1K}{72+K}=\\frac{72+K(1-K_1)}{72+K}}."
+        },
+        {
+          "type": "p",
+          "text": "（b）对 $K\\ne0$，令误差分子为零得到"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{K_1=\\frac{72+K}{K}=1+\\frac{72}{K}}."
+        },
+        {
+          "type": "p",
+          "text": "通常 $K>0$ 时，上述 $K_1>1$，将闭环直流增益校正为1，同时不改变闭环极点。$K=0$ 时输出恒为零，任意有限前置增益均无法跟踪非零阶跃。"
+        }
+      ],
+      "checks": [
+        "代入K1=(72+K)/K后T(0)=1且E的终值为0；闭环分母与K1无关。"
+      ]
+    },
+    {
+      "id": "AP5.6",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "（a）先化简电机速度内环，得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{\\Omega}{U}=\\frac{K_m}{s+0.01+K_mK_b}."
+        },
+        {
+          "type": "p",
+          "text": "记 $a=0.01+K_mK_b$、$b=KK_m$，则外环开环为 $b/[s(s+a)]$，闭环为"
+        },
+        {
+          "type": "eq",
+          "latex": "T(s)=\\frac{b}{s^2+as+b}."
+        },
+        {
+          "type": "p",
+          "text": "在 $a>0,b>0$ 时闭环稳定，单位斜坡的速度误差常数 $K_v=b/a$，故"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{e_{\\mathrm{ss}}=\\frac ab=\\frac{0.01+K_mK_b}{KK_m}}."
+        },
+        {
+          "type": "p",
+          "text": "（b）代入 $K_m=10$、$K_b=0.05$，得 $a=0.51$，令误差为1："
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{K=\\frac{0.51}{10}=0.051},\\qquad T(s)=\\frac{0.51}{s^2+0.51s+0.51}."
+        },
+        {
+          "type": "p",
+          "text": "（c）定义 $\\alpha=0.255$、$\\omega_d=\\sqrt{0.51-0.255^2}=0.667064\\,\\mathrm{rad/s}$，单位阶跃响应为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{y_{\\mathrm{step}}(t)=1-e^{-0.255t}\\left[\\cos(\\omega_dt)+\\frac{0.255}{\\omega_d}\\sin(\\omega_dt)\\right]}."
+        },
+        {
+          "type": "p",
+          "text": "单位斜坡响应为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{y_{\\mathrm{ramp}}(t)=t-1+e^{-0.255t}\\left[\\cos(\\omega_dt)-\\frac{0.745}{\\omega_d}\\sin(\\omega_dt)\\right]}."
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch05/AP5.6_responses.png",
+          "caption": "选定增益下的单位阶跃响应、单位斜坡响应及斜坡稳态误差1。"
+        },
+        {
+          "type": "p",
+          "text": "该增益满足斜坡稳态误差等于1的要求。动态指标为阻尼比 $\\zeta=0.357071$，阶跃超调约 $30.091\\%$，峰值时间约 $4.70958\\,\\mathrm s$，2%调节时间约 $15.281\\,\\mathrm s$；阶跃最终达到1，斜坡最终以与输入相同的速度运动并保持单位位置差。"
+        },
+        {
+          "type": "p",
+          "text": "因此静态跟踪满足指定指标，动态过程表现为明显振荡和较长调节时间。若任务同时要求更小超调和更快收敛，可提高速度反馈以增加阻尼，再配合前向增益保持规定的速度误差常数。"
+        }
+      ],
+      "checks": [
+        "阶跃解析式与SciPy step、斜坡解析式与SciPy lsim分别逐点对照；其误差与时间网格收敛结果在numeric_results.json。"
+      ]
+    }
+  ]
+}
