@@ -1,0 +1,449 @@
+{
+  "chapter": 9,
+  "solutions": [
+    {
+      "id": "E9.1",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "取角频率 $\\omega>0$，由开环传递函数得幅值与连续相角："
+        },
+        {
+          "type": "eq",
+          "latex": "|L(j\\omega)|=\\frac{2\\sqrt{1+\\omega^2/100}}{\\omega\\sqrt{1+25\\omega^2}\\sqrt{(1-\\omega^2/81)^2+\\omega^2/81}}"
+        },
+        {
+          "type": "eq",
+          "latex": "\\phi(\\omega)=-90^\\circ+\\arctan\\frac{\\omega}{10}-\\arctan(5\\omega)-\\operatorname{atan2}\\!\\left(\\frac{\\omega}{9},1-\\frac{\\omega^2}{81}\\right)"
+        },
+        {
+          "type": "p",
+          "text": "由 $|L(j\\omega_c)|=1$ 得 $\\omega_c=0.618228\\ \\mathrm{rad/s}$，相角为 $-162.4838^\\circ$；由 $\\phi(\\omega_\\pi)=-180^\\circ$ 得 $\\omega_\\pi=2.988923\\ \\mathrm{rad/s}$。"
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathrm{PM}=180^\\circ+\\phi(\\omega_c)=17.5162^\\circ,\\qquad \\mathrm{GM}_{\\mathrm{dB}}=-20\\log_{10}|L(j\\omega_\\pi)|=26.1786\\ \\mathrm{dB}"
+        },
+        {
+          "type": "p",
+          "text": "四舍五入得到题给的 $17.5^\\circ$ 和 $26.2\\ \\mathrm{dB}$。积分环节使低频幅频曲线以 $-20\\ \\mathrm{dB/dec}$ 下降，$0.2\\ \\mathrm{rad/s}$ 附近的一阶极点使斜率进一步降低；零点及二阶环节决定中高频变化。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch09/E9_1_bode.png",
+          "caption": "开环伯德图与0 dB、−180°参考线。"
+        }
+      ],
+      "checks": [
+        "直接复数多项式求值并分别对幅值等于1和负实轴交点求根；{'gain_crossovers': [{'w': 0.6182278169143312, 'PM_deg': 17.516194389280457}], 'phase_crossovers': [{'w': 2.9889231734143364, 'GM': 20.367187647060174, 'GM_dB': 26.178621293125204}]}"
+      ]
+    },
+    {
+      "id": "E9.13",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "由单位负反馈关系得闭环传递函数，按标准二阶形式确定参数："
+        },
+        {
+          "type": "eq",
+          "latex": "T(s)=\\frac{150}{s^2+5s+150},\\qquad \\omega_n=\\sqrt{150}=12.24745\\ \\mathrm{rad/s},\\quad \\zeta=\\frac{5}{2\\sqrt{150}}=0.204124"
+        },
+        {
+          "type": "p",
+          "text": "(a) 因 $0<\\zeta<1/\\sqrt2$，闭环具有谐振峰。由标准二阶频率响应求得："
+        },
+        {
+          "type": "eq",
+          "latex": "M_r=\\frac{1}{2\\zeta\\sqrt{1-\\zeta^2}}=2.50217\\quad(7.96635\\ \\mathrm{dB})"
+        },
+        {
+          "type": "p",
+          "text": "(b) 谐振频率由幅值极值条件确定；带宽按相对直流增益下降3 dB定义。"
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_r=\\omega_n\\sqrt{1-2\\zeta^2}=11.72604\\ \\mathrm{rad/s}"
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_B=\\omega_n\\sqrt{1-2\\zeta^2+\\sqrt{2-4\\zeta^2+4\\zeta^4}}=18.46579\\ \\mathrm{rad/s}"
+        },
+        {
+          "type": "p",
+          "text": "(c) 对零初始条件下的单位阶跃输入，由频域确定的阻尼系数得："
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathrm{P.O.}=100\\exp\\!\\left(-\\frac{\\pi\\zeta}{\\sqrt{1-\\zeta^2}}\\right)=51.9407\\%"
+        }
+      ],
+      "checks": [
+        "解析二阶公式与直接频响优化、−3dB方程求根一致；{'wn': 12.24744871391589, 'zeta': 0.2041241452319315, 'Mr': 2.5021729686846337, 'Mr_dB': 7.966346560775653, 'wr': 11.726038227384548, 'bandwidth': 18.465786131417378, 'overshoot_pct': 51.94070786309899}"
+      ]
+    },
+    {
+      "id": "E9.17",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "(a) 将增益单独提出。改变 $K>0$ 使幅频曲线上下平移 $20\\log_{10}K$，相频曲线保持相同。"
+        },
+        {
+          "type": "eq",
+          "latex": "L(j\\omega)=\\frac{K(2+j\\omega)}{j\\omega(15-\\omega^2+2j\\omega)},\\quad \\phi(\\omega)=\\arctan\\frac{\\omega}{2}-90^\\circ-\\operatorname{atan2}(2\\omega,15-\\omega^2)"
+        },
+        {
+          "type": "p",
+          "text": "(b) 要求相角裕度 $30^\\circ$，故穿越频率处相角为 $-150^\\circ$。求解相角方程并令该处幅值为1："
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_c=4.697076\\ \\mathrm{rad/s},\\qquad K=\\frac{\\omega_c\\sqrt{(15-\\omega_c^2)^2+4\\omega_c^2}}{\\sqrt{4+\\omega_c^2}}=10.813402"
+        },
+        {
+          "type": "eq",
+          "latex": "\\lim_{s\\to0}sL(s)=K_v=\\frac{2K}{15}=1.441787,\\qquad e_{\\mathrm{ss,ramp}}=\\frac1{K_v}=0.693584"
+        },
+        {
+          "type": "p",
+          "text": "上述误差对应单位斜率输入 $r(t)=t$。闭环特征多项式为 $s^3+2s^2+(15+K)s+2K$；其劳斯首列为 $1,2,15,2K$，在所得正增益下闭环稳定。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch09/E9_17_bode.png",
+          "caption": "单位增益与所设计增益的伯德图，竖线标出30°裕度对应穿越频率。"
+        }
+      ],
+      "checks": [
+        "直接相角方程和幅值方程联合核验；闭环极点均在左半平面；{'K': 10.813402471129097, 'wc': 4.697076238825981, 'Kv': 1.4417869961505463, 'ramp_error': 0.693583728158125, 'margins': {'gain_crossovers': [{'w': 4.697076238825797, 'PM_deg': 30.00000000000395}], 'phase_crossovers': []}, 'poles': [[-0.5645033106882156, 4.950897008796498], [-0.5645033106882156, -4.950897008796498], [-0.8709933786235702, 0.0]]}"
+      ]
+    },
+    {
+      "id": "P9.3",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "(a) 对根 $s$ 定义阻尼系数 $\\zeta=-\\operatorname{Re}s/|s|$。给定 $0<\\zeta_1<1$，令 $\\theta_1=\\arccos\\zeta_1$，则满足要求的根位于以负实轴为中心的扇形内部。"
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathcal D_\\zeta=\\{s:\\ |\\arg(-s)|<\\theta_1\\},\\qquad \\Gamma_{\\zeta,R}=\\partial\\bigl(\\mathcal D_\\zeta\\cap\\{|s|<R\\}\\bigr)"
+        },
+        {
+          "type": "p",
+          "text": "取足够大的 $R$ 包含全部特征根，轮廓由两条阻尼边界射线和左侧圆弧构成，并按正向绕行。若原点或边界上有根，先作小圆弧避让并单独计入边界根。对 $n$ 阶特征多项式 $q$，由辩值原理得："
+        },
+        {
+          "type": "eq",
+          "latex": "N_\\zeta=\\frac{1}{2\\pi}\\Delta_{\\Gamma_{\\zeta,R}}\\arg q(s)"
+        },
+        {
+          "type": "p",
+          "text": "当 $N_\\zeta=n$ 且边界无根时，所有根的阻尼系数均大于 $\\zeta_1$。"
+        },
+        {
+          "type": "p",
+          "text": "(b) 取左半圆盘 $\\operatorname{Re}s<-\\sigma_1$ 的边界为 $\\Gamma_{\\sigma,R}$。直线段从 $-\\sigma_1-jR$ 向上到 $-\\sigma_1+jR$，再沿左半圆弧返回。$q(\\Gamma_{\\sigma,R})$ 绕原点的正向圈数给出实部小于 $-\\sigma_1$ 的根数。"
+        },
+        {
+          "type": "eq",
+          "latex": "z=s+\\sigma_1,\\qquad \\Gamma_{\\sigma,R}:\\ s=-\\sigma_1+j\\omega\\ (-R\\leq\\omega\\leq R)\\quad\\hbox{及左半圆弧}"
+        },
+        {
+          "type": "p",
+          "text": "(c) 取 $\\sigma_1=1$，则平移后的多项式与直线上的映射分别为："
+        },
+        {
+          "type": "eq",
+          "latex": "p(z)=q(z-1)=z^3+8z^2+37z+50,\\qquad p(j\\omega)=50-8\\omega^2+j(37\\omega-\\omega^3)"
+        },
+        {
+          "type": "p",
+          "text": "由 $\\omega=-\\infty$ 到 $+\\infty$，连续相角增加 $3\\pi$；左侧大圆弧上 $p(z)\\sim z^3$，相角再增加 $3\\pi$。故总增量为 $6\\pi$，柯西计数得到该区域内有3根。"
+        },
+        {
+          "type": "eq",
+          "latex": "N_{\\operatorname{Re}s<-1}=\\frac{6\\pi}{2\\pi}=3,\\qquad q(s)=(s+3)(s^2+8s+32),\\quad s=-3,\\,-4\\pm4j"
+        },
+        {
+          "type": "p",
+          "text": "因此该方程有实部小于 $-1$ 的特征根，且全部3根均满足这一条件。"
+        }
+      ],
+      "checks": [
+        "直接多项式因式分解；平移后劳斯首列1,8,30.75,50；根−3、−4±4j。"
+      ]
+    },
+    {
+      "id": "P9.5",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "按框图，三个给定时间常数对应一阶惯性环节。令环路传递函数为 $L=GH$："
+        },
+        {
+          "type": "eq",
+          "latex": "L(s)=\\frac{K}{(s+1)(3s+1)(0.4s+1)}=\\frac{K}{1.2s^3+4.6s^2+4.4s+1}"
+        },
+        {
+          "type": "p",
+          "text": "(a) 对恒定参考速度 $r_0$，因 $H(0)=1$，相对稳态误差为 $1/(1+K)$。"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{e_{\\mathrm{ss}}}{r_0}=\\frac1{1+K}<0.10\\quad\\Longrightarrow\\quad K>9"
+        },
+        {
+          "type": "p",
+          "text": "(b) 由特征多项式及劳斯条件得稳定增益区间："
+        },
+        {
+          "type": "eq",
+          "latex": "1.2s^3+4.6s^2+4.4s+1+K=0,\\qquad 0<K<\\frac{4.6\\times4.4}{1.2}-1=15.866667"
+        },
+        {
+          "type": "p",
+          "text": "两项要求合并为 $9<K<15.866667$。选取 $K=10$，相对误差为 $9.0909\\%$。开环右半平面极点数 $P=0$，奈奎斯特曲线对 $-1$ 点的环绕数为0，故闭环右半平面根数 $Z=0$，系统稳定。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch09/P9_5_nyquist.png",
+          "caption": "K=10时的奈奎斯特曲线，含完整曲线、−1附近局部细节及频率方向，红叉为−1点。"
+        },
+        {
+          "type": "p",
+          "text": "(c) 由负实轴交点及单位幅值交点分别求裕度："
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_\\pi=1.914854\\ \\mathrm{rad/s},\\quad \\mathrm{GM}=1.586667=4.00971\\ \\mathrm{dB}"
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_c=1.524717\\ \\mathrm{rad/s},\\quad \\mathrm{PM}=14.21274^\\circ"
+        }
+      ],
+      "checks": [
+        "静态增益、Nyquist几何及闭环根相互核验；{'K': 10, 'K_steady_lower': 9, 'K_stability_upper': 15.866666666666667, 'relative_step_error': 0.09090909090909091, 'margins': {'gain_crossovers': [{'w': 1.5247172141486711, 'PM_deg': 14.212738222610568}], 'phase_crossovers': [{'w': 1.9148542155126762, 'GM': 1.5866666666666664, 'GM_dB': 4.009713960016613}]}, 'poles': [[-3.530224461515254, 0.0], [-0.15155443590903883, 1.6042616886993493], [-0.15155443590903883, -1.6042616886993493]]}"
+      ]
+    },
+    {
+      "id": "P9.10",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "采用零初始条件，并按线圈电压与电流正向写 $E_0=(Ls+R)I$、阀芯静力平衡写 $Y=K_2I/K_s$。保留题给 $E_0=K_1(X-X_d)$，取反相放大器增益 $K_1=-k$，其中 $k>0$，得到负反馈。"
+        },
+        {
+          "type": "eq",
+          "latex": "X=\\frac{K_1K_2}{K_s(Ls+R)s(\\tau_as+1)}(X-X_d),\\qquad L_0(s)=\\frac{2k}{(0.2s+0.1)s(0.4s+1)}"
+        },
+        {
+          "type": "p",
+          "text": "(a) 相角裕度30°要求 $\\arctan(2\\omega_c)+\\arctan(0.4\\omega_c)=60^\\circ$。由幅值条件得："
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_c=0.548188\\ \\mathrm{rad/s},\\qquad k=0.04163992,\\qquad K_1=-0.04163992"
+        },
+        {
+          "type": "p",
+          "text": "(b) 以相同相角裕度及穿越频率的标准二阶模型进行估计。标准二阶关系给出："
+        },
+        {
+          "type": "eq",
+          "latex": "\\zeta\\approx\\frac{\\sin\\phi_m}{2\\sqrt{\\cos\\phi_m}}=0.268642,\\qquad \\omega_n\\approx\\frac{\\omega_c}{\\sqrt{\\sqrt{1+4\\zeta^4}-2\\zeta^2}}=0.589067\\ \\mathrm{rad/s}"
+        },
+        {
+          "type": "eq",
+          "latex": "M_r\\approx\\frac1{2\\zeta\\sqrt{1-\\zeta^2}}=1.93224,\\quad \\omega_r\\approx0.54490\\ \\mathrm{rad/s},\\quad \\omega_B\\approx0.86810\\ \\mathrm{rad/s}"
+        },
+        {
+          "type": "p",
+          "text": "由完整三阶闭环频响核验，最大幅值为1.96113，谐振频率为 $0.57832\\ \\mathrm{rad/s}$，3 dB带宽为 $0.90569\\ \\mathrm{rad/s}$。二阶估计保留了主要谐振与通频带特征。"
+        },
+        {
+          "type": "p",
+          "text": "(c) 对单位阶跃输入，二阶估计为："
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathrm{P.O.}\\approx100e^{-\\pi\\zeta/\\sqrt{1-\\zeta^2}}=41.6373\\%,\\qquad T_s\\approx\\frac4{\\zeta\\omega_n}=25.2767\\ \\mathrm{s}"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{X(s)}{X_d(s)}=\\frac{0.08327985}{0.08s^3+0.24s^2+0.1s+0.08327985}"
+        },
+        {
+          "type": "p",
+          "text": "完整模型单位阶跃结果为超调42.0104%、2%调节时间22.906 s。附加实极点约为 $-2.6784$，另两个极点为 $-0.16079\\pm0.60234j$；这组主导复极点说明响应具有较明显的衰减振荡。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch09/P9_10_step.png",
+          "caption": "反相增益K1=−0.04163992时的单位阶跃响应及2%稳态带。"
+        }
+      ],
+      "checks": [
+        "按题面符号保留K1为负，幅值k为正；{'signed_K1': -0.04163992269561041, 'gain_magnitude': 0.04163992269561041, 'wc': 0.5481881585886582, 'second_order_zeta': 0.26864248295588544, 'second_order_wn': 0.5890665122010874, 'estimate_Mr': 1.9322389017231263, 'estimate_wr': 0.5448984427645974, 'estimate_bandwidth': 0.8681044320212772, 'estimate_overshoot_pct': 41.63731511303839, 'estimate_settling': 25.27673435381226, 'exact_frequency': {'Mr': 1.9611335471281026, 'Mr_dB': 5.850143375711575, 'wr': 0.578320363708161, 'bandwidth': 0.9056883096867407}, 'exact_step': {'overshoot_pct': 42.01042602678635, 'peak_time': 5.606, 'settling_2pct': 22.906, 'poles': [[-2.6784150256308346, 0.0], [-0.1607924871845827, 0.6023352461026293], [-0.1607924871845827, -0.6023352461026293]]}, 'margins': {'gain_crossovers': [{'w': 0.5481881585886582, 'PM_deg': 29.999999999999858}], 'phase_crossovers': [{'w': 1.118033988749895, 'GM': 3.60231216317346, 'GM_dB': 11.13162688965633}]}}"
+      ]
+    },
+    {
+      "id": "P9.14",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "保留纯时延的精确频率响应。开环的幅值与相角为："
+        },
+        {
+          "type": "eq",
+          "latex": "|L(j\\omega)|=\\frac{K}{\\omega\\sqrt{1+0.01\\omega^2}},\\qquad \\phi(\\omega)=-90^\\circ-\\arctan(0.1\\omega)-\\frac{180^\\circ}{\\pi}0.2\\omega"
+        },
+        {
+          "type": "p",
+          "text": "(a) 在尼科尔斯图上，使开环曲线与闭环幅值2 dB等值线相切，得到允许的最大增益；取该边界值："
+        },
+        {
+          "type": "eq",
+          "latex": "K=2.476612,\\qquad M_r=10^{2/20}=1.258925,\\quad \\omega_r=3.064757\\ \\mathrm{rad/s}"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch09/P9_14_nichols.png",
+          "caption": "纯时延系统的尼科尔斯曲线与闭环等幅线；设计曲线与2 dB线相切。"
+        },
+        {
+          "type": "p",
+          "text": "在正增益稳定区内，选择 $0<K\\le2.476612$ 均满足峰值要求。相角裕度为 $48.87067^\\circ$，第一临界增益为6.11527，所选增益位于稳定区间内。"
+        },
+        {
+          "type": "p",
+          "text": "(b) 按标准二阶关系分别换算等效阻尼："
+        },
+        {
+          "type": "eq",
+          "latex": "\\zeta_{M_r}=\\sqrt{\\frac{1-\\sqrt{1-M_r^{-2}}}{2}}=0.443007,\\qquad \\zeta_{\\mathrm{PM}}=\\frac{\\sin48.87067^\\circ}{2\\sqrt{\\cos48.87067^\\circ}}=0.464367"
+        },
+        {
+          "type": "p",
+          "text": "两种换算分别匹配闭环谐振峰和开环穿越处相角。该系统包含纯时延和惯性环节，其频率响应形状与标准二阶模型不同，因此得到略有差异的等效阻尼；两者均反映中等阻尼的动态特征。"
+        },
+        {
+          "type": "p",
+          "text": "(c) 从精确闭环频率响应求 $|T(j\\omega_B)|=1/\\sqrt2$，得："
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_B=5.284830\\ \\mathrm{rad/s}"
+        }
+      ],
+      "checks": [
+        "纯时延直接exp求值，完整频率范围峰值优化和−3dB求根；{'K': 2.47661211222968, 'critical_K': 6.115265753621624, 'critical_frequency': 5.384369931559056, 'Mr': 1.2589254117941668, 'Mr_dB': 1.9999999999999973, 'wr': 3.064756579725083, 'bandwidth': 5.2848297522119045, 'PM_deg': 48.87067272100583, 'zeta_from_Mr': 0.4430074429259779, 'zeta_from_PM': 0.4643674343652247}"
+      ]
+    },
+    {
+      "id": "P9.28",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "(a) 由相角 $\\phi(\\omega)=-90^\\circ-\\arctan\\omega$，相角裕度45°对应 $\\omega_c=1\\ \\mathrm{rad/s}$。"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{K_P}{\\omega_c\\sqrt{1+\\omega_c^2}}=1\\quad\\Longrightarrow\\quad K_P=\\sqrt2=1.414214"
+        },
+        {
+          "type": "p",
+          "text": "(b) 由相角裕度换算阻尼并估计超调："
+        },
+        {
+          "type": "eq",
+          "latex": "\\zeta=\\frac{\\sin45^\\circ}{2\\sqrt{\\cos45^\\circ}}=0.420448,\\qquad \\mathrm{P.O.}=100e^{-\\pi\\zeta/\\sqrt{1-\\zeta^2}}=23.32123\\%"
+        },
+        {
+          "type": "p",
+          "text": "(c) 本题闭环恰为标准二阶系统，因此上述关系精确适用。"
+        },
+        {
+          "type": "eq",
+          "latex": "T(s)=\\frac{\\sqrt2}{s^2+s+\\sqrt2},\\quad \\omega_n=2^{1/4},\\quad \\omega_d=\\sqrt{\\sqrt2-\\frac14}=1.078987\\ \\mathrm{rad/s}"
+        },
+        {
+          "type": "eq",
+          "latex": "y(t)=1-e^{-t/2}\\left[\\cos(\\omega_dt)+\\frac{1}{2\\omega_d}\\sin(\\omega_dt)\\right],\\qquad t\\ge0"
+        },
+        {
+          "type": "p",
+          "text": "实际单位阶跃曲线的超调为23.32123%，与相角裕度估计一致，首峰约在2.912 s。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch09/P9_28_step.png",
+          "caption": "比例增益KP=√2时的单位阶跃响应；实际超调与频域估计一致。"
+        }
+      ],
+      "checks": [
+        "标准二阶解析关系与12001点时域求值交叉核验；{'Kp': 1.4142135623730951, 'wc': 1, 'zeta': 0.4204482076268573, 'zeta_from_PM': 0.42044820762685725, 'overshoot_PM_pct': 23.321228386198932, 'overshoot_pct': 23.32122590780692, 'peak_time': 2.912, 'settling_2pct': 7.062666666666667, 'poles': [[-0.5, 1.0789872855474687], [-0.5, -1.0789872855474687]]}"
+      ]
+    },
+    {
+      "id": "AP9.1",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "反馈环路同时包含控制器、动力学模型和传感器。用于裕度分析的环路传递函数为："
+        },
+        {
+          "type": "eq",
+          "latex": "L(s)=\\frac{236607.5(s+10)(s+5)}{s(s+2)(s+1)(s^2+10s+\\omega_n^2)}"
+        },
+        {
+          "type": "p",
+          "text": "(a) 当 $\\omega_n^2=15267$ 时，柔性二阶环节在约 $123.6\\ \\mathrm{rad/s}$ 附近产生明显谐振，使开环出现三个单位幅值交点。各交点处的相角裕度分别为："
+        },
+        {
+          "type": "eq",
+          "latex": "\\begin{array}{c|ccc}\\omega_c\\ (\\mathrm{rad/s})&18.52526&116.59873&128.78850\\\\\\hline\\mathrm{PM}\\ ({}^\\circ)&55.07583&49.22202&-51.02285\\end{array}"
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_\\pi=123.07260\\ \\mathrm{rad/s},\\qquad \\mathrm{GM}=0.640676=-3.86724\\ \\mathrm{dB}"
+        },
+        {
+          "type": "p",
+          "text": "最高频穿越具有负相角裕度。完整闭环特征方程 $1+L=0$ 存在右半平面极点 $2.82821\\pm123.12694j$，故该参数下系统不稳定。"
+        },
+        {
+          "type": "p",
+          "text": "(b) 当 $\\omega_n^2=9500$ 时，三个单位幅值交点及其裕度变为："
+        },
+        {
+          "type": "eq",
+          "latex": "\\begin{array}{c|ccc}\\omega_c\\ (\\mathrm{rad/s})&29.24340&81.85978&106.99747\\\\\\hline\\mathrm{PM}\\ ({}^\\circ)&65.35247&65.33717&-67.63563\\end{array}"
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_\\pi=96.84928\\ \\mathrm{rad/s},\\qquad \\mathrm{GM}=0.396935=-8.02561\\ \\mathrm{dB}"
+        },
+        {
+          "type": "p",
+          "text": "此时右半平面极点为 $7.56389\\pm97.60134j$。固有频率降低使谐振区向低频移动，与高增益控制频带的重叠加深；增益裕度下降约4.16 dB，最高频相角裕度进一步降低约16.61°，发散模态的增长速度加快。"
+        },
+        {
+          "type": "p",
+          "text": "两组数据中，低频交点的正相角裕度描述该局部交点；完整稳定性由全部交点及闭环特征根共同确定。设计时应同时降低柔性模态附近的环路增益并保留足够的高频裕度。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch09/AP9_1_bode.png",
+          "caption": "两组固有频率参数的完整环路伯德图；谐振区产生三处单位幅值交点。"
+        }
+      ],
+      "checks": [
+        "已逐个计算全部0dB穿越与负实轴交点，并求五阶闭环根；{'margins': {'gain_crossovers': [{'w': 18.525258909932138, 'PM_deg': 55.07582739873871}, {'w': 116.59873046766864, 'PM_deg': 49.22202427568365}, {'w': 128.7884986807659, 'PM_deg': -51.022845151547926}], 'phase_crossovers': [{'w': 123.07260177953523, 'GM': 0.6406755707634859, 'GM_dB': -3.8672367105759213}]}, 'poles': [[2.828210313293778, 123.12693773441543], [2.828210313293778, -123.12693773441543], [-7.065342646186577, 11.064184768308754], [-7.065342646186577, -11.064184768308754], [-4.525735334214411, 0.0]]}",
+        "{'margins': {'gain_crossovers': [{'w': 29.243401537604925, 'PM_deg': 65.35247195474308}, {'w': 81.85977838496964, 'PM_deg': 65.33716899862164}, {'w': 106.99747287709513, 'PM_deg': -67.63562991019063}], 'phase_crossovers': [{'w': 96.84927715404616, 'GM': 0.3969350587496289, 'GM_dB': -8.02561081857699}]}, 'poles': [[7.563885994637427, 97.60133582250504], [7.563885994637427, -97.60133582250504], [-11.733968048826021, 11.279834149568146], [-11.733968048826021, -11.279834149568146], [-4.659835891622801, 0.0]]}"
+      ]
+    }
+  ]
+}
