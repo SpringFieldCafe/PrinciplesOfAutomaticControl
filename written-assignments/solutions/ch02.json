@@ -1,0 +1,298 @@
+{
+  "chapter": 2,
+  "solutions": [
+    {
+      "id": "E2.2",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "取工作点 $T_*=20\\,{}^\\circ\\mathrm C$，定义温度与电阻的小偏差 $\\Delta T=T-T_*$、$\\Delta R=R-R_*$。工作点电阻为"
+        },
+        {
+          "type": "eq",
+          "latex": "R_*=10000e^{-2}=1353.3528\\ \\Omega."
+        },
+        {
+          "type": "p",
+          "text": "在工作点作一阶泰勒展开，电阻对温度的局部灵敏度为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\left.\\frac{dR}{dT}\\right|_{T_*}=-0.1\\times10000e^{-2}=-135.3353\\ \\Omega/{}^\\circ\\mathrm C."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\Delta R\\approx-135.3353\\Delta T\\quad(\\Omega)}"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{R(T)\\approx1353.3528-135.3353(T-20)\\quad(\\Omega)}"
+        },
+        {
+          "type": "p",
+          "text": "该模型适用于 $|0.1\\Delta T|\\ll1$ 的温度扰动；负斜率表示温度升高时电阻降低。"
+        }
+      ],
+      "checks": [
+        "用解析导数与中心差分核对斜率，误差小于1e-6 Ω/℃。"
+      ]
+    },
+    {
+      "id": "E2.13",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "记受控对象 $G(s)=1/[s(s+20)]$。由测量端加法点与负反馈关系得"
+        },
+        {
+          "type": "eq",
+          "latex": "E_a=R-Y-N,\\qquad Y=G(KE_a+T_d)."
+        },
+        {
+          "type": "eq",
+          "latex": "(1+KG)Y=KGR+GT_d-KGN."
+        },
+        {
+          "type": "p",
+          "text": "求扰动通道时令 $R=N=0$，因此"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\frac{Y(s)}{T_d(s)}=\\frac{G}{1+KG}=\\frac1{s^2+20s+K}}."
+        },
+        {
+          "type": "p",
+          "text": "求测量噪声通道时令 $R=T_d=0$，因此"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\frac{Y(s)}{N(s)}=-\\frac{KG}{1+KG}=-\\frac{K}{s^2+20s+K}}."
+        },
+        {
+          "type": "p",
+          "text": "噪声经反馈进入误差信号，故其输出通道带负号。"
+        }
+      ],
+      "checks": [
+        "将两个通道代回原始节点方程，符号残差恒等为零。"
+      ]
+    },
+    {
+      "id": "E2.16",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在零初始条件下，各组成部件分别为位置比较环节、增益为8的放大器、电机积分环节及平台动力学环节："
+        },
+        {
+          "type": "eq",
+          "latex": "V_1=R-P,\\quad \\frac{V_2}{V_1}=8,\\quad \\frac{\\Theta}{V_2}=\\frac{0.5}{s},\\quad \\frac{P}{\\Theta}=\\frac1{s^2+2s+4}."
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch02/E2.16_block.png",
+          "caption": "位置控制系统的单位负反馈框图。"
+        },
+        {
+          "type": "p",
+          "text": "串联前向通道传递函数为"
+        },
+        {
+          "type": "eq",
+          "latex": "G(s)=8\\frac{0.5}{s}\\frac1{s^2+2s+4}=\\frac4{s(s^2+2s+4)}."
+        },
+        {
+          "type": "p",
+          "text": "由单位负反馈公式可得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\frac{P(s)}{R(s)}=\\frac{G(s)}{1+G(s)}=\\frac4{s^3+2s^2+4s+4}}."
+        }
+      ],
+      "checks": [
+        "独立消去v1、v2和θ得p三阶方程：p‴+2p″+4p′+4p=4r，与闭环分母一致。"
+      ]
+    },
+    {
+      "id": "E2.30",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "（a）由单位负反馈关系，闭环传递函数为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\frac{Y(s)}{R(s)}=\\frac{15}{s^2+5s+30}}."
+        },
+        {
+          "type": "p",
+          "text": "（b）零初始条件下，单位阶跃输入 $R(s)=1/s$，故"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{Y(s)=\\frac{15}{s(s^2+5s+30)}}."
+        },
+        {
+          "type": "p",
+          "text": "（c）配方并分解为"
+        },
+        {
+          "type": "eq",
+          "latex": "s^2+5s+30=\\left(s+\\frac52\\right)^2+\\frac{95}{4},"
+        },
+        {
+          "type": "eq",
+          "latex": "Y(s)=\\frac1{2s}-\\frac12\\frac{s+5/2}{(s+5/2)^2+95/4}-\\frac54\\frac1{(s+5/2)^2+95/4}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{y(t)=\\frac12\\left[1-e^{-5t/2}\\left(\\cos\\frac{\\sqrt{95}t}{2}+\\frac5{\\sqrt{95}}\\sin\\frac{\\sqrt{95}t}{2}\\right)\\right],\\quad t\\ge0.}"
+        },
+        {
+          "type": "p",
+          "text": "由初值与终值可核对 $y(0)=0$、$\\dot y(0)=0$、$y(\\infty)=1/2$。"
+        }
+      ],
+      "checks": [
+        "SymPy反变换核对，所得时域响应的拉普拉斯变换与Y(s)相同。"
+      ]
+    },
+    {
+      "id": "P2.7",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "按理想运算放大器处理，输入电流为零，同相端接地，反相端为虚地。输入支路的等效阻抗为"
+        },
+        {
+          "type": "eq",
+          "latex": "Z_{\\mathrm{in}}=R_1\\parallel\\frac1{sC}=\\frac{R_1}{1+sR_1C}."
+        },
+        {
+          "type": "p",
+          "text": "对反相端列电流平衡方程："
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{V_1}{R_1}+sCV_1=-\\frac{V_2}{R_2}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\frac{V_2(s)}{V_1(s)}=-\\frac{R_2}{R_1}(1+sR_1C)=-\\frac{R_2}{R_1}-R_2Cs.}"
+        },
+        {
+          "type": "p",
+          "text": "相应的时域关系为 $v_2(t)=-(R_2/R_1)v_1(t)-R_2C\\dot v_1(t)$，即反相比例与微分作用叠加。"
+        }
+      ],
+      "checks": [
+        "通过节点电流法及反相阻抗比法独立得到相同表达式。"
+      ]
+    },
+    {
+      "id": "P2.26",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "取图示向右为正方向。弹簧与阻尼的相互作用力由相对位移和相对速度决定，牛顿第二定律给出"
+        },
+        {
+          "type": "eq",
+          "latex": "M\\ddot x=F-b(\\dot x-\\dot y)-k(x-y),\\qquad m\\ddot y=b(\\dot x-\\dot y)+k(x-y)."
+        },
+        {
+          "type": "p",
+          "text": "在零初始条件下，拉普拉斯变换得到"
+        },
+        {
+          "type": "eq",
+          "latex": "\\begin{bmatrix}Ms^2+bs+k&-(bs+k)\\\\-(bs+k)&ms^2+bs+k\\end{bmatrix}\\begin{bmatrix}X\\\\Y\\end{bmatrix}=\\begin{bmatrix}F\\\\0\\end{bmatrix}."
+        },
+        {
+          "type": "p",
+          "text": "由二阶行列式消去 $X$，得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac YF=\\frac{bs+k}{(Ms^2+bs+k)(ms^2+bs+k)-(bs+k)^2},"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\frac{Y(s)}{F(s)}=\\frac{bs+k}{s^2\\left[Mms^2+(M+m)bs+(M+m)k\\right]}}."
+        },
+        {
+          "type": "p",
+          "text": "低频主项为 $1/[(M+m)s^2]$，对应两质量整体平动；另一个二阶因子描述两质量之间的弹性相对运动。"
+        }
+      ],
+      "checks": [
+        "符号展开行列式与给定分母恒等；低频总质量极限核对通过。"
+      ]
+    },
+    {
+      "id": "P2.32",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "令上、下两个输入汇合点的信号分别为 $a,b$。图中两条输入交叉支路的增益分别为 $-1$，因此"
+        },
+        {
+          "type": "eq",
+          "latex": "a=R_1-R_2-H_2Y_1,\\qquad b=R_2-R_1-H_1Y_2."
+        },
+        {
+          "type": "p",
+          "text": "将中间的串并联通道记为"
+        },
+        {
+          "type": "eq",
+          "latex": "A=G_1G_3G_4,\\quad B=G_2G_7G_4,\\quad C=G_1G_8G_6,\\quad D=G_2G_5G_6."
+        },
+        {
+          "type": "eq",
+          "latex": "Y_1=Aa+Bb,\\qquad Y_2=Ca+Db."
+        },
+        {
+          "type": "p",
+          "text": "求 $Y_2/R_1$ 时置 $R_2=0$，联立得到"
+        },
+        {
+          "type": "eq",
+          "latex": "\\begin{bmatrix}1+AH_2&BH_1\\\\CH_2&1+DH_1\\end{bmatrix}\\begin{bmatrix}Y_1\\\\Y_2\\end{bmatrix}=\\begin{bmatrix}A-B\\\\C-D\\end{bmatrix}R_1."
+        },
+        {
+          "type": "eq",
+          "latex": "\\Delta=1+AH_2+DH_1+(AD-BC)H_1H_2,"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\frac{Y_2}{R_1}=\\frac{C-D-(AD-BC)H_2}{\\Delta}}."
+        },
+        {
+          "type": "p",
+          "text": "展开原通道记号，分子为"
+        },
+        {
+          "type": "eq",
+          "latex": "G_6\\left[G_1G_8-G_2G_5+G_1G_2G_4H_2(G_7G_8-G_3G_5)\\right]."
+        },
+        {
+          "type": "p",
+          "text": "对非退化、互联定义良好的系统，$Y_2$ 与 $R_1$ 相互独立的充要条件是上述传递函数恒等为零，即"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{G_1G_8-G_2G_5+G_1G_2G_4H_2(G_7G_8-G_3G_5)\\equiv0.}"
+        },
+        {
+          "type": "p",
+          "text": "例如同时满足 $G_1G_8=G_2G_5$ 和 $G_7G_8=G_3G_5$，即可使该交叉输入通道消失。这里要求恒等式对传递变量成立，而非仅在某个频率点成立。"
+        }
+      ],
+      "checks": [
+        "用符号矩阵求逆与克拉默法则交叉核对Y2/R1；随机代入非退化常数核对节点方程。"
+      ]
+    }
+  ]
+}
