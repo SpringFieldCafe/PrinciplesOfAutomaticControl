@@ -1,0 +1,889 @@
+{
+  "solution_count": 75,
+  "figure_count": 47,
+  "csv_count": 53,
+  "figures": [
+    {
+      "id": "E2.16",
+      "figure": "figures/ch02/E2.16_block.png",
+      "sha256": "a994961ba3e3c3627021a302e27d2787365a8addbeb4f6eb3b44d2281e86cd81",
+      "data": [],
+      "calculation_and_plotting": [
+        "src/ch02/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch02.json",
+      "note": "Schematic/parameter-region figure generated from equations in source",
+      "numeric_parameters": "data/ch02/numeric_results.json"
+    },
+    {
+      "id": "AP4.3",
+      "figure": "figures/ch04/AP4.3_tracking.png",
+      "sha256": "f6f8cffadeb272fd4d67f64b886f2ff3bef7cc113a980f182cc73dad5e432661",
+      "data": [
+        "data/ch04/AP4.3_data.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch04/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch04.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch04/numeric_results.json"
+    },
+    {
+      "id": "AP4.3",
+      "figure": "figures/ch04/AP4.3_disturbance.png",
+      "sha256": "9da0c570cc9fe18c217d7251182b356c21b433d5060962134ad70fb1759b82a6",
+      "data": [
+        "data/ch04/AP4.3_data.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch04/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch04.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch04/numeric_results.json"
+    },
+    {
+      "id": "E5.6",
+      "figure": "figures/ch05/E5.6_poles.png",
+      "sha256": "eb9e2d7207040fc602d5633228006268fa966e00aaab185a1f430ac8579ee194",
+      "data": [],
+      "calculation_and_plotting": [
+        "src/ch05/compute.py",
+        "src/ch05/redraw_axes.py"
+      ],
+      "model_and_parameters": "solutions/ch05.json",
+      "note": "Schematic/parameter-region figure generated from equations in source",
+      "numeric_parameters": "data/ch05/numeric_results.json"
+    },
+    {
+      "id": "E5.15",
+      "figure": "figures/ch05/E5.15_compare.png",
+      "sha256": "543a8859b26fe27988235ff0cb46d4a7b0e5ca26ee43ada2e440473d4765ffc2",
+      "data": [
+        "data/ch05/E5.15_data.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch05/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch05.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch05/numeric_results.json"
+    },
+    {
+      "id": "P5.2",
+      "figure": "figures/ch05/P5.2_region.png",
+      "sha256": "dcdf2a7a88870750a8be0e8e4528a6ab1214b8e99d38a841504686d3e014a85f",
+      "data": [],
+      "calculation_and_plotting": [
+        "src/ch05/compute.py",
+        "src/ch05/redraw_axes.py"
+      ],
+      "model_and_parameters": "solutions/ch05.json",
+      "note": "Schematic/parameter-region figure generated from equations in source",
+      "numeric_parameters": "data/ch05/numeric_results.json"
+    },
+    {
+      "id": "P5.10",
+      "figure": "figures/ch05/P5.10_block.png",
+      "sha256": "0896318021ddb30bbad3773667dd4aed5ab4777e0fc1d093d8e98af60f58cb2d",
+      "data": [],
+      "calculation_and_plotting": [
+        "src/ch05/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch05.json",
+      "note": "Schematic/parameter-region figure generated from equations in source",
+      "numeric_parameters": "data/ch05/numeric_results.json"
+    },
+    {
+      "id": "P5.15",
+      "figure": "figures/ch05/P5.15_optimum.png",
+      "sha256": "81d41361d437a3f3af7f763e5956ff02543d3c38ed90347d3d04585e32bf406f",
+      "data": [
+        "data/ch05/P5.15_scan.csv",
+        "data/ch05/P5.15_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch05/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch05.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch05/numeric_results.json"
+    },
+    {
+      "id": "AP5.6",
+      "figure": "figures/ch05/AP5.6_responses.png",
+      "sha256": "b095ef066dab1bbc8ca782fe1e2ac68b5eea424ad15d9398d741f929241d7d77",
+      "data": [
+        "data/ch05/AP5.6_data.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch05/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch05.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch05/numeric_results.json"
+    },
+    {
+      "id": "AP6.5",
+      "figure": "figures/ch06/AP6_5_step.png",
+      "sha256": "32685dba405e258c86c5b79f8f764ece77857d6d405e49f7e0d34f234cb3ce36",
+      "data": [
+        "data/ch06/AP6_5_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch06/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch06.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch06/numeric_results.json"
+    },
+    {
+      "id": "AP6.6",
+      "figure": "figures/ch06/AP6_6_region.png",
+      "sha256": "13be26926039b6435518cfdfac10e2ab1045a9a020b8801ec0b5ebbb5bfd1ac3",
+      "data": [
+        "data/ch06/AP6_6_boundary.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch06/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch06.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch06/numeric_results.json"
+    },
+    {
+      "id": "E7.1",
+      "figure": "figures/ch07/E7_1.png",
+      "sha256": "0e8afabb4117d606134b4e39031d8a771d70421698f9167d4f08b9d62cbef24d",
+      "data": [
+        "data/ch07/E7_1_locus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch07/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch07.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch07/numeric_results.json"
+    },
+    {
+      "id": "E7.2",
+      "figure": "figures/ch07/E7_2.png",
+      "sha256": "df065a1278534b1025f301a4b8208f51225c81161e3015351b8361cc33b07a98",
+      "data": [
+        "data/ch07/E7_2_locus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch07/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch07.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch07/numeric_results.json"
+    },
+    {
+      "id": "E7.9",
+      "figure": "figures/ch07/E7_9.png",
+      "sha256": "576b9f75854083e804e29e3042e6c00b376c7549d6b604151616576207097368",
+      "data": [
+        "data/ch07/E7_9_locus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch07/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch07.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch07/numeric_results.json"
+    },
+    {
+      "id": "P7.1",
+      "figure": "figures/ch07/P7_1.png",
+      "sha256": "72232e9cef6b68f22175bd1ffd5c7d4559c6bbed10231add2d961670382d79a5",
+      "data": [
+        "data/ch07/P7_1(a)_locus.csv",
+        "data/ch07/P7_1(b)_locus.csv",
+        "data/ch07/P7_1(c)_locus.csv",
+        "data/ch07/P7_1(d)_locus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch07/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch07.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch07/numeric_results.json"
+    },
+    {
+      "id": "P7.4",
+      "figure": "figures/ch07/P7_4.png",
+      "sha256": "ec848894c04deeff606d83b3c61df3f7569be161a5e02a8ecfe6590bf3797769",
+      "data": [
+        "data/ch07/P7_4_locus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch07/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch07.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch07/numeric_results.json"
+    },
+    {
+      "id": "P7.5",
+      "figure": "figures/ch07/P7_5a.png",
+      "sha256": "f558dbedabb30c933cb33061dec4dc90ccdf43ee25c199b1f3ab2de73712dae9",
+      "data": [
+        "data/ch07/P7_5(a)_locus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch07/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch07.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch07/numeric_results.json"
+    },
+    {
+      "id": "P7.5",
+      "figure": "figures/ch07/P7_5c.png",
+      "sha256": "bca1abcf5e35fecc5707f4c8c103797ad8755951af6de9b85420612e4d911d8f",
+      "data": [
+        "data/ch07/P7_5(c)_locus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch07/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch07.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch07/numeric_results.json"
+    },
+    {
+      "id": "P7.11",
+      "figure": "figures/ch07/P7_11a.png",
+      "sha256": "4bfa15353cd5bf9a5466c42ad17959366ba51f3669cdffe5973db927f07212bb",
+      "data": [
+        "data/ch07/P7_11a_locus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch07/calculate.py",
+        "src/ch07/enhance.py"
+      ],
+      "model_and_parameters": "solutions/ch07.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch07/numeric_results.json"
+    },
+    {
+      "id": "P7.11",
+      "figure": "figures/ch07/P7_11c.png",
+      "sha256": "6789cd5e528233f9137ab2234812b4b664538f75396ca6dc5611acc8ee1331ef",
+      "data": [
+        "data/ch07/P7_11c_locus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch07/calculate.py",
+        "src/ch07/enhance.py"
+      ],
+      "model_and_parameters": "solutions/ch07.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch07/numeric_results.json"
+    },
+    {
+      "id": "E8.6",
+      "figure": "figures/ch08/E8_6.png",
+      "sha256": "4163b6ec66d2d3d864949a62d5fd5e6271974908a7f7273fcc36c0e6bd8d4651",
+      "data": [
+        "data/ch08/E8_6.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch08/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch08.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch08/numeric_results.json"
+    },
+    {
+      "id": "E8.14",
+      "figure": "figures/ch08/E8_14.png",
+      "sha256": "c438caf266016e584c365e02fb0aa2d82b5766df9d5b29e3bad75ac2e82435fa",
+      "data": [
+        "data/ch08/E8_14.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch08/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch08.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch08/numeric_results.json"
+    },
+    {
+      "id": "P8.1",
+      "figure": "figures/ch08/P8_1.png",
+      "sha256": "d470026fc5b94902deea06b5f336f6a79fe1080d04019c168bb4e7b4a352df4d",
+      "data": [
+        "data/ch08/P8_1a.csv",
+        "data/ch08/P8_1b.csv",
+        "data/ch08/P8_1c.csv",
+        "data/ch08/P8_1d.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch08/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch08.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch08/numeric_results.json"
+    },
+    {
+      "id": "P8.6",
+      "figure": "figures/ch08/P8_6.png",
+      "sha256": "6aca3f539f19669934ee329a2eae83676aec6d0edead6657bdac15de5e80f5d8",
+      "data": [
+        "data/ch08/P8_6a.csv",
+        "data/ch08/P8_6b.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch08/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch08.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch08/numeric_results.json"
+    },
+    {
+      "id": "P8.14",
+      "figure": "figures/ch08/P8_14.png",
+      "sha256": "5db8438d0437f289d48f2f6051e7f0f122b2e665e3f6c7dde78badba381c0778",
+      "data": [
+        "data/ch08/P8_14.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch08/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch08.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch08/numeric_results.json"
+    },
+    {
+      "id": "P8.24",
+      "figure": "figures/ch08/P8_24.png",
+      "sha256": "bbca5e392b77503ad1d268a33e6adca495f895bc3fe1566d38bc3590dc5f9cfe",
+      "data": [
+        "data/ch08/P8_24_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch08/calculate.py"
+      ],
+      "model_and_parameters": "solutions/ch08.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch08/numeric_results.json"
+    },
+    {
+      "id": "E9.1",
+      "figure": "figures/ch09/E9_1_bode.png",
+      "sha256": "6e7d1ee66a8303a1d862b6d16d1fe56f53200b19ea54b29e386fc9daedfb4ed3",
+      "data": [
+        "data/ch09/E9_1_bode.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch09/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch09.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch09/numeric_results.json"
+    },
+    {
+      "id": "E9.17",
+      "figure": "figures/ch09/E9_17_bode.png",
+      "sha256": "5ee16422a89df87aa8f4ab2455d3683a4575ccf47b763b022539ccabf391a156",
+      "data": [
+        "data/ch09/E9_17_bode.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch09/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch09.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch09/numeric_results.json"
+    },
+    {
+      "id": "P9.5",
+      "figure": "figures/ch09/P9_5_nyquist.png",
+      "sha256": "3ba1db9c49edd4677b437372d99d21df53ac06e2d127fcba2b3fe827fc768c13",
+      "data": [
+        "data/ch09/P9_5_nyquist.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch09/compute.py",
+        "src/ch09/refine_figures.py"
+      ],
+      "model_and_parameters": "solutions/ch09.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch09/numeric_results.json"
+    },
+    {
+      "id": "P9.10",
+      "figure": "figures/ch09/P9_10_step.png",
+      "sha256": "66f592a92250dbd7d8cc09cdfc46e6d96db66c1896ca69b31e268d1f1f8ce382",
+      "data": [
+        "data/ch09/P9_10_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch09/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch09.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch09/numeric_results.json"
+    },
+    {
+      "id": "P9.14",
+      "figure": "figures/ch09/P9_14_nichols.png",
+      "sha256": "4e032dfd339e340b0f84c5d4b4d88960887b7cd4e192ce8db218c8ed7c4921f2",
+      "data": [
+        "data/ch09/P9_14_nichols.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch09/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch09.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch09/numeric_results.json"
+    },
+    {
+      "id": "P9.28",
+      "figure": "figures/ch09/P9_28_step.png",
+      "sha256": "be586c34d191f7aceb3d07d19607b5d6d2a3916ebabea7c4625611709a641d21",
+      "data": [
+        "data/ch09/P9_28_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch09/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch09.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch09/numeric_results.json"
+    },
+    {
+      "id": "AP9.1",
+      "figure": "figures/ch09/AP9_1_bode.png",
+      "sha256": "93125115808a70e13b08f9e400c57b614925d540863c13f0539ab3f3b46ebab6",
+      "data": [
+        "data/ch09/AP9_1_bode.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch09/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch09.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch09/numeric_results.json"
+    },
+    {
+      "id": "E10.1",
+      "figure": "figures/ch10/E10_1_step.png",
+      "sha256": "503e783e9decfafa84dd333954b501ec5db124a698a6d36e854d90feff8caf1b",
+      "data": [
+        "data/ch10/E10_1_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "E10.6",
+      "figure": "figures/ch10/E10_6_step.png",
+      "sha256": "ce11cab4bc824505b2401bb57722d6e81d3499692aa8a61ecb75fa48b42caac7",
+      "data": [
+        "data/ch10/E10_6_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "E10.9",
+      "figure": "figures/ch10/E10_9_step.png",
+      "sha256": "224d4956c8e09c2d19568f2f894b7663b60d2a8a38811e9bfcb222d7fe702c29",
+      "data": [
+        "data/ch10/E10_9_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "P10.1",
+      "figure": "figures/ch10/P10_1_bode.png",
+      "sha256": "5d75d29db3358acaa089196db4c3a3ed9a3038b50535fea759c3af7c479760e9",
+      "data": [
+        "data/ch10/P10_1_bode.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "P10.1",
+      "figure": "figures/ch10/P10_1_rootlocus.png",
+      "sha256": "0d2149ac6b77bf55f7e635d1feb32c7c392ed83e2ceb21e62b6dd083bc4ca747",
+      "data": [
+        "data/ch10/P10_1_rootlocus.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py",
+        "src/ch10/refine_figures.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "P10.1",
+      "figure": "figures/ch10/P10_1_step.png",
+      "sha256": "ff6eb95fcf6f28c0c560e1273db31538284b88e8083b3435576375c4c8f6f8c5",
+      "data": [
+        "data/ch10/P10_1_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "P10.5",
+      "figure": "figures/ch10/P10_5_step.png",
+      "sha256": "f58e786daee1759d7bdb7c14859ce0b01172726fa23f1a7481ee8a9ddc1e9d9f",
+      "data": [
+        "data/ch10/P10_5_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "P10.13",
+      "figure": "figures/ch10/P10_13_bode.png",
+      "sha256": "8dc68f87cdf972dbac7cf21e08c6ccb991f5f40c1e82068dd6965380553de53d",
+      "data": [
+        "data/ch10/P10_13_bode.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "P10.19",
+      "figure": "figures/ch10/P10_19_step.png",
+      "sha256": "62a92f894ba55b5ccd70daac5d0da179c1e9bea790510de2b44ce0f25619c999",
+      "data": [
+        "data/ch10/P10_19_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py",
+        "src/ch10/refine_figures.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "P10.20",
+      "figure": "figures/ch10/P10_20_bode.png",
+      "sha256": "e20bf802afb97440d5fc13cf78d37fa1f5081075fddfea9dc369a42a5c17626a",
+      "data": [
+        "data/ch10/P10_20_bode.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "P10.22",
+      "figure": "figures/ch10/P10_22_bode.png",
+      "sha256": "0e643f654f400a28337ab06f69b882a3778597065801d15ea85051a1f2d7137d",
+      "data": [
+        "data/ch10/P10_22_bode.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "P10.43",
+      "figure": "figures/ch10/P10_43_overshoot.png",
+      "sha256": "7839ac255c303b8120e4374526d19142c8ab5b13d6fb762975fa2eefd0355cfc",
+      "data": [
+        "data/ch10/P10_43_overshoot.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py",
+        "src/ch10/refine_figures.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "AP10.4",
+      "figure": "figures/ch10/AP10_4_step.png",
+      "sha256": "fd8a5ec9c2c04f0888f5e0e9c4670547a5c3115c4fa0e6b62026541af907705e",
+      "data": [
+        "data/ch10/AP10_4_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    },
+    {
+      "id": "AP10.7",
+      "figure": "figures/ch10/AP10_7_step.png",
+      "sha256": "b9c8255d07534e4e2562942e8e315bb02aa7dbeac4fd8cc55d535f41719bd967",
+      "data": [
+        "data/ch10/AP10_7_step.csv"
+      ],
+      "calculation_and_plotting": [
+        "src/ch10/compute.py"
+      ],
+      "model_and_parameters": "solutions/ch10.json",
+      "note": "Computed curves; CSV contains sampled values",
+      "numeric_parameters": "data/ch10/numeric_results.json"
+    }
+  ],
+  "all_csv": [
+    {
+      "path": "data/ch04/AP4.3_data.csv",
+      "sha256": "ba68deff329d6d9326f39c4ce3fa45a9c6fea9ef6d821db2b71e088f0da6ed57"
+    },
+    {
+      "path": "data/ch05/AP5.6_data.csv",
+      "sha256": "a681ea41b7609245c6a5fdd18c22c75871e1025ef40fed06606f0592d44592ef"
+    },
+    {
+      "path": "data/ch05/E5.15_data.csv",
+      "sha256": "66ede068bf098a1086186da1d170fe7759f1dd33c235a954a0039c19d328736c"
+    },
+    {
+      "path": "data/ch05/P5.15_scan.csv",
+      "sha256": "e1098dc5b957401f4618be516f5eb1e5ef3be95ac13e122da995866005e6fa9f"
+    },
+    {
+      "path": "data/ch05/P5.15_step.csv",
+      "sha256": "ac1fa47cde5f009c5e1efb4e63d239f87f2bd510f3dbf2d3243de199af67d4e7"
+    },
+    {
+      "path": "data/ch06/AP6_5_step.csv",
+      "sha256": "e332e746cfb3089822622f1d1c523dd95f9c089bf178511caea5701e4e5b1b19"
+    },
+    {
+      "path": "data/ch06/AP6_6_boundary.csv",
+      "sha256": "0e442e2c2adf81243e5d78f004433750d9181f3fb63a2ca0b780febb5b54c9c5"
+    },
+    {
+      "path": "data/ch07/E7_1_locus.csv",
+      "sha256": "3aa6ea1e50b8a5065556fc888f61878b306a1a6d67d4370af537c62a9a9d0040"
+    },
+    {
+      "path": "data/ch07/E7_2_locus.csv",
+      "sha256": "53f402bc9b2d381a88acd0a2f537659b40237929c711d1b5774c1065e4aed678"
+    },
+    {
+      "path": "data/ch07/E7_9_locus.csv",
+      "sha256": "f8a44343d60eef10cf194722671e7e4683a12dffa376d9f1eabfe9fc5b7228d4"
+    },
+    {
+      "path": "data/ch07/P7_1(a)_locus.csv",
+      "sha256": "2b9452e73f4cd6e6febcadeb979e7f11a66551eec7cf6d14c32c90503d33dfaf"
+    },
+    {
+      "path": "data/ch07/P7_1(b)_locus.csv",
+      "sha256": "9938f09df13aa364854188bac6681e72cfba9add9d7bfaf9d049a612de6206bf"
+    },
+    {
+      "path": "data/ch07/P7_1(c)_locus.csv",
+      "sha256": "daa8b20fa9012ac37de99e39309fbb6472ddcbb8e3fe972194ecd416f8326d1d"
+    },
+    {
+      "path": "data/ch07/P7_1(d)_locus.csv",
+      "sha256": "90180f670acdc30e5e07a6062c50608ac946c5e43ab1c2b16cc2650c0040d365"
+    },
+    {
+      "path": "data/ch07/P7_11(a)_locus.csv",
+      "sha256": "993850478c83912358a143d619f4451582f37cfa1fe82b34d1d9a12c0ba686ba"
+    },
+    {
+      "path": "data/ch07/P7_11(c)_locus.csv",
+      "sha256": "1fb6ce9bc29866d0b48be90cb9b643a8a329a6db74e5a3ab29f9f78382125ae6"
+    },
+    {
+      "path": "data/ch07/P7_11a_locus.csv",
+      "sha256": "e19dde9387e3fa26b62592d0c3b267982507f0ab181d7764b9255004f988381f"
+    },
+    {
+      "path": "data/ch07/P7_11c_locus.csv",
+      "sha256": "4338cc5fe6222611d541353944a64576da259893c90f8f51499893b6bc913a9f"
+    },
+    {
+      "path": "data/ch07/P7_4_locus.csv",
+      "sha256": "579cdf67b889214c163a1c12ec86df8607e60d1a91df29656ef35e494c9f6c9f"
+    },
+    {
+      "path": "data/ch07/P7_5(a)_locus.csv",
+      "sha256": "7e8e02fdacd43c3c8bc4b663fa8936f9bafd5913ca913de791c0e115c66a2803"
+    },
+    {
+      "path": "data/ch07/P7_5(c)_locus.csv",
+      "sha256": "d5f843c2c2300e87af325fb3a53aa6aaec3883e266dc61d53182e8b265f3ecbb"
+    },
+    {
+      "path": "data/ch08/E8_14.csv",
+      "sha256": "8de079ff3a2f26017e7be2b0c2450689bd571ee044d5c317958562868cbfb852"
+    },
+    {
+      "path": "data/ch08/E8_6.csv",
+      "sha256": "cce9f1d32097b30e77c8a72aef3038284ad62063dd064f942a388328a3032407"
+    },
+    {
+      "path": "data/ch08/P8_14.csv",
+      "sha256": "c4e498dc0937307f2ed3f5c43d257b191531896e1aca4cd6f86ed34115dd0994"
+    },
+    {
+      "path": "data/ch08/P8_1a.csv",
+      "sha256": "6f4a67825f964107133ab7e1febc2f475d46fb800d4c1ee4447d0424aa2e0a78"
+    },
+    {
+      "path": "data/ch08/P8_1b.csv",
+      "sha256": "055acdae929cd0c3f58919adc7aef86b37b1b8527e4229ebabddf53e5adad26a"
+    },
+    {
+      "path": "data/ch08/P8_1c.csv",
+      "sha256": "ed6def468118b76eba32bf5777d158d4d0fd37b981fc4361e0f81b035da35696"
+    },
+    {
+      "path": "data/ch08/P8_1d.csv",
+      "sha256": "b41a5323a9120f4046cccce6b2cec477461b95f51bfa643f54696b9c5ce54ae3"
+    },
+    {
+      "path": "data/ch08/P8_24_step.csv",
+      "sha256": "19a6fa12f906b254acdfd931d5623daf6917c3e5bfc00630e38574bc47612e3b"
+    },
+    {
+      "path": "data/ch08/P8_6a.csv",
+      "sha256": "b9949daf0a6cebc98b263356ab92e075f40c3a90d2e0a1150d6e80d8b1632aab"
+    },
+    {
+      "path": "data/ch08/P8_6b.csv",
+      "sha256": "85d5b2b2819d70b69be6f1885aa2fa445bf6a7e55bca41df03c8252e3ca23098"
+    },
+    {
+      "path": "data/ch09/AP9_1_bode.csv",
+      "sha256": "c506caa878c97fb262a6ead114647aa1b155e721fafafaf1a310b3544b0b6d0c"
+    },
+    {
+      "path": "data/ch09/E9_17_bode.csv",
+      "sha256": "4fb566406773ed8cebbe221f0e37ce79bf73552b73561ea9f01ad5d0db87dc98"
+    },
+    {
+      "path": "data/ch09/E9_1_bode.csv",
+      "sha256": "3ee80b21c67aadc1664a31118670d7373636e82b3a053bffcf9bc49b0dac91c5"
+    },
+    {
+      "path": "data/ch09/P9_10_bode.csv",
+      "sha256": "5247d7f63e612d4f880601ac822bca3ce62107fe11a092acda0c7b67f04df44e"
+    },
+    {
+      "path": "data/ch09/P9_10_step.csv",
+      "sha256": "11f58c7190436b1867784736af73dd71e722fed40f3606705392a3d04ec86ca7"
+    },
+    {
+      "path": "data/ch09/P9_14_nichols.csv",
+      "sha256": "3acae6d16e339f96c1b8849b69938527ac0aae9a3b20985ba5172755a11023e5"
+    },
+    {
+      "path": "data/ch09/P9_28_step.csv",
+      "sha256": "8dad8d14485842ef09bb402005f38638cec6707b97d8b587b45bd3e6b3066d8f"
+    },
+    {
+      "path": "data/ch09/P9_5_nyquist.csv",
+      "sha256": "3e036cd60702597fe31dd35c9fc37cbb4f2e9836488a470bb4daa1bbd7c1d863"
+    },
+    {
+      "path": "data/ch10/AP10_4_step.csv",
+      "sha256": "f87510ab7a10d8d8e9fdaed6996dc3cc416235d1c5fd4b21d35335ecefb4be1b"
+    },
+    {
+      "path": "data/ch10/AP10_7_step.csv",
+      "sha256": "ab6a70f359b83942c4e23fd55ef01d7b326e0542c0715cccd79fc894cfd0029b"
+    },
+    {
+      "path": "data/ch10/E10_1_step.csv",
+      "sha256": "7640c1e158690253c293e4f1e135f8e0055b22201849700f8fc1b614ff2e75ea"
+    },
+    {
+      "path": "data/ch10/E10_6_step.csv",
+      "sha256": "8e62075261d1f3f7f56d25958ca50aacf70b810f92395d6c81a7531467488f75"
+    },
+    {
+      "path": "data/ch10/E10_9_step.csv",
+      "sha256": "7ff3cfe03414b27b2244937743ed6e01443260cc6abfd6c08aaa36692a4552b4"
+    },
+    {
+      "path": "data/ch10/P10_13_bode.csv",
+      "sha256": "ef61e42d62080d04d78a75c083215b7fd939ca11d453d00c4acce22b940c3f91"
+    },
+    {
+      "path": "data/ch10/P10_19_step.csv",
+      "sha256": "159484bf0cc0750dc323c30da147b43497d6e25c3223233545386bc9832d8ff3"
+    },
+    {
+      "path": "data/ch10/P10_1_bode.csv",
+      "sha256": "f9a352f8de04d7a802028914b90cfada47912a178f99e151129f6bf67d45446a"
+    },
+    {
+      "path": "data/ch10/P10_1_rootlocus.csv",
+      "sha256": "1ccf06847725f33070f5ff3db9794db8e6ee2d9b839f0a5c7808b9875fde6d43"
+    },
+    {
+      "path": "data/ch10/P10_1_step.csv",
+      "sha256": "6a9d2380bae37ad177a52446fe6d766f0fe5ca9a0774947f9625c143437a5030"
+    },
+    {
+      "path": "data/ch10/P10_20_bode.csv",
+      "sha256": "630271581925c3a19234f42bc8effc44aff2a644139cce0c0b665eaef92090f2"
+    },
+    {
+      "path": "data/ch10/P10_22_bode.csv",
+      "sha256": "edbb49182c4506a187d9033f9ad4886648ab831ef86e11b44238b173287d0324"
+    },
+    {
+      "path": "data/ch10/P10_43_overshoot.csv",
+      "sha256": "8a88df6f783c257b3381e453e142cba2e7078ec0fb9aa9eecaad40bb2b736c12"
+    },
+    {
+      "path": "data/ch10/P10_5_step.csv",
+      "sha256": "e85e530676793a4c694bb377a24b5a77a0fb07848cd49a4b75315ed0a33062f6"
+    }
+  ],
+  "data_note": "Root-locus CSVs with (a)/(c) and without parentheses are separate base/enhanced plotting stages; all come from the same seconds-based polynomial. No question scans are included.",
+  "text_line_endings": "Published text uses LF; SHA256 values refer to repository file bytes."
+}
