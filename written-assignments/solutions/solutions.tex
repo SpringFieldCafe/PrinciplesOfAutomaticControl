@@ -1,0 +1,2719 @@
+% UTF-8 original solution manuscript; supplied question scans are omitted.
+\documentclass[UTF8,12pt]{ctexart}
+\usepackage{amsmath,amssymb,graphicx}
+\begin{document}
+
+\section*{第2章}
+
+\subsection*{E2.2}
+取工作点 $T_*=20\,{}^\circ\mathrm C$，定义温度与电阻的小偏差 $\Delta T=T-T_*$、$\Delta R=R-R_*$。工作点电阻为
+
+\[
+R_*=10000e^{-2}=1353.3528\ \Omega.
+\]
+
+在工作点作一阶泰勒展开，电阻对温度的局部灵敏度为
+
+\[
+\left.\frac{dR}{dT}\right|_{T_*}=-0.1\times10000e^{-2}=-135.3353\ \Omega/{}^\circ\mathrm C.
+\]
+
+\[
+\boxed{\Delta R\approx-135.3353\Delta T\quad(\Omega)}
+\]
+
+\[
+\boxed{R(T)\approx1353.3528-135.3353(T-20)\quad(\Omega)}
+\]
+
+该模型适用于 $|0.1\Delta T|\ll1$ 的温度扰动；负斜率表示温度升高时电阻降低。
+
+
+\subsection*{E2.13}
+记受控对象 $G(s)=1/[s(s+20)]$。由测量端加法点与负反馈关系得
+
+\[
+E_a=R-Y-N,\qquad Y=G(KE_a+T_d).
+\]
+
+\[
+(1+KG)Y=KGR+GT_d-KGN.
+\]
+
+求扰动通道时令 $R=N=0$，因此
+
+\[
+\boxed{\frac{Y(s)}{T_d(s)}=\frac{G}{1+KG}=\frac1{s^2+20s+K}}.
+\]
+
+求测量噪声通道时令 $R=T_d=0$，因此
+
+\[
+\boxed{\frac{Y(s)}{N(s)}=-\frac{KG}{1+KG}=-\frac{K}{s^2+20s+K}}.
+\]
+
+噪声经反馈进入误差信号，故其输出通道带负号。
+
+
+\subsection*{E2.16}
+在零初始条件下，各组成部件分别为位置比较环节、增益为8的放大器、电机积分环节及平台动力学环节：
+
+\[
+V_1=R-P,\quad \frac{V_2}{V_1}=8,\quad \frac{\Theta}{V_2}=\frac{0.5}{s},\quad \frac{P}{\Theta}=\frac1{s^2+2s+4}.
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch02/E2.16_block.png}
+\caption{位置控制系统的单位负反馈框图。}
+\end{figure}
+
+串联前向通道传递函数为
+
+\[
+G(s)=8\frac{0.5}{s}\frac1{s^2+2s+4}=\frac4{s(s^2+2s+4)}.
+\]
+
+由单位负反馈公式可得
+
+\[
+\boxed{\frac{P(s)}{R(s)}=\frac{G(s)}{1+G(s)}=\frac4{s^3+2s^2+4s+4}}.
+\]
+
+
+\subsection*{E2.30}
+（a）由单位负反馈关系，闭环传递函数为
+
+\[
+\boxed{\frac{Y(s)}{R(s)}=\frac{15}{s^2+5s+30}}.
+\]
+
+（b）零初始条件下，单位阶跃输入 $R(s)=1/s$，故
+
+\[
+\boxed{Y(s)=\frac{15}{s(s^2+5s+30)}}.
+\]
+
+（c）配方并分解为
+
+\[
+s^2+5s+30=\left(s+\frac52\right)^2+\frac{95}{4},
+\]
+
+\[
+Y(s)=\frac1{2s}-\frac12\frac{s+5/2}{(s+5/2)^2+95/4}-\frac54\frac1{(s+5/2)^2+95/4}.
+\]
+
+\[
+\boxed{y(t)=\frac12\left[1-e^{-5t/2}\left(\cos\frac{\sqrt{95}t}{2}+\frac5{\sqrt{95}}\sin\frac{\sqrt{95}t}{2}\right)\right],\quad t\ge0.}
+\]
+
+由初值与终值可核对 $y(0)=0$、$\dot y(0)=0$、$y(\infty)=1/2$。
+
+
+\subsection*{P2.7}
+按理想运算放大器处理，输入电流为零，同相端接地，反相端为虚地。输入支路的等效阻抗为
+
+\[
+Z_{\mathrm{in}}=R_1\parallel\frac1{sC}=\frac{R_1}{1+sR_1C}.
+\]
+
+对反相端列电流平衡方程：
+
+\[
+\frac{V_1}{R_1}+sCV_1=-\frac{V_2}{R_2}.
+\]
+
+\[
+\boxed{\frac{V_2(s)}{V_1(s)}=-\frac{R_2}{R_1}(1+sR_1C)=-\frac{R_2}{R_1}-R_2Cs.}
+\]
+
+相应的时域关系为 $v_2(t)=-(R_2/R_1)v_1(t)-R_2C\dot v_1(t)$，即反相比例与微分作用叠加。
+
+
+\subsection*{P2.26}
+取图示向右为正方向。弹簧与阻尼的相互作用力由相对位移和相对速度决定，牛顿第二定律给出
+
+\[
+M\ddot x=F-b(\dot x-\dot y)-k(x-y),\qquad m\ddot y=b(\dot x-\dot y)+k(x-y).
+\]
+
+在零初始条件下，拉普拉斯变换得到
+
+\[
+\begin{bmatrix}Ms^2+bs+k&-(bs+k)\\-(bs+k)&ms^2+bs+k\end{bmatrix}\begin{bmatrix}X\\Y\end{bmatrix}=\begin{bmatrix}F\\0\end{bmatrix}.
+\]
+
+由二阶行列式消去 $X$，得
+
+\[
+\frac YF=\frac{bs+k}{(Ms^2+bs+k)(ms^2+bs+k)-(bs+k)^2},
+\]
+
+\[
+\boxed{\frac{Y(s)}{F(s)}=\frac{bs+k}{s^2\left[Mms^2+(M+m)bs+(M+m)k\right]}}.
+\]
+
+低频主项为 $1/[(M+m)s^2]$，对应两质量整体平动；另一个二阶因子描述两质量之间的弹性相对运动。
+
+
+\subsection*{P2.32}
+令上、下两个输入汇合点的信号分别为 $a,b$。图中两条输入交叉支路的增益分别为 $-1$，因此
+
+\[
+a=R_1-R_2-H_2Y_1,\qquad b=R_2-R_1-H_1Y_2.
+\]
+
+将中间的串并联通道记为
+
+\[
+A=G_1G_3G_4,\quad B=G_2G_7G_4,\quad C=G_1G_8G_6,\quad D=G_2G_5G_6.
+\]
+
+\[
+Y_1=Aa+Bb,\qquad Y_2=Ca+Db.
+\]
+
+求 $Y_2/R_1$ 时置 $R_2=0$，联立得到
+
+\[
+\begin{bmatrix}1+AH_2&BH_1\\CH_2&1+DH_1\end{bmatrix}\begin{bmatrix}Y_1\\Y_2\end{bmatrix}=\begin{bmatrix}A-B\\C-D\end{bmatrix}R_1.
+\]
+
+\[
+\Delta=1+AH_2+DH_1+(AD-BC)H_1H_2,
+\]
+
+\[
+\boxed{\frac{Y_2}{R_1}=\frac{C-D-(AD-BC)H_2}{\Delta}}.
+\]
+
+展开原通道记号，分子为
+
+\[
+G_6\left[G_1G_8-G_2G_5+G_1G_2G_4H_2(G_7G_8-G_3G_5)\right].
+\]
+
+对非退化、互联定义良好的系统，$Y_2$ 与 $R_1$ 相互独立的充要条件是上述传递函数恒等为零，即
+
+\[
+\boxed{G_1G_8-G_2G_5+G_1G_2G_4H_2(G_7G_8-G_3G_5)\equiv0.}
+\]
+
+例如同时满足 $G_1G_8=G_2G_5$ 和 $G_7G_8=G_3G_5$，即可使该交叉输入通道消失。这里要求恒等式对传递变量成立，而非仅在某个频率点成立。
+
+
+\section*{第4章}
+
+\subsection*{E4.2}
+闭环传递函数为
+
+\[
+T(s)=\frac{G}{1+G}=\frac{100}{\tau s+101}.
+\]
+
+（a）按相对灵敏度定义 $S_\tau^T=(\tau/T)(\partial T/\partial\tau)$，得
+
+\[
+\boxed{S_\tau^T(s)=-\frac{\tau s}{\tau s+101}=-\frac{3s}{3s+101}}.
+\]
+
+于是固定 $s$ 时，小参数变化满足 $\Delta T/T\approx S_\tau^T\Delta\tau/\tau$。若先以开环传递函数为中间变量，则
+
+\[
+S_G^T=\frac1{1+G}=\frac{\tau s+1}{\tau s+101},\quad S_\tau^G=-\frac{\tau s}{\tau s+1},\quad S_\tau^T=S_G^TS_\tau^G.
+\]
+
+（b）将闭环写成标准一阶形式：
+
+\[
+T(s)=\frac{100/101}{(\tau/101)s+1},\qquad \boxed{\tau_{\mathrm{cl}}=\frac3{101}=0.029703\ \mathrm s}.
+\]
+
+
+\subsection*{E4.4}
+系统为单位负反馈，开环传递函数为
+
+\[
+L(s)=\frac{100K}{s(0.001s+1)}.
+\]
+
+闭环特征多项式为 $0.001s^2+s+100K$，在 $K>0$ 时稳定。
+
+（a）开环含一个积分环节，位置误差常数为 $K_p=\lim_{s\to0}L(s)=\infty$，故任意有限幅值的阶跃指令均有
+
+\[
+\boxed{e_{\mathrm{ss,step}}=0}.
+\]
+
+（b）速度误差常数及斜坡稳态误差为
+
+\[
+K_v=\lim_{s\to0}sL(s)=100K,\quad e_{\mathrm{ss}}=\frac{A}{K_v}=\frac{10}{100K}=\frac{0.1}{K}\ \mathrm{cm}=\frac1K\ \mathrm{mm}.
+\]
+
+\[
+\frac1K<0.1\quad\Longrightarrow\quad\boxed{K>10}.
+\]
+
+例如取 $K=20$，稳态位置误差为 $0.05\,\mathrm{mm}$；$K=10$ 对应误差恰为 $0.1\,\mathrm{mm}$。
+
+
+\subsection*{E4.6}
+记 $N=s^2+ps+10$、$D=s^3+2ps^2+4s+3-p$。由商的对数微分得
+
+\[
+S_p^T=p\left(\frac{\partial N/\partial p}{N}-\frac{\partial D/\partial p}{D}\right)=p\left[\frac{s}{s^2+ps+10}-\frac{2s^2-1}{s^3+2ps^2+4s+3-p}\right].
+\]
+
+\[
+\boxed{S_p^T=\frac{p\left[sD-(2s^2-1)N\right]}{ND}}.
+\]
+
+为计算稳态误差，先检查稳定条件。三阶劳斯判据给出
+
+\[
+2p>0,\quad 3-p>0,\quad (2p)\,4>3-p\quad\Longrightarrow\quad\boxed{\frac13<p<3}.
+\]
+
+在此范围内，对于单位阶跃输入，$E(s)=[1-T(s)]/s$，从而
+
+\[
+\boxed{e_{\mathrm{ss}}=1-T(0)=1-\frac{10}{3-p}=-\frac{p+7}{3-p}}.
+\]
+
+若阶跃幅值为 $A$，上述误差乘以 $A$。负误差表示稳定输出的终值大于指令幅值。$p=1/3$ 时存在虚轴极点，$p=3$ 时存在原点极点，其他正 $p$ 区间含右半平面极点，因而阶跃响应不收敛到有限稳态。
+
+
+\subsection*{E4.9}
+由框图节点关系，$sY=K_1[E-K_2Y]-T_d$，其中 $E=K(R-Y)$。因此
+
+\[
+[s+K_1(K+K_2)]Y=KK_1R-T_d.
+\]
+
+（a）令 $T_d=0$，闭环传递函数为
+
+\[
+\boxed{T(s)=\frac{KK_1}{s+K_1(K+K_2)}}.
+\]
+
+（b）分别对 $K_1$ 和 $K$ 作相对微分，得
+
+\[
+\boxed{S_{K_1}^T=\frac{s}{s+K_1(K+K_2)}},\qquad\boxed{S_K^T=\frac{s+K_1K_2}{s+K_1(K+K_2)}}.
+\]
+
+（c）置 $R=0$、$T_d=1/s$。在 $K_1(K+K_2)>0$ 时，扰动引起的终值为
+
+\[
+Y_d(s)=-\frac1{s[s+K_1(K+K_2)]},\quad y_d(\infty)=-\frac1{K_1(K+K_2)}.
+\]
+
+\[
+\boxed{e_{\mathrm{ss}}=E(\infty)=\frac{K}{K_1(K+K_2)}}.
+\]
+
+若将位置跟踪误差定义为 $r-y$，其扰动稳态值为 $1/[K_1(K+K_2)]$；框图标注的 $E$ 是该误差经 $K$ 缩放后的信号。
+
+（d）在 $K=K_2=1$、$T_d=0$ 下，
+
+\[
+Y(s)=\frac{K_1}{s(s+2K_1)},\quad \boxed{y(t)=\frac12(1-e^{-2K_1t})},\quad \tau=\frac1{2K_1}.
+\]
+
+增大 $K_1$ 使响应更快，且终值保持为 $1/2$。题设 $1<K_1<10$ 为开区间，故最快响应只存在下确界 $\tau\to0.05\,\mathrm s$，没有取到该下确界的最优参数；可取任意接近10且小于10的值，例如 $K_1=9.9$ 时 $\tau=0.050505\,\mathrm s$。若端点10允许取用，则最优值为 $K_1=10$。
+
+
+\subsection*{E4.11}
+定义 $P(s)=s^2+5s+6$，$D(s)=(s+10)P(s)+14K=s^3+15s^2+56s+60+14K$。由 $Y=G(R-HY)+T_d$ 得
+
+（a）
+
+\[
+\boxed{T(s)=\frac{Y}{R}=\frac{KP(s)}{D(s)}}.
+\]
+
+（b）题设的跟踪误差为 $E=R-Y$，因此对单位阶跃输入、零扰动，
+
+\[
+\boxed{E(s)=\frac{D(s)-KP(s)}{sD(s)}}.
+\]
+
+劳斯判据给出闭环稳定范围 $-30/7<K<390/7$。通常取正增益，即 $0<K<390/7$；在该范围内
+
+\[
+\boxed{e_{\mathrm{ss}}=1-\frac{6K}{60+14K}=\frac{30+4K}{30+7K}}.
+\]
+
+（c）令 $R=0$，输出端扰动传递函数为
+
+\[
+\boxed{\frac{Y}{T_d}=\frac1{1+GH}=\frac{(s+10)P(s)}{D(s)}}.
+\]
+
+对 $T_d=1/s$，有
+
+\[
+\boxed{y_d(\infty)=\frac{30}{30+7K},\qquad e_{\mathrm{ss},d}=-\frac{30}{30+7K}}.
+\]
+
+（d）$K$ 同时出现在闭环分子与分母中，故
+
+\[
+\boxed{S_K^T=1-\frac{14K}{D(s)}=\frac{(s+10)P(s)}{D(s)}}.
+\]
+
+
+\subsection*{P4.2}
+记 $P=s^2+1.75s+12.25$，故 $G=12.25/P$。开环指断开传感器反馈支路，保留执行机构与船体。
+
+（a）开环与闭环指令传递函数分别为
+
+\[
+T_{\mathrm{ol}}=K_aG,\qquad T_{\mathrm{cl}}=\frac{K_aG}{1+K_aK_1G}=\frac{12.25K_a}{P+12.25K_aK_1}.
+\]
+
+\[
+\boxed{S_{K_a}^{T_{\mathrm{ol}}}=1,\quad S_{K_1}^{T_{\mathrm{ol}}}=0},
+\]
+
+\[
+\boxed{S_{K_a}^{T_{\mathrm{cl}}}=\frac{P}{P+12.25K_aK_1},\quad S_{K_1}^{T_{\mathrm{cl}}}=-\frac{12.25K_aK_1}{P+12.25K_aK_1}}.
+\]
+
+在零频率，闭环对执行机构增益的灵敏度由1降为 $1/(1+K_aK_1)$；对传感器增益的灵敏度为 $-K_aK_1/(1+K_aK_1)$。因此执行机构变化受到反馈抑制，传感器精度则直接影响闭环标定。
+
+（b）取 $\theta_d=0$。正向加入船体输入端的扰动力矩有
+
+\[
+\frac{\Theta_{\mathrm{ol}}}{T_d}=G,\qquad \frac{\Theta_{\mathrm{cl}}}{T_d}=\frac{G}{1+K_aK_1G}=\frac{12.25}{s^2+1.75s+12.25(1+K_aK_1)}.
+\]
+
+对幅值为 $A$ 的阶跃扰动，在正增益条件下闭环稳定，终值为
+
+\[
+\boxed{\theta_{\mathrm{ol}}(\infty)=A,\qquad \theta_{\mathrm{cl}}(\infty)=\frac{A}{1+K_aK_1}}.
+\]
+
+正值的环路增益积 $K_aK_1$ 的增大使静态扰动偏角减小。此比例反馈同时使自然频率变为 $3.5\sqrt{1+K_aK_1}$，阻尼比变为 $0.25/\sqrt{1+K_aK_1}$，衰减包络的指数率仍为 $0.875\,\mathrm{s}^{-1}$，因而静态抑制改善伴随更明显的相对振荡。
+
+
+\subsection*{P4.4}
+由加法点关系得
+
+\[
+Y=G[Q(UR-Y)+MR]=G(QU+M)R-GQY.
+\]
+
+（a）整理可得
+
+\[
+\boxed{T(s)=\frac{G(s)[Q(s)U(s)+M(s)]}{1+G(s)Q(s)}}.
+\]
+
+（b）保持 $Q,U,M$ 不变，对 $G$ 求相对灵敏度：
+
+\[
+S_G^T=\frac GT\frac{\partial T}{\partial G}=\frac{G}{G(QU+M)/(1+GQ)}\frac{QU+M}{(1+GQ)^2},
+\]
+
+\[
+\boxed{S_G^T=\frac1{1+GQ}}.
+\]
+
+（c）该相对灵敏度仅由反馈环路乘积 $GQ$ 决定，与输入前置环节 $U$ 及前馈环节 $M$ 无关。相对灵敏度定义适用于所考察点 $T\ne0$；$U,M$ 仍通过分子决定指令响应。
+
+
+\subsection*{P4.6}
+记 $D_0(s)=(\tau_1s+1)(20s+1)$。由 $V=G[G_1(R-V)-K_g\Delta T_d]$ 可得
+
+\[
+\frac VR=\frac{K_eK_1}{D_0+K_eK_1},\qquad \frac{V}{\Delta T_d}=-\frac{K_eK_g(\tau_1s+1)}{D_0+K_eK_1}.
+\]
+
+（a）对发动机增益 $K_e$ 的闭环相对灵敏度为
+
+\[
+\boxed{S_{K_e}^T=\frac{D_0(s)}{D_0(s)+K_eK_1}},\qquad S_{K_e}^T(0)=\frac1{1+K_eK_1}.
+\]
+
+（b）正负载扰动使车速下降。对 $\Delta T_d=\Delta d/s$，在正增益及 $\tau_1>0$ 时系统稳定，其稳态车速改变量为
+
+\[
+\boxed{\Delta v(\infty)=-\frac{K_eK_g}{1+K_eK_1}\Delta d\approx-\frac{K_g}{K_1}\Delta d\quad(K_eK_1\gg1)}.
+\]
+
+（c）将指令与负载共同作用代入，稳态车速为
+
+\[
+v(\infty)=\frac{30K_eK_1-K_eK_g\Delta d}{1+K_eK_1}.
+\]
+
+令稳态车速为零，分子须为零，故
+
+\[
+\boxed{\Delta d_{\mathrm{stall}}=30\frac{K_1}{K_g}=15}.
+\]
+
+该值在所用线性静态模型中与 $K_e$ 无关。按题意 $\Delta d$ 以负载占汽车自重的比值表示，则15对应自重的15倍；若以百分数记录，同一比值写作1500\%。在大环路增益近似下，车速关系简化为 $v(\infty)\approx30-2\Delta d$。
+
+
+\subsection*{P4.8}
+记 $P=s^2+25s+200$、$Q=(0.1s+1)P$。闭环指令传递函数为
+
+\[
+T(s)=\frac{200K}{Q+200K}.
+\]
+
+（a）对 $K$ 求相对灵敏度得
+
+\[
+\boxed{S_K^T=\frac{Q}{Q+200K}=\frac{0.1s^3+3.5s^2+45s+200}{0.1s^3+3.5s^2+45s+200(1+K)}}.
+\]
+
+（b）令 $R=0$，扰动通道为
+
+\[
+\boxed{\frac{Y}{T_d}=\frac{200(0.1s+1)}{Q+200K}}.
+\]
+
+对幅值为 $A$ 的阶跃环境温度变化，稳定时有
+
+\[
+\boxed{y_d(\infty)=\frac{A}{1+K}},\qquad S_K^T(0)=\frac1{1+K}.
+\]
+
+环境温度降低对应 $A<0$；增大正增益可减小温度下降的稳态幅值。由三阶劳斯条件，
+
+\[
+K>-1,\quad 3.5\times45>0.1\times200(1+K)\quad\Longrightarrow\quad-1<K<\frac{55}{8}.
+\]
+
+因此对正增益，应在 $0<K<6.875$ 内选择；该区间内上述终值计算成立。
+
+
+\subsection*{P4.17}
+电机转矩增益 $K_m/R_f=30$。由框图有
+
+\[
+[s(Js+b)+30KK_f]\Theta=30KK_i\Theta_d-T_d.
+\]
+
+代入给定参数，指令与扰动通道为
+
+\[
+\frac\Theta{\Theta_d}=\frac{30K}{0.2s^2+s+30K},\qquad\frac\Theta{T_d}=-\frac1{0.2s^2+s+30K}.
+\]
+
+（a）取 $K=20$，单位阶跃输入时，
+
+\[
+\Theta(s)=\frac{3000}{s(s^2+5s+3000)},\quad \omega_n=\sqrt{3000},\quad\omega_d=\sqrt{2993.75}=54.7152\ \mathrm{rad/s}.
+\]
+
+\[
+\boxed{\theta(t)=1-e^{-2.5t}\left[\cos(\omega_dt)+\frac{2.5}{\omega_d}\sin(\omega_dt)\right],\quad t\ge0.}
+\]
+
+若阶跃幅值为 $A_r$，将上述响应乘以 $A_r$。
+
+（b）取 $\theta_d=0$、$T_d=A/s$，$K=20$ 时，
+
+\[
+\boxed{\theta(t)=-\frac{A}{600}\left\{1-e^{-2.5t}\left[\cos(\omega_dt)+\frac{2.5}{\omega_d}\sin(\omega_dt)\right]\right\}}.
+\]
+
+\[
+\boxed{\theta(\infty)=-\frac A{600},\qquad e_{\mathrm{ss},d}=\frac A{600}}.
+\]
+
+一般正增益下，负载导致稳态角偏移 $-A/(30K)$，增大 $K$ 可减小该偏移。
+
+（c）无扰动单位斜坡输入时，开环速度误差常数为
+
+\[
+K_v=\lim_{s\to0}s\frac{30K}{s(0.2s+1)}=30K,\qquad\boxed{e_{\mathrm{ss}}=\frac1{30K}=\frac1{600}\quad(K=20)}.
+\]
+
+
+\subsection*{AP4.3}
+记闭环特征多项式 $D=7s^2+55s+40$，其两极点为 $-0.810978$ 与 $-7.046165$，均为负实数。
+
+（a）无扰动时，$R(s)=1/s-1/s^2$，故
+
+\[
+E_r(s)=\frac{1}{1+CG}R(s)=\frac{7(s+5)(s-1)}{sD(s)},\qquad\boxed{e_{\mathrm{ss},r}=-\frac78=-0.875}.
+\]
+
+（b）令 $\alpha=(55-\sqrt{1905})/14$、$\beta=(55+\sqrt{1905})/14$。误差的完整时域表达式为
+
+\[
+e_r(t)=-\frac78+\left(\frac{15}{16}+\frac{393}{16\sqrt{1905}}\right)e^{-\alpha t}+\left(\frac{15}{16}-\frac{393}{16\sqrt{1905}}\right)e^{-\beta t},\quad t\ge0.
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch04/AP4.3_tracking.png}
+\caption{规定路径下的跟踪误差，虚线为稳态值−0.875。}
+\end{figure}
+
+（c）$R=0$，扰动在对象输入端以负号加入，因此 $Y_d=-G T_d/(1+CG)$、$E_d=-Y_d$。对单位阶跃扰动，
+
+\[
+E_d(s)=\frac{70}{sD(s)},\qquad\boxed{e_{\mathrm{ss},d}=\frac74=1.75}.
+\]
+
+（d）相应时域表达式为
+
+\[
+e_d(t)=\frac74\left[1-\frac{\beta e^{-\alpha t}-\alpha e^{-\beta t}}{\beta-\alpha}\right],\quad t\ge0.
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch04/AP4.3_disturbance.png}
+\caption{单位阶跃负载引起的误差，稳态值为1.75。}
+\end{figure}
+
+
+\subsection*{AP4.8}
+机床增益取物理正值 $b>0$。节点关系为 $Y=b[K(R-Y)-T_d]/(s+2)$。
+
+（a）整理得到
+
+\[
+\boxed{T(s)=\frac{Y}{R}=\frac{bK}{s+2+bK}}.
+\]
+
+（b）由相对灵敏度定义，
+
+\[
+\boxed{S_b^T=\frac bT\frac{\partial T}{\partial b}=\frac{s+2}{s+2+bK}}.
+\]
+
+（c）扰动传递函数与幅值为 $A$ 的阶跃扰动终值为
+
+\[
+\frac Y{T_d}=-\frac b{s+2+bK},\qquad y_d(\infty)=-\frac{bA}{2+bK}.
+\]
+
+对每个固定频率 $\omega$，
+
+\[
+\left|S_b^T(j\omega)\right|=\frac{\sqrt{\omega^2+4}}{\sqrt{\omega^2+(2+bK)^2}},\qquad \left|\frac{Y(j\omega)}{T_d(j\omega)}\right|=\frac b{\sqrt{\omega^2+(2+bK)^2}}.
+\]
+
+二者均随 $K$ 增大而减小，且闭环极点 $-(2+bK)<0$。因此在题设范围内取
+
+\[
+\boxed{K_{\mathrm{opt}}=50},\quad S_b^T(s)=\frac{s+2}{s+2+50b},\quad y_d(\infty)=-\frac{bA}{2+50b}.
+\]
+
+
+\section*{第5章}
+
+\subsection*{E5.4}
+（a）单位负反馈闭环传递函数为
+
+\[
+\boxed{T(s)=\frac{2(s+8)}{s^2+6s+16}}.
+\]
+
+（b）输入 $r(t)=Au(t)$，在零初始条件下，
+
+\[
+Y(s)=A\left[\frac1s-\frac{s+4}{s^2+6s+16}\right].
+\]
+
+\[
+\boxed{y(t)=A\left[1-e^{-3t}\left(\cos\sqrt7t+\frac1{\sqrt7}\sin\sqrt7t\right)\right],\quad t\ge0.}
+\]
+
+（c）取 $A>0$，求导定位第一个峰值：
+
+\[
+\dot y(t)=2Ae^{-3t}\left[\cos\sqrt7t+\frac5{\sqrt7}\sin\sqrt7t\right],
+\]
+
+\[
+t_p=\frac{\pi-\arctan(\sqrt7/5)}{\sqrt7}=1.003457\ \mathrm s.
+\]
+
+\[
+\boxed{\mathrm{P.O.}=\frac{y(t_p)-A}{A}\,100\%=\frac{e^{-3t_p}}{\sqrt2}\,100\%=3.48416\%}.
+\]
+
+后续振荡峰值按指数衰减，因此该峰为最大峰。闭环零点 $-8$ 改变峰值，直接使用无零点标准二阶超调公式会遗漏该影响。
+
+（d）闭环极点为 $-3\pm j\sqrt7$，由终值定理，
+
+\[
+\boxed{y(\infty)=\lim_{s\to0}sY(s)=A}.
+\]
+
+
+\subsection*{E5.6}
+框图加法点给出 $s^2Y=100[R-Y-KsY]$，故
+
+\[
+T(s)=\frac{100}{s^2+100Ks+100},\quad \omega_n=10,\quad\zeta=5K.
+\]
+
+（a）以实际位置误差 $e=r-y$ 为准，单位斜坡输入时
+
+\[
+E(s)=\frac{s^2+100Ks}{s^2+100Ks+100}\frac1{s^2}=\frac{s+100K}{s(s^2+100Ks+100)}.
+\]
+
+\[
+\boxed{e_{\mathrm{ss}}=K\quad(K>0)}.
+\]
+
+斜率为 $A$ 的斜坡误差为 $AK$。若考察加法点信号 $r-y-K\dot y$，其稳态值为零；它与位置误差的定义不同。
+
+（b）无零点二阶系统在 $\zeta\ge1$ 时阶跃无超调。为在无超调条件下尽快响应，应选临界阻尼：
+
+\[
+\boxed{K=0.2,\quad T(s)=\frac{100}{(s+10)^2},\quad y(t)=1-(1+10t)e^{-10t}}.
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch05/E5.6_poles.png}
+\caption{临界阻尼设计的零极点图；−10处为二重极点，系统无有限零点。}
+\end{figure}
+
+$K<0.2$ 时出现共轭复极点并产生超调；$K>0.2$ 时两极点为负实数，其中靠近原点的极点随 $K$ 增大右移，响应变慢。选定 $K=0.2$ 时，全部动态由这两个重合实极点决定，故由临界阻尼可得
+
+\[
+\boxed{\mathrm{P.O.}=0}.
+\]
+
+
+\subsection*{E5.15}
+（a）实际模型的阶跃响应变换为
+
+\[
+Y(s)=\frac1s-\frac1{41(s+50)}-\frac{10(4s+45)}{41(s^2+10s+50)}.
+\]
+
+因 $s^2+10s+50=(s+5)^2+25$，反变换得
+
+\[
+\boxed{y(t)=1-\frac1{41}e^{-50t}-\frac{40}{41}e^{-5t}\cos5t-\frac{50}{41}e^{-5t}\sin5t,\quad t\ge0.}
+\]
+
+（b）两共轭极点为 $-5\pm j5$，另一个极点 $-50$ 的衰减率为主导极点的10倍。保留直流增益1，以 $s+50\approx50$ 近似得
+
+\[
+T_2(s)=\frac{50}{s^2+10s+50},\qquad\boxed{y_2(t)=1-e^{-5t}(\cos5t+\sin5t)}.
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch05/E5.15_compare.png}
+\caption{完整三阶模型与主导二阶模型的单位阶跃响应。}
+\end{figure}
+
+两模型终值均为1。完整模型峰值时间约 $0.65045\,\mathrm s$，超调约 $4.2723\%$；二阶模型峰值时间 $\pi/5=0.62832\,\mathrm s$，超调 $4.3214\%$。附加快速极点主要使初始上升略有延迟，保留主导极点可较好描述振荡与峰值幅度。
+
+\[
+y(t)-y_2(t)=\frac1{41}\left[e^{-5t}(\cos5t-9\sin5t)-e^{-50t}\right].
+\]
+
+
+\subsection*{E5.20}
+记前向通道 $F=(s+1)/[s(s+3)]$，反馈增益为 $K_a$。图中给出的 $L=K_aF$ 是环路传递函数。
+
+（a）由 $Y=F(R-K_aY)$ 得
+
+\[
+\boxed{T(s)=\frac{Y}{R}=\frac{s+1}{s^2+(3+K_a)s+K_a}}.
+\]
+
+闭环在 $K_a>0$ 时稳定。
+
+（b）以实际跟踪误差 $E=R-Y$ 定义，单位斜坡输入时
+
+\[
+E(s)=\frac{s^2+(2+K_a)s+K_a-1}{s^2[s^2+(3+K_a)s+K_a]}.
+\]
+
+\[
+e(t)=\left(1-\frac1{K_a}\right)t+\frac3{K_a^2}+\text{衰减项}.
+\]
+
+\[
+\boxed{e_{\mathrm{ss}}=3\quad(K_a=1)}.
+\]
+
+若 $K_a>1$，误差趋于正无穷；若 $0<K_a<1$，误差趋于负无穷。比较点误差 $E_a=R-K_aY$ 的斜坡稳态值则为 $3/K_a$，由其定义直接可得。
+
+（c）对单位阶跃，实际误差终值为
+
+\[
+e_{\mathrm{ss,step}}=1-T(0)=1-\frac1{K_a},\qquad\boxed{K_a=1}.
+\]
+
+
+\subsection*{P5.2}
+（a）将主导极点记为 $s_{1,2}=-\sigma\pm j\omega_d$，其中 $\sigma=\zeta\omega_n$。按主导二阶模型，
+
+\[
+M_p=e^{-\pi\zeta/\sqrt{1-\zeta^2}},\qquad \zeta=\frac{-\ln M_p}{\sqrt{\pi^2+\ln^2M_p}}.
+\]
+
+\[
+\boxed{0.455950\le\zeta\le0.591155},\qquad T_s\approx\frac4{\sigma}\le0.6\ \Longrightarrow\ \boxed{\sigma\ge\frac{20}{3}}.
+\]
+
+\[
+\boxed{1.364376\sigma\le|\omega_d|\le1.951981\sigma,\qquad\sigma\ge6.666667}.
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch05/P5.2_region.png}
+\caption{主导二阶近似下的极点配置区域，阴影取两阻尼比边界之间且实部不大于−20/3。}
+\end{figure}
+
+（b）按快速极点实部绝对值至少为主导极点5倍的常用配置准则，记第三极点为 $s_3=-r_3$，则
+
+\[
+\boxed{r_3\ge5\sigma\ge\frac{100}{3}=33.333333\ \mathrm{s}^{-1}}.
+\]
+
+因此边界设计的第三极点取 $s_3=-100/3$。5倍间隔是主导近似的配置准则，完整三阶响应可进一步核算。
+
+（c）先按主导二阶公式令 $\sigma=20/3$、$\zeta=0.455950$，得 $\omega_n^2=213.788038$，并取 $r_3=100/3$。选择无有限零点、直流增益1的三阶闭环：
+
+\[
+T_3(s)=\frac{r_3\omega_n^2}{(s+r_3)(s^2+2\sigma s+\omega_n^2)}.
+\]
+
+由 $G=T_3/(1-T_3)$，得到常规主导极点设计
+
+\[
+\boxed{G(s)=\frac{7126.267944}{s(s^2+46.666667s+658.232483)}}.
+\]
+
+完整三阶响应核算为超调 $17.8027\%$、2\%调节时间约 $0.59701\,\mathrm s$，满足前述区间指标。若将（c）的20\%和0.6 s均作为完整三阶响应的精确目标，可在同一无零点结构、$r_3=5\sigma$ 下修正参数。
+
+用无量纲变量 $u=\sigma t$、$q=\omega_d/\sigma$，令峰值满足 $y(u_p)=1.2$、$dy/du(u_p)=0$，并取最后一次2\%边界交点。求得
+
+\[
+q=2.125297458,\quad u_p=1.708226893,\quad u_s=3.763168648,\quad\sigma=\frac{u_s}{0.6}=6.271947747.
+\]
+
+\[
+\omega_d=13.329754603,\quad r_3=31.359738737,\quad\omega_n^2=217.019686321.
+\]
+
+\[
+\boxed{G_{\mathrm{exact}}(s)=\frac{6805.680664}{s(s^2+43.903634s+610.392972)}}.
+\]
+
+该修正方案的完整闭环响应具有20\%超调和0.60000 s的2\%调节时间。它采用完整三阶响应直接定标；（a）的直线边界来自二阶近似公式。
+
+
+\subsection*{P5.10}
+（a）令电枢电压指令为 $v_a$、电枢电流为 $i_a$、输出角速度为 $\omega$。无负载扰动时，电气与机械方程为
+
+\[
+L_a\dot i_a+R_ai_a=v_a-e_b,\quad e_b=K_b\omega,\quad J\dot\omega+b\omega=K_mi_a.
+\]
+
+由此得到反电动势电压负反馈模型：
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch05/P5.10_block.png}
+\caption{电枢控制直流电机速度模型；A为反电动势反馈支路的放大增益，原始电机取A=1。}
+\end{figure}
+
+\[
+\frac{\Omega}{V_a}=\frac{K_m}{(L_as+R_a)(Js+b)+K_mK_b}\quad(A=1).
+\]
+
+（b）代入给定参数，$\Omega/V_a=1/(s^2+2s+2)$。以输入电压和反电动势的差 $E=V_a-K_b\Omega$ 为误差，对单位阶跃电压指令有
+
+\[
+E(s)=\frac{s^2+2s+1}{s(s^2+2s+2)},\qquad\boxed{e_{\mathrm{ss}}=\frac12}.
+\]
+
+此时 $K_b=1$，若以数值同标度的 $v_a-\omega$ 表示指令与速度之差，终值同为 $1/2$；幅值为 $V_0$ 的阶跃使误差乘以 $V_0$。
+
+若反馈支路含可调增益 $A$，相应比较点误差 $E_A=V_a-AK_b\Omega$ 的单位阶跃稳态值为 $1/(1+A)$；以同标度指令与速度之差定义的误差为 $A/(1+A)$。两者在原始电机 $A=1$ 时均为 $1/2$。
+
+（c）令反馈放大器将反电动势乘以正增益 $A$。闭环特征多项式变为
+
+\[
+D_A(s)=(s+1)^2+A=s^2+2s+1+A,\quad \omega_n=\sqrt{1+A},\quad\zeta=\frac1{\sqrt{1+A}}.
+\]
+
+该系统无有限零点，超调为
+
+\[
+\mathrm{P.O.}=100e^{-\pi/\sqrt A}\%\le15\%\quad\Longrightarrow\quad\boxed{0<A\le\frac{\pi^2}{\ln^2(0.15)}=2.742270}.
+\]
+
+例如取 $A=2$，超调约 $10.845\%$；取上界时超调恰为15\%。若将该可调放大器放在比较点之后、同时反馈反电动势，则闭环分子改为 $A$，分母仍为 $s^2+2s+1+A$，故本题的超调增益约束相同。
+
+
+\subsection*{P5.13}
+取二阶近似模型
+
+\[
+G_L(s)=\frac{1+a_1s}{1+b_1s+b_2s^2}.
+\]
+
+常数项取1以匹配直流增益。原四阶模型在 $s=0$ 附近的展开为
+
+\[
+G_H(s)=1-\frac{13}{12}s+\frac{157}{144}s^2-\frac{1843}{1728}s^3+O(s^4).
+\]
+
+采用低频矩匹配，使 $G_L$ 与 $G_H$ 的常数项及前三次幂系数相同。将分母乘到两侧，要求 $[1+b_1s+b_2s^2]G_H=1+a_1s+O(s^4)$，故
+
+\[
+\begin{cases}a_1=b_1-13/12,\\b_2-(13/12)b_1+157/144=0,\\-(13/12)b_2+(157/144)b_1-1843/1728=0.\end{cases}
+\]
+
+\[
+\boxed{a_1=\frac7{24},\quad b_1=\frac{11}{8},\quad b_2=\frac{115}{288}}.
+\]
+
+\[
+\boxed{G_L(s)=\frac{(7/24)s+1}{(115/288)s^2+(11/8)s+1}=\frac{0.730435(s+3.428571)}{(s+1.043478)(s+2.4)}}.
+\]
+
+系数取题中精度后，分子为 $0.2917s+1$，分母为约 $0.399s^2+1.375s+1$。因此题给二阶模型来自低频展开的四项匹配，其零点与极点随系数求解自然确定。
+
+\[
+G_H(s)-G_L(s)=O(s^4)\quad(s\to0).
+\]
+
+
+\subsection*{P5.15}
+闭环传递函数为
+
+\[
+T_K(s)=\frac{K(s+2)}{s^3+6s^2+(15+K)s+50+2K},\quad y_\infty=\frac{2K}{50+2K}.
+\]
+
+取通常的正增益 $K>0$，三阶劳斯条件 $6(15+K)>50+2K$ 恒成立，故闭环稳定。百分超调按相对于实际稳态值定义：
+
+\[
+\mathrm{P.O.}(K)=100\left[\frac{\max_{t\ge0}y_K(t)}{y_\infty}-1\right]\%.
+\]
+
+为完整计入零点 $-2$ 的影响，以完整三阶模型计算峰值。可将唯一实极点记为 $-p$，另两极点为 $-\sigma\pm j\omega_d$。由系数比较，
+
+\[
+\sigma=\frac{6-p}{2},\quad \omega_n^2=\frac{-2p^2+12p+20}{p-2},\quad K=\frac{-p^3+6p^2-15p+50}{p-2},\quad2<p<5.
+\]
+
+对每个参数，使用闭环阶跃响应的留数表达式求全部相关极值：
+
+\[
+y_K(t)=\sum_i r_i e^{\lambda_it},\quad\{\lambda_i\}=\{0,-p,-\sigma+j\omega_d,-\sigma-j\omega_d\},\quad\dot y_K(t_p)=0.
+\]
+
+对正增益范围作分段搜索与极小值求解，并将全部振荡峰值纳入比较，得到
+
+\[
+\boxed{K_{\mathrm{opt}}\approx102.7363,\qquad\mathrm{P.O.}_{\min}\approx75.8879\%}.
+\]
+
+\[
+s_1=-2.340098,\quad s_{2,3}=-1.829951\pm j10.287031,\quad t_p=0.299428\ \mathrm s,
+\]
+
+\[
+y_\infty=0.804284,\qquad y_{\max}=1.414638.
+\]
+
+例如 $K=20,50,100,200$ 时，完整响应超调分别约为 $84.676\%$、$77.683\%$、$75.890\%$、$77.134\%$。最优参数使实际超调达到数值极小；极点的二阶阻尼比只描述共轭因子的性质，闭环零点与第三极点共同决定此题的实际峰值。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch05/P5.15_optimum.png}
+\caption{完整三阶系统的超调随增益变化及最优增益的阶跃响应。}
+\end{figure}
+
+
+\subsection*{P5.20}
+（a）令 $P(s)=(s+6)(s+12)=s^2+18s+72$。由前置增益与反馈关系得
+
+\[
+\frac{Y}{R}=\frac{K_1K}{P(s)+K}.
+\]
+
+对单位阶跃输入，题设实际跟踪误差为
+
+\[
+\boxed{E(s)=\frac{P(s)+K-K_1K}{s[P(s)+K]}}.
+\]
+
+闭环稳定要求 $K>-72$。在该条件下，
+
+\[
+\boxed{e_{\mathrm{ss}}=1-\frac{K_1K}{72+K}=\frac{72+K(1-K_1)}{72+K}}.
+\]
+
+（b）对 $K\ne0$，令误差分子为零得到
+
+\[
+\boxed{K_1=\frac{72+K}{K}=1+\frac{72}{K}}.
+\]
+
+通常 $K>0$ 时，上述 $K_1>1$，将闭环直流增益校正为1，同时不改变闭环极点。$K=0$ 时输出恒为零，任意有限前置增益均无法跟踪非零阶跃。
+
+
+\subsection*{AP5.6}
+（a）先化简电机速度内环，得
+
+\[
+\frac{\Omega}{U}=\frac{K_m}{s+0.01+K_mK_b}.
+\]
+
+记 $a=0.01+K_mK_b$、$b=KK_m$，则外环开环为 $b/[s(s+a)]$，闭环为
+
+\[
+T(s)=\frac{b}{s^2+as+b}.
+\]
+
+在 $a>0,b>0$ 时闭环稳定，单位斜坡的速度误差常数 $K_v=b/a$，故
+
+\[
+\boxed{e_{\mathrm{ss}}=\frac ab=\frac{0.01+K_mK_b}{KK_m}}.
+\]
+
+（b）代入 $K_m=10$、$K_b=0.05$，得 $a=0.51$，令误差为1：
+
+\[
+\boxed{K=\frac{0.51}{10}=0.051},\qquad T(s)=\frac{0.51}{s^2+0.51s+0.51}.
+\]
+
+（c）定义 $\alpha=0.255$、$\omega_d=\sqrt{0.51-0.255^2}=0.667064\,\mathrm{rad/s}$，单位阶跃响应为
+
+\[
+\boxed{y_{\mathrm{step}}(t)=1-e^{-0.255t}\left[\cos(\omega_dt)+\frac{0.255}{\omega_d}\sin(\omega_dt)\right]}.
+\]
+
+单位斜坡响应为
+
+\[
+\boxed{y_{\mathrm{ramp}}(t)=t-1+e^{-0.255t}\left[\cos(\omega_dt)-\frac{0.745}{\omega_d}\sin(\omega_dt)\right]}.
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch05/AP5.6_responses.png}
+\caption{选定增益下的单位阶跃响应、单位斜坡响应及斜坡稳态误差1。}
+\end{figure}
+
+该增益满足斜坡稳态误差等于1的要求。动态指标为阻尼比 $\zeta=0.357071$，阶跃超调约 $30.091\%$，峰值时间约 $4.70958\,\mathrm s$，2\%调节时间约 $15.281\,\mathrm s$；阶跃最终达到1，斜坡最终以与输入相同的速度运动并保持单位位置差。
+
+因此静态跟踪满足指定指标，动态过程表现为明显振荡和较长调节时间。若任务同时要求更小超调和更快收敛，可提高速度反馈以增加阻尼，再配合前向增益保持规定的速度误差常数。
+
+
+\section*{第6章}
+
+\subsection*{E6.4}
+设第一个加法点的输出为 $E(s)=R(s)-Y(s)$。前馈支路在第二个加法点相减，故等效前向传递函数和特征多项式分别为
+
+\[
+F(s)=\left(\frac{3}{s+1}-1\right)\frac{K}{s(s+4)}=\frac{K(2-s)}{s(s+1)(s+4)},\qquad q(s)=s^3+5s^2+(4-K)s+2K.
+\]
+
+对该三阶多项式列劳斯表：
+
+\[
+\begin{array}{c|cc}s^3&1&4-K\\s^2&5&2K\\s^1&(20-7K)/5&0\\s^0&2K&0\end{array}
+\]
+
+由首列全为正得渐近稳定的充要条件：
+
+\[
+0<K<\frac{20}{7}.
+\]
+
+当 $K>20/7$ 时首列出现两次变号，系统有两个右半平面根；当 $K<0$ 时有一个右半平面根。边界 $K=20/7$ 时，
+
+\[
+q(s)=(s+5)\left(s^2+\frac87\right),\qquad s=\pm j\sqrt{\frac87},\,-5.
+\]
+
+因此正增益达到 $20/7$ 时系统失去渐近稳定性，超过该值即不稳定；$K=0$ 时有原点根，亦为非渐近稳定的边界。
+
+
+\subsection*{E6.6}
+闭环特征方程为
+
+\[
+s(s-1)+K(s+2)=s^2+(K-1)s+2K=0.
+\]
+
+（a）与标准二阶式比较，在 $K>1$ 的稳定范围内有
+
+\[
+\omega_n=\sqrt{2K},\qquad \zeta=\frac{K-1}{2\sqrt{2K}}.
+\]
+
+代入题给 $\zeta=0.707$ 并保留 $K>1$ 的根，得
+
+\[
+K^2-(2+8\times0.707^2)K+1=0,\qquad K\approx5.82718.
+\]
+
+若将阻尼比按 $1/\sqrt2$ 近似，则 $K=3+2\sqrt2\approx5.82843$，与上述结果一致。
+
+（b）令 $s=j\omega$，实、虚部分别给出 $\omega^2=2K$ 与 $(K-1)\omega=0$。取一对非零虚根，得
+
+\[
+K=1,\qquad s=\pm j\sqrt2.
+\]
+
+
+\subsection*{E6.11}
+特征多项式的劳斯表为
+
+\[
+\begin{array}{c|ccc}s^4&1&2&3\\s^3&6&1&0\\s^2&11/6&3&0\\s^1&-97/11&0&0\\s^0&3&0&0\end{array}
+\]
+
+首列符号依次为正、正、正、负、正，共有两次变号，故系统存在两个右半平面极点，闭环不稳定。数值求根得
+
+\[
+s\approx-5.66140,\ -0.900232,\ 0.280814\pm j0.713985.
+\]
+
+单位阶跃下，误差变换为
+
+\[
+E(s)=\frac{1-T(s)}s.
+\]
+
+其中右半平面的共轭极点在分子中未被消去，响应包含增长振荡项，故 $e(t)$ 无有限终值，单位阶跃稳态误差不存在。
+
+直接将 $s=0$ 代入得到的 $1-T(0)=-7/3$ 只是一项代数直流差值；终值定理要求 $sE(s)$ 的极点位于开左半平面，本系统的极点不满足该条件。
+
+
+\subsection*{E6.15}
+（a）劳斯表计算至 $s^1$ 行时出现全零行：
+
+\[
+\begin{array}{c|rrrr}s^6&1&125/4&271/4&15\\s^5&9&245/4&59/4&0\\s^4&220/9&595/9&15&0\\s^3&406/11&203/22&0&0\\s^2&60&15&0&0\\s^1&0&0&0&0\end{array}
+\]
+
+由上一行构成辅助多项式 $A(s)=60s^2+15$，其根为 $s=\pm j/2$。用 $A^{\prime}(s)=120s$ 替换全零行后，首列为
+
+\[
+1,\ 9,\ 220/9,\ 406/11,\ 60,\ 120,\ 15.
+\]
+
+替换后的首列均为正，故没有右半平面根；辅助多项式给出一对单纯虚根。因此系统处于临界稳定状态，具有持续振荡模态，未达到渐近稳定。
+
+（b）将多项式因式分解得
+
+\[
+q(s)=(s+3)(s+4)\left(s^2+\frac14\right)(s^2+2s+5).
+\]
+
+\[
+s=-3,\ -4,\ -1\pm j2,\ \pm j0.5.
+\]
+
+
+\subsection*{P6.4}
+闭环特征多项式为
+
+\[
+q(s)=s(s+10)(s+20)+K(s+40)=s^3+30s^2+(200+K)s+40K.
+\]
+
+（a）劳斯首列为 $1,30,(6000-10K)/30,40K$。故稳定范围为
+
+\[
+0<K<600.
+\]
+
+（b）正增益临界值 $K_c=600$，此时
+
+\[
+q(s)=(s+30)(s^2+800),\qquad s=\pm j20\sqrt2\approx\pm j28.2843,\ -30.
+\]
+
+（c）取 $K=K_c/2=300$，则 $q(s)=s^3+30s^2+500s+12000$。为考察直线 $\operatorname{Re}s=-1$，令 $s=z-1$：
+
+\[
+q(z-1)=z^3+27z^2+443z+11529,\qquad 27\times443-11529=432>0.
+\]
+
+移轴后的劳斯首列均为正，故全部极点满足 $\operatorname{Re}s<-1$。再令 $s=z-2$：
+
+\[
+q(z-2)=z^3+24z^2+392z+11112,\qquad 24\times392-11112=-1704<0.
+\]
+
+此时首列两次变号，说明有两个极点满足 $\operatorname{Re}s>-2$。直接求根得
+
+\[
+s_1=-27.624964,\qquad s_{2,3}=-1.187518\pm j20.808160.
+\]
+
+由两种方法共同得，主导共轭极点的实部位于 $(-2,-1)$，其衰减率约为 $1.1875\ \mathrm{s}^{-1}$；另一个实极点位于 $-27.625$ 附近。题中所述两条直线之间的位置对应主导共轭极点。
+
+
+\subsection*{P6.7}
+环路传递函数和闭环特征多项式为
+
+\[
+L(s)=\frac{10K_v(s+10)}{s(s+1)(s+100)},\qquad q(s)=s^3+101s^2+(100+10K_v)s+100K_v.
+\]
+
+（a）劳斯首列为
+
+\[
+1,\ 101,\ \frac{10100+910K_v}{101},\ 100K_v.
+\]
+
+由首列同号得 $K_v>0$；因此全部正增益均使该线性闭环系统稳定。
+
+（b）滤波器直流增益为 $F(0)=1$，故速度误差常数为 $\lim_{s\to0}sL(s)=K_v$。相位斜坡的变化率为 $100\ \mathrm{rad/s}$，将允许相位误差换为弧度，得
+
+\[
+e_{ss}=\frac{100}{K_v}=\frac\pi{180}\ \mathrm{rad},\qquad K_v=\frac{18000}\pi\approx5729.57795\ \mathrm{s}^{-1}.
+\]
+
+将此增益代入特征方程得到
+
+\[
+s\approx-10.145512,\quad-45.427244\pm j233.260326\quad(\mathrm{s}^{-1}).
+\]
+
+三根实部均为负，且稳态相位误差恰为 $1^\circ$。若指标解释为误差不超过 $1^\circ$，可取 $K_v\ge18000/\pi$。
+
+
+\subsection*{P6.13}
+设 $a=2\zeta\omega_n>0$。按单位负反馈得到
+
+\[
+q(s)=s(s+p)(s+a)+K\omega_n^2(s+z)=s^3+(p+a)s^2+(ap+K\omega_n^2)s+Kz\omega_n^2.
+\]
+
+列劳斯表：
+
+\[
+\begin{array}{c|cc}s^3&1&ap+K\omega_n^2\\s^2&p+a&Kz\omega_n^2\\s^1&\dfrac{(p+a)(ap+K\omega_n^2)-Kz\omega_n^2}{p+a}&0\\s^0&Kz\omega_n^2&0\end{array}
+\]
+
+由三阶多项式的赫尔维茨条件，在题给 $K>0$ 下，稳定的充要条件为
+
+\[
+p>-a,\qquad ap+K\omega_n^2>0,\qquad 0<z<\frac{(p+a)(ap+K\omega_n^2)}{K\omega_n^2}.
+\]
+
+将 $a=2\zeta\omega_n$ 代回即得到所求参数约束。对于通常采用的 $p\ge0$，前两项自动成立，条件可简写为
+
+\[
+K>0,\quad p\ge0,\quad 0<z<(p+2\zeta\omega_n)\left(1+\frac{2\zeta p}{K\omega_n}\right).
+\]
+
+上界取等号时劳斯 $s^1$ 行为零，出现虚轴共轭根；取严格不等号保证极点位于开左半平面。
+
+
+\subsection*{AP6.3}
+闭环传递函数及单位阶跃误差终值分别为
+
+\[
+T(s)=\frac{s+\alpha}{s^3+(1+\alpha)s^2+\alpha s+1},\qquad e_{ss}=1-T(0)=1-\alpha.
+\]
+
+（a）在稳定条件下，以误差幅值不超过阶跃幅值的 $5\%$ 为指标，有
+
+\[
+|1-\alpha|\le0.05,\qquad0.95\le\alpha\le1.05.
+\]
+
+（b）闭环特征多项式的劳斯首列为
+
+\[
+1,\quad1+\alpha,\quad\frac{\alpha(1+\alpha)-1}{1+\alpha},\quad1.
+\]
+
+故稳定范围为
+
+\[
+\alpha>\frac{\sqrt5-1}{2}\approx0.618034.
+\]
+
+（c）误差和稳定条件的交集为 $0.95\le\alpha\le1.05$。取 $\alpha=1$，则阶跃稳态误差为零，特征方程为
+
+\[
+s^3+2s^2+s+1=0,\qquad s\approx-1.754878,\ -0.122561\pm j0.744862.
+\]
+
+该选择的全部特征根位于左半平面，同时满足给定稳态精度。
+
+
+\subsection*{AP6.5}
+两幅原图的反馈取样位置不同：图（a）的 $K_3$ 支路取自增益 $3$ 之前，$K_5$ 支路取自末级 $10/(s-10)$ 之前；图（b）的这两条支路分别取自增益 $3$ 和末级传递环节之后。以下按各自连线分别推导。
+
+对图（a），先约简两个局部反馈环，令 $a=1+K_1K_3$、$b=K_2K_5-4$，得
+
+\[
+T_a(s)=\frac{30K_1K_2}{(s+a)(2s+b)(s-10)+30K_1K_2K_4}=\frac{30K_1K_2}{2s^3+A s^2+B s+C},
+\]
+
+\[
+A=2a+b-20,\quad B=ab-20a-10b,\quad C=30K_1K_2K_4-10ab.
+\]
+
+（b）图（a）在五个增益全正的约束下，稳定的充要条件为
+
+\[
+A>0,\qquad B>0,\qquad C>0,\qquad AB>2C.
+\]
+
+这组不等式直接给出了相互关联的增益取值范围。固定前四个局部参数后，外反馈增益还可写为
+
+\[
+\max\left(0,\frac{ab}{3K_1K_2}\right)<K_4<\frac{10ab+AB/2}{30K_1K_2},\qquad A>0,\ B>0.
+\]
+
+（c）取 $K_1=K_2=1$、$K_3=20$、$K_5=46$、$K_4=300$，则 $a=21,b=42$，有
+
+\[
+T_a(s)=\frac{30}{2s^3+64s^2+42s+180},\qquad64\times42=2688>2\times180.
+\]
+
+\[
+s\approx-31.422845,\quad-0.288577\pm j1.667597,\qquad y(\infty)=T_a(0)=\frac16.
+\]
+
+按该传递函数计算的单位阶跃响应如下，响应经衰减振荡趋于 $1/6$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch06/AP6_5_step.png}
+\caption{图 AP6.5(a) 选定全正增益下的单位阶跃响应。}
+\end{figure}
+
+对图（b），令 $c=1+3K_1K_3>1$、$d=40+10K_2K_5>40$，按其反馈取样点约简得
+
+\[
+T_b(s)=\frac{30K_1K_2}{(s+c)(2s^2-24s+d)+30K_1K_2K_4}.
+\]
+
+若图（b）稳定，则三阶系数的正性要求 $c>12$、$d>24c$，还需满足劳斯行列式为正。然而
+
+\[
+\Delta=(2c-24)(d-24c)-2(cd+30K_1K_2K_4)=-24d-48c(c-12)-60K_1K_2K_4<0.
+\]
+
+因此图（b）在题给所有增益均为正的条件下没有稳定解，其（c）问也不存在满足稳定条件的选参及相应稳定阶跃响应。上面的稳定参数和阶跃曲线对应图（a）的实际连线；两图取样位置的差异决定了这两种稳定性结论。
+
+
+\subsection*{AP6.6}
+闭环特征方程由 $1+G_cG=0$ 得
+
+\[
+q(s)=(s+2)(s+3)(s+4)+K_Ds+K_P=s^3+9s^2+(26+K_D)s+(24+K_P).
+\]
+
+劳斯表为
+
+\[
+\begin{array}{c|cc}s^3&1&26+K_D\\s^2&9&24+K_P\\s^1&(210+9K_D-K_P)/9&0\\s^0&24+K_P&0\end{array}
+\]
+
+在 $K_P>0,K_D>0$ 条件下，其余系数均为正，稳定约束简化为
+
+\[
+0<K_P<210+9K_D,\qquad K_D>0.
+\]
+
+因而稳定区域是第一象限内直线 $K_P=210+9K_D$ 的下方开区域。边界上出现一对虚轴根，其角频率满足 $\omega^2=26+K_D$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch06/AP6_6_region.png}
+\caption{图 AP6.6 比例与微分增益的稳定区域；边界线对应临界稳定。}
+\end{figure}
+
+在本线性模型中，增加 $K_D$ 可提高允许的比例增益上限，体现微分反馈对稳定裕度的改善。
+
+
+\section*{第7章}
+
+\subsection*{E7.1}
+（a）开环极点为 $-1\pm j$，零点为 $0,-4$，两支根轨迹分别从这两个复极点出发并终止于有限零点。闭环特征方程为
+
+\[
+(1+K)s^2+(2+4K)s+2=0.
+\]
+
+根轨迹关于实轴对称，实轴上的轨迹区段为 $(-4,0)$；两条复支先在实轴相遇，再分别趋于 $0$ 和 $-4$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch07/E7_1.png}
+\caption{图 E7.1 随正增益变化的根轨迹及重根位置。}
+\end{figure}
+
+（b）令二次方程判别式为零：
+
+\[
+(2+4K)^2-8(1+K)=0\quad\Longrightarrow\quad4K^2+2K-1=0.
+\]
+
+\[
+K=\frac{\sqrt5-1}{4}\approx0.309017\qquad(K\ge0).
+\]
+
+（c）将该增益代入重根表达式，得
+
+\[
+s_1=s_2=-\frac{1+2K}{1+K}=1-\sqrt5\approx-1.236068\ \mathrm{s}^{-1}.
+\]
+
+（d）按常用的 2\% 主导极点调节时间估算，以 $\sigma=-\operatorname{Re}s=1.236068\ \mathrm{s}^{-1}$ 得
+
+\[
+t_s\approx\frac4\sigma\approx3.2361\ \mathrm{s}.
+\]
+
+该结果是由闭环极点衰减率给出的工程估算。严格的阶跃带内调节时间还取决于所选输出、分子零点与误差带定义；题给特征方程用于确定上述极点估算。
+
+
+\subsection*{E7.2}
+（a）开环极点为 $0,-2,-2\pm j$，无有限零点。特征方程为
+
+\[
+q(s)=s^4+6s^3+13s^2+10s+K=0.
+\]
+
+实轴根轨迹位于 $(-2,0)$，在 $s\approx-0.601839$ 处分离。四条渐近线交于 $\sigma_a=-6/4=-1.5$，方向为 $45^\circ,135^\circ,225^\circ,315^\circ$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch07/E7_2.png}
+\caption{图 E7.2 根轨迹与 K=6.5 时的闭环极点。}
+\end{figure}
+
+将 $K=6.5$ 代入并求根得
+
+\[
+s=-0.349307\pm j0.799733,\qquad-2.650693\pm j1.228257.
+\]
+
+前一对极点的实部更接近虚轴，是主导极点，与题给 $-0.35\pm j0.80$ 一致。
+
+（b）由主导二阶近似得
+
+\[
+\omega_n=\sqrt{0.349307^2+0.799733^2}\approx0.87269\ \mathrm{rad/s},\qquad\zeta\approx0.40026.
+\]
+
+\[
+t_s\approx\frac4{0.349307}=11.45\ \mathrm{s},\qquad M_p\approx\exp\left(-\frac{\pi\times0.349307}{0.799733}\right)\times100\%=25.36\%.
+\]
+
+采用题给四舍五入后的主导根估算，则 $t_s\approx11.43\ \mathrm{s}$、$M_p\approx25.3\%$。
+
+
+\subsection*{E7.5}
+将题给函数作为不含可调增益的基本环节，令环路为 $K L(s)$，则特征方程为
+
+\[
+D(s)+K=0,\qquad D(s)=s^3+50s^2+500s+1000.
+\]
+
+开环极点为 $-37.320508,-10,-2.679492$，实轴根轨迹区段为 $(-\infty,-37.320508)$ 与 $(-10,-2.679492)$。
+
+（a）由 $K=-D(s)$，分离点满足
+
+\[
+\frac{dK}{ds}=-(3s^2+100s+500)=0,\qquad s=\frac{-50\pm10\sqrt{10}}3.
+\]
+
+两候选值约为 $-6.125741$ 和 $-27.207592$。其中只有前者位于正增益实轴根轨迹上，故
+
+\[
+s_b=\frac{-50+10\sqrt{10}}3\approx-6.125741.
+\]
+
+（b）三极点、无有限零点，因此渐近中心为
+
+\[
+\sigma_a=\frac{-50}{3}\approx-16.6667,\qquad\theta_a=60^\circ,180^\circ,300^\circ.
+\]
+
+（c）代入分离点得
+
+\[
+K_b=-D(s_b)\approx416.501970.
+\]
+
+另一候选点给出 $K\approx-4268.35382$，属于负增益问题，故按本题正增益根轨迹舍去。
+
+
+\subsection*{E7.9}
+（a）开环极点为 $0,-1\pm j2$，无有限零点。三条渐近线为
+
+\[
+\sigma_a=-\frac23,\qquad\theta_a=60^\circ,180^\circ,300^\circ.
+\]
+
+（b）在上半平面极点 $p=-1+j2$ 处，由角度条件得出射角
+
+\[
+\theta_d=180^\circ-\arg(-1+j2)-\arg(j4)=180^\circ-116.565^\circ-90^\circ=-26.565^\circ.
+\]
+
+下半平面极点的出射角为 $+26.565^\circ$，与上支关于实轴对称。
+
+（c）特征方程为 $s^3+2s^2+5s+K=0$。劳斯首列为 $1,2,(10-K)/2,K$，因而临界增益及虚根为
+
+\[
+K_c=10,\qquad q(s)=(s+2)(s^2+5),\qquad s=\pm j\sqrt5,\,-2.
+\]
+
+（d）实轴轨迹为 $(-\infty,0)$，原点极点沿负实轴向左运动；共轭分支由出射角方向出发，在 $K=10$ 穿过虚轴，随后趋向 $\pm60^\circ$ 渐近线。稳定范围为 $0<K<10$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch07/E7_9.png}
+\caption{图 E7.9 正增益根轨迹；标记处为 K=10 的临界极点。}
+\end{figure}
+
+
+\subsection*{P7.1}
+各根轨迹由 $1+L(s)=0$ 确定，箭头方向对应增益从零增大。下面列出绘图所需的极点、零点、实轴区段和关键位置。
+
+（a）极点为 $0,-5,-20$，实轴区段为 $(-\infty,-20)$、$(-5,0)$。渐近中心为 $-25/3$，方向为 $60^\circ,180^\circ,300^\circ$。由 $3s^2+50s+100=0$ 得有效分离点
+
+\[
+s_b=\frac{-25+5\sqrt{13}}3\approx-2.324081,\qquad K_b\approx109.927468.
+\]
+
+闭环式为 $s^3+25s^2+100s+K=0$，故 $0<K<2500$ 稳定；在 $K=2500$ 处经过 $s=\pm j10$。
+
+（b）极点为 $-2,-1\pm j$；实轴轨迹为 $(-\infty,-2)$，无实轴分离点。渐近中心为 $-4/3$，三条渐近线仍为 $60^\circ,180^\circ,300^\circ$。上、下复极点出射角分别为 $+45^\circ,-45^\circ$。
+
+\[
+q_b(s)=s^3+4s^2+6s+4+K,\qquad K_c=20,\qquad s_c=\pm j\sqrt6.
+\]
+
+（c）极点为 $0,-1,-20$，零点为 $-10$；实轴区段为 $(-20,-10)$、$(-1,0)$。两条无穷分支的渐近中心为 $-5.5$，方向为 $\pm90^\circ$。由 $d[-s(s+1)(s+20)/(s+10)]/ds=0$ 得
+
+\[
+2s^3+51s^2+420s+200=0,\qquad s_b\approx-0.506754,\quad K_b\approx0.513251.
+\]
+
+一支从 $-20$ 沿实轴终止于 $-10$；另两支在上述分离点离开实轴并趋向竖直渐近线。特征多项式为 $s^3+21s^2+(20+K)s+10K$，全部 $K>0$ 均稳定。
+
+（d）极点为原点二重极点及 $-1$，零点为 $-2\pm j2$；实轴轨迹为 $(-\infty,-1)$。仅一条无穷渐近线，中心为 $3$、方向为 $180^\circ$。两支从原点沿 $\pm90^\circ$ 出发并趋于共轭零点。
+
+\[
+q_d(s)=s^3+(1+K)s^2+4Ks+8K,\qquad K_c=1,\qquad q_d(s)|_{K=1}=(s+2)(s^2+4).
+\]
+
+由劳斯判据得该系统在 $K>1$ 时稳定，$0<K<1$ 时共轭根位于右半平面。四组实际计算的根轨迹如下。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch07/P7_1.png}
+\caption{图 P7.1 四个系统在正增益变化下的根轨迹，叉号表示开环极点、圆圈表示零点。}
+\end{figure}
+
+
+\subsection*{P7.4}
+代入给定参数，得到闭环特征方程
+
+\[
+0.155s^4+1.109585s^3+0.74575s^2+0.25s+0.25k_a=0.
+\]
+
+开环极点为 $0,-1/0.155,-0.3535\pm j0.353607$；四条渐近线的交点约为 $-1.78965$，方向为 $45^\circ,135^\circ,225^\circ,315^\circ$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch07/P7_4.png}
+\caption{图 P7.4 大型天线控制系统根轨迹及临界增益位置。}
+\end{figure}
+
+记系数为 $a_4=0.155,a_3=1.109585,a_2=0.74575,a_1=0.25,a_0=0.25k_a$。四阶劳斯判据要求
+
+\[
+a_3a_2>a_4a_1,\qquad a_3a_2a_1>a_4a_1^2+a_3^2a_0,\qquad k_a>0.
+\]
+
+第一项恒成立，由第二项得
+
+\[
+0<k_a<\frac{a_3a_2a_1-a_4a_1^2}{0.25a_3^2}\approx0.640624227.
+\]
+
+在上界处，虚根频率为
+
+\[
+\omega_c=\sqrt{\frac{a_1}{a_3}}\approx0.474668\ \mathrm{rad/s}.
+\]
+
+其余两根约为 $-6.447312,-0.711301$。因此 $0.640624227$ 为稳定增益上限（临界值）；要保持渐近稳定，应取严格小于此值的正增益。
+
+
+\subsection*{P7.5}
+（a）驾驶员环路断开时，令 $D_g(s)=(s+0.4)(s^2-0.36s+0.16)$，自动稳定环的特征方程为
+
+\[
+Q(s)=D_g(s)(s+9)+25K_2(s+0.03)(s+1)=0.
+\]
+
+\[
+Q(s)=s^4+9.04s^3+(0.376+25K_2)s^2+(0.208+25.75K_2)s+0.576+0.75K_2.
+\]
+
+在阻尼比 $\zeta=0.707$ 的直线上取 $s=-\sigma+j\sigma\sqrt{1-\zeta^2}/\zeta$，代入 $K_2=-D_g(s)(s+9)/[25(s+0.03)(s+1)]$，令其虚部为零并取正实增益，可得两个交点：
+
+\[
+K_2\approx0.733914545\quad\text{或}\quad1.583957910.
+\]
+
+选择较小的 $K_2=0.733914545$，其闭环极点为
+
+\[
+s\approx-6.653689,\ -0.0626921,\ -1.161810\pm j1.162161.
+\]
+
+共轭极点的阻尼比为 $0.707$，其余两根均为负实根。另一交点的共轭根为 $-3.829041\pm j3.830198$，同样满足所要求的阻尼比。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch07/P7_5a.png}
+\caption{图 P7.5(a) 自动稳定环根轨迹与选定 K₂ 的极点。}
+\end{figure}
+
+（b）取参考输入为零，单位阶跃阵风 $T_d(s)=1/s$ 经受控对象输入端作用。由闭环扰动通道得
+
+\[
+\frac{Y(s)}{T_d(s)}=\frac{25(s+0.03)(s+9)}{Q(s)},\qquad y(\infty)=\frac{6.75}{0.576+0.75K_2}\approx5.992352.
+\]
+
+因此按 $e=r-y$ 定义的稳态误差为 $e_{ss}\approx-5.992352$，误差幅值为 $5.992352$。
+
+（c）接入驾驶员控制环后，对 $K_1$ 的等效开环函数为
+
+\[
+L_p(s)=\frac{25K_1(s+0.03)(s+9)}{(s^2+12s+1)Q(s)}.
+\]
+
+其零点为 $-0.03,-9$，六个开环极点由 $Q(s)=0$ 和 $s^2+12s+1=0$ 给出。根轨迹如下，稳定区间的正增益上界约为 $K_1=1.950312$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch07/P7_5c.png}
+\caption{图 P7.5(c) 驾驶员环路根轨迹；标记 K₁=1 的设计。}
+\end{figure}
+
+（d）选择稳定范围内的 $K_1=1$，闭环六根约为
+
+\[
+-11.906034,\ -6.597286,\ -1.982992,\ -0.0315078,\ -0.261090\pm j1.239665.
+\]
+
+此时单位阶跃阵风引起的稳态输出与误差为
+
+\[
+y(\infty)=\frac{6.75}{0.576+0.75K_2+6.75K_1}\approx0.856987,\qquad e_{ss}=-y(\infty)\approx-0.856987.
+\]
+
+驾驶员外环在保持稳定的同时，将本次单位阵风的稳态误差幅值从约 $5.99$ 降为 $0.857$。
+
+
+\subsection*{P7.11}
+以秒为时间变量，并将题给 $K_T/(LJ)$ 系数的数值取为 $2$。由电机反电动势负反馈，放大器输出到角速度的等效传递函数为
+
+\[
+M(s)=\frac{2}{s(s+2000)+0.8}.
+\]
+
+再接入转速反馈和外位置反馈，利用 $0.5K_1=1$、$r=0.2$，得到系统特征多项式
+
+\[
+Q(s)=s(0.001s+1)^2(s^2+2000s+0.8)+2K_aK_2s(0.001s+1)+0.4K_a.
+\]
+
+（a）取 $K_2=10$，写成 $D_0(s)+K_aN_a(s)=0$，其中
+
+\[
+D_0(s)=10^{-6}s^5+0.004s^4+5.0000008s^3+2000.0016s^2+0.8s,\qquad N_a(s)=0.02s^2+20s+0.4.
+\]
+
+该根轨迹由五个极点出发，两支终止于 $N_a(s)$ 的零点附近，其余三支趋于无穷远。原点附近的慢模态和快速电机模态分别显示如下。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch07/P7_11a.png}
+\caption{图 P7.11(a) K₂=10 时随 Kₐ 变化的根轨迹与原点局部图。}
+\end{figure}
+
+（b）复极点的阻尼比为 $\zeta=-\operatorname{Re}s/|s|$，负实极点的阻尼比取 $1$。令边界极点 $s=-\sigma+j(4/3)\sigma$，代入 $K_a=-D_0(s)/N_a(s)$ 并令虚部为零，取正增益，得到三个边界值
+
+\[
+K_a\approx0.000571544531,\quad2.799590930,\quad40981.256288.
+\]
+
+对这些边界之间的根轨迹分别核验全部极点，可得满足所有极点 $\zeta\ge0.60$ 的正增益范围为
+
+\[
+0<K_a\le0.000571544531\quad\text{或}\quad2.799590930\le K_a\le40981.256288.
+\]
+
+例如取 $K_a=1000$，五个闭环极点均为负实数：
+
+\[
+s\approx-2009.853577,\ -999.979980,\ -980.012419,\ -10.133984,\ -0.0200398\quad(\mathrm{s}^{-1}).
+\]
+
+该选择满足本问的阻尼条件。最慢极点的时间常数约为 $49.9\ \mathrm{s}$；若进一步要求背景所述毫秒级位置响应，还需重新整定转速反馈与位置环的配合。
+
+（c）固定上述 $K_a=1000$，对 $K_2$ 的特征方程改写为
+
+\[
+\left[D_0(s)+400\right]+K_2(2s^2+2000s)=0.
+\]
+
+故该根轨迹的有限零点为 $0,-1000$。实际根轨迹如下；$K_2=10$ 时恢复（b）的五个负实极点，虚轴交叉的正增益约为 $9.999981\times10^{-5}$ 和 $3000.000767$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch07/P7_11c.png}
+\caption{图 P7.11(c) Kₐ=1000 时随 K₂ 变化的根轨迹与慢模态局部图。}
+\end{figure}
+
+
+\section*{第8章}
+
+\subsection*{E8.5}
+低频斜率为 $-20\ \mathrm{dB/dec}$，对应原点积分环节。每个一阶零点使斜率增加 $20\ \mathrm{dB/dec}$，每个一阶极点使其减少相同数值。
+
+在 $\omega=2\ \mathrm{rad/s}$ 处，斜率由 $-20$ 变为 $0$，对应已知零点 $1+0.5s$；在 $4\ \mathrm{rad/s}$ 处由 $0$ 变为 $+20$，故另一零点满足
+
+\[
+\frac1a=4\quad\Longrightarrow\quad a=\frac14\ \mathrm{s}.
+\]
+
+在 $8\ \mathrm{rad/s}$ 处斜率减少至 $0$，对应已知极点；在 $24\ \mathrm{rad/s}$ 处再减为 $-20$，故
+
+\[
+\frac1b=24\quad\Longrightarrow\quad b=\frac1{24}\ \mathrm{s}.
+\]
+
+最后 $36\ \mathrm{rad/s}$ 处斜率变为 $-40$，与末级已知极点一致。将图中低频 $-20\ \mathrm{dB/dec}$ 直线延长，其与 $0\ \mathrm{dB}$ 线交于 $\omega=8\ \mathrm{rad/s}$；低频近似为 $|G(j\omega)|\approx K/\omega$，故
+
+\[
+20\log_{10}(K/8)=0\quad\Longrightarrow\quad K=8.
+\]
+
+\[
+\boxed{K=8,\quad a=0.25\ \mathrm{s},\quad b=1/24\ \mathrm{s}.}
+\]
+
+
+\subsection*{E8.6}
+代入 $K=20$，开环幅值与相角为
+
+\[
+|L(j\omega)|=\frac{20}{\omega\sqrt{1+(\omega/8)^2}\sqrt{1+(\omega/120)^2}},
+\]
+
+\[
+\phi(\omega)=-90^\circ-\arctan(\omega/8)-\arctan(\omega/120).
+\]
+
+幅频渐近线的拐点为 $8,120\ \mathrm{rad/s}$，三段斜率依次为 $-20,-40,-60\ \mathrm{dB/dec}$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch08/E8_6.png}
+\caption{图 E8.6 手臂控制环路的伯德图，标出 0 dB 交叉频率。}
+\end{figure}
+
+令幅值为 $1$，平方整理得
+
+\[
+\omega^2\left(1+\frac{\omega^2}{64}\right)\left(1+\frac{\omega^2}{14400}\right)=400.
+\]
+
+该式左端在 $\omega>0$ 单调递增，因而正解唯一。实际求解得
+
+\[
+\boxed{\omega_c\approx11.42203\ \mathrm{rad/s}}.
+\]
+
+该点相角约为 $-150.430^\circ$，与伯德图中的交点一致。
+
+
+\subsection*{E8.14}
+反馈传感器包含在开环函数中，故
+
+\[
+L(s)=G_c(s)G(s)H(s)=\frac{20}{s(s+1.4)(s+10)}.
+\]
+
+由此得到幅值和相位表达式：
+
+\[
+|L(j\omega)|=\frac{20}{\omega\sqrt{\omega^2+1.96}\sqrt{\omega^2+100}},\qquad\phi(\omega)=-90^\circ-\arctan\frac\omega{1.4}-\arctan\frac\omega{10}.
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch08/E8_14.png}
+\caption{图 E8.14 含传感器反馈环节的开环伯德图。}
+\end{figure}
+
+令 $20\log_{10}|L(j\omega_c)|=0$，即幅值为 $1$，得
+
+\[
+\omega_c^2(\omega_c^2+1.96)(\omega_c^2+100)=400,\qquad\omega_c\approx1.11184666\ \mathrm{rad/s}.
+\]
+
+代回相角表达式，得到题求相角
+
+\[
+\boxed{\phi(\omega_c)\approx-134.80012^\circ}.
+\]
+
+相应相位裕度为 $180^\circ+\phi(\omega_c)\approx45.20^\circ$。
+
+
+\subsection*{P8.1}
+令 $L(j\omega)=u(\omega)+jv(\omega)$，按 $\omega:0\to+\infty$ 描绘轨迹，箭头表示频率增大的方向。各曲线由下列实部、虚部及关键点确定。
+
+（a）记 $D_a=(1-0.75\omega^2)^2+(3.25\omega)^2$，则
+
+\[
+u_a=\frac{1-0.75\omega^2}{D_a},\qquad v_a=-\frac{3.25\omega}{D_a}.
+\]
+
+起点为 $(1,0)$，经第四象限，在 $\omega=\sqrt{4/3}$ 时穿过负虚轴，随后经第三象限趋于原点，相角趋于 $-180^\circ$。
+
+（b）记 $D_b=(1+\omega^2)^2$，则
+
+\[
+u_b=5\frac{(1-\omega^2)^2-2.8\omega^2}{D_b},\qquad v_b=17\frac{\omega(1-\omega^2)}{D_b}.
+\]
+
+低频起点为 $(5,0)$，先进入上半平面；在 $\omega=1$ 时经过 $(-3.5,0)$，再进入下半平面，最终回到高频极限 $(5,0)$。
+
+（c）记 $D_c=(8-\omega^2)^2+36\omega^2$，则
+
+\[
+u_c=\frac{14\omega^2-64}{D_c},\qquad v_c=\frac{\omega(56-\omega^2)}{D_c}.
+\]
+
+起点为 $(-1,0)$，从上半平面向右运动，在 $\omega=\sqrt{56}$ 时经过 $(1/6,0)$，最后从第四象限趋于原点。
+
+（d）实部和虚部为
+
+\[
+u_d=-\frac{20(\omega^2+40)}{(\omega^2+4)(\omega^2+16)},\qquad v_d=\frac{40(\omega^2-32)}{\omega(\omega^2+4)(\omega^2+16)}.
+\]
+
+低频时 $u_d\to-12.5,v_d\to-\infty$，曲线从竖直渐近线附近进入图中；在 $\omega=\sqrt{32}$ 时经过 $(-5/6,0)$，最终由上半平面趋向原点。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch08/P8_1.png}
+\caption{图 P8.1 四个传递函数的正频率极坐标轨迹；箭头指向频率增大方向。}
+\end{figure}
+
+
+\subsection*{P8.6}
+（a）初始斜率 $-20\ \mathrm{dB/dec}$ 给出一个积分环节；$1\ \mathrm{rad/s}$ 处增加 $20\ \mathrm{dB/dec}$ 给出一个零点；$10\ \mathrm{rad/s}$ 处减少 $40\ \mathrm{dB/dec}$ 给出两个极点的合成转折。平台高度为 $12\ \mathrm{dB}$，故 $K=10^{12/20}\approx3.98107$。
+
+按两个相同实极点的标准实现，可取
+
+\[
+G_a(s)=\frac{10^{0.6}(1+s)}{s(1+s/10)^2}.
+\]
+
+其精确相角为
+
+\[
+\phi_a(\omega)=-90^\circ+\arctan\omega-2\arctan(\omega/10).
+\]
+
+一阶零极点的相位渐近线在各自拐点前一十倍频到后一十倍频之间线性变化。故本模型的合成相位在 $0.1,1,10,100\ \mathrm{rad/s}$ 处依次为 $-90^\circ,-45^\circ,-90^\circ,-180^\circ$，其间按对数频率连线。
+
+幅频直线本身给出了二阶自然频率 $10\ \mathrm{rad/s}$，而二阶阻尼还需由转折附近的曲线确定。若允许一般稳定二阶因子，同一幅频渐近线对应的最小相位模型族为
+
+\[
+G_a(s)=\frac{10^{0.6}(1+s)}{s\left[1+2\zeta(s/10)+(s/10)^2\right]},\qquad\zeta>0.
+\]
+
+上面的重复实极点模型对应 $\zeta=1$，用于给出一组完整的相位近似线。
+
+（b）低频斜率 $+20\ \mathrm{dB/dec}$ 表示原点零点，且低频延长线于 $1\ \mathrm{rad/s}$ 处通过 $0\ \mathrm{dB}$，故低频为 $|G_b|\approx\omega$。平台 $20\ \mathrm{dB}$ 对应幅值 $10$，第一个极点频率为 $10\ \mathrm{rad/s}$。
+
+设第二个极点频率为 $\omega_2$，高频渐近线为 $10\omega_2/\omega$，由其在 $500\ \mathrm{rad/s}$ 处等于 $1$ 得 $\omega_2=50\ \mathrm{rad/s}$。因此
+
+\[
+G_b(s)=\frac{s}{(1+s/10)(1+s/50)}=\frac{500s}{(s+10)(s+50)}.
+\]
+
+\[
+\phi_b(\omega)=90^\circ-\arctan(\omega/10)-\arctan(\omega/50).
+\]
+
+相位近似线从 $+90^\circ$ 出发；两个极点分别在 $1\!\sim\!100$ 与 $5\!\sim\!500\ \mathrm{rad/s}$ 贡献从 $0$ 到 $-90^\circ$ 的线性变化，高频趋于 $-90^\circ$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch08/P8_6.png}
+\caption{图 P8.6 幅频与相频近似线；（a）按两个相同实极点实现，（b）由所给渐近线确定。}
+\end{figure}
+
+
+\subsection*{P8.14}
+输入端 $R_1C_1$ 构成低通环节，输出端 $C_2R_2$ 构成高通环节；受控电压源增益为 $K$。因而
+
+\[
+\frac{V_2}{V_1}=\frac1{1+R_1C_1s},\qquad\frac{V_0}{K V_2}=\frac{R_2C_2s}{1+R_2C_2s}.
+\]
+
+代入 $R_1C_1=10^{-7}\ \mathrm{s}$、$R_2C_2=10^{-3}\ \mathrm{s}$ 和 $K=100$，得
+
+\[
+G(s)=\frac{100\times10^{-3}s}{(1+10^{-7}s)(1+10^{-3}s)}=\frac{10^9s}{(s+1000)(s+10^7)}.
+\]
+
+（a）两个转折频率为 $10^3$ 和 $10^7\ \mathrm{rad/s}$，低频上升斜率为 $+20\ \mathrm{dB/dec}$，中频近似水平，高频下降斜率为 $-20\ \mathrm{dB/dec}$。相角为
+
+\[
+\phi(\omega)=90^\circ-\arctan(\omega/1000)-\arctan(\omega/10^7).
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch08/P8_14.png}
+\caption{图 P8.14 带通放大器的伯德图，标出低、高转折频率。}
+\end{figure}
+
+（b）在 $10^3\ll\omega\ll10^7\ \mathrm{rad/s}$ 内，有
+
+\[
+|G(j\omega)|\approx\frac{10^9\omega}{\omega\times10^7}=100,\qquad20\log_{10}100=40\ \mathrm{dB}.
+\]
+
+峰值位于几何中心 $\omega_m=\sqrt{10^3\times10^7}=10^5\ \mathrm{rad/s}$，实际峰值为 $99.9900$，即约 $39.9991\ \mathrm{dB}$。
+
+（c）按题面“幅值为 $-3\ \mathrm{dB}$”的绝对标度，令 $A=10^{-3/20}$，并令 $x=\omega^2$，得
+
+\[
+\frac{10^{18}x}{(x+10^6)(x+10^{14})}=A^2.
+\]
+
+求该二次方程的两正根并开平方，得到
+
+\[
+\omega_L\approx7.07964\ \mathrm{rad/s},\qquad\omega_H\approx1.41250215\times10^9\ \mathrm{rad/s}.
+\]
+
+若采用带通滤波器通常所说的“相对通带下降约 $3\ \mathrm{dB}$”截止频率，则幅值约为 $100/\sqrt2$，相应角频率约为 $10^3,10^7\ \mathrm{rad/s}$。以实际峰值的半功率为准精算，分别为 $999.8001$ 和 $1.00019998\times10^7\ \mathrm{rad/s}$。
+
+
+\subsection*{P8.24}
+（a）由低频幅值约 $0\ \mathrm{dB}$，读得直流增益约为 $1$；由相位经过 $-90^\circ$ 的位置，读得 $\omega_n\approx0.9\ \mathrm{rad/s}$；谐振峰约 $12\ \mathrm{dB}$，对应 $M_r\approx10^{12/20}=3.9811$。
+
+采用单位直流增益标准二阶模型，谐振峰与阻尼比关系为
+
+\[
+M_r=\frac1{2\zeta\sqrt{1-\zeta^2}},\qquad\zeta=\sqrt{\frac{1-\sqrt{1-M_r^{-2}}}{2}}\approx0.1266.
+\]
+
+因此由图中主导谐振特征建立的二阶近似为
+
+\[
+\boxed{T_2(s)\approx\frac{0.81}{s^2+0.22790s+0.81}}.
+\]
+
+这些系数由原图读数获得；保留约两位有效数字可写为 $\zeta\approx0.13,\omega_n\approx0.9\ \mathrm{rad/s}$。
+
+（b）以相对直流增益下降 $3\ \mathrm{dB}$ 为带宽定义，标准二阶带宽为
+
+\[
+\omega_B=\omega_n\sqrt{1-2\zeta^2+\sqrt{2-4\zeta^2+4\zeta^4}}\approx1.38\ \mathrm{rad/s}.
+\]
+
+（c）阶跃超调量和 2\% 调节时间的常用估算分别为
+
+\[
+M_p=\exp\left(-\frac{\pi\zeta}{\sqrt{1-\zeta^2}}\right)\times100\%\approx67.0\%,\qquad t_s\approx\frac4{\zeta\omega_n}\approx35.1\ \mathrm{s}.
+\]
+
+若按该二阶模型的精确阶跃式
+
+\[
+y(t)=1-\frac{e^{-\zeta\omega_n t}}{\sqrt{1-\zeta^2}}\sin\!\left(\omega_n\sqrt{1-\zeta^2}\,t+\arccos\zeta\right)
+\]
+
+求最后一次进入并持续留在 $0.98\le y\le1.02$ 范围内的时刻，得到 $t_s\approx32.52\ \mathrm{s}$。因此 $35.1\ \mathrm{s}$ 是常用极点公式的估算值，而按此读图二阶模型精算的 2\% 调节时间约为 $32.5\ \mathrm{s}$。下图由该模型实际计算，显示低阻尼对应的明显超调与较慢衰减。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch08/P8_24.png}
+\caption{图 P8.24 由读图参数建立的二阶近似模型的单位阶跃响应。}
+\end{figure}
+
+
+\section*{第9章}
+
+\subsection*{E9.1}
+取角频率 $\omega>0$，由开环传递函数得幅值与连续相角：
+
+\[
+|L(j\omega)|=\frac{2\sqrt{1+\omega^2/100}}{\omega\sqrt{1+25\omega^2}\sqrt{(1-\omega^2/81)^2+\omega^2/81}}
+\]
+
+\[
+\phi(\omega)=-90^\circ+\arctan\frac{\omega}{10}-\arctan(5\omega)-\operatorname{atan2}\!\left(\frac{\omega}{9},1-\frac{\omega^2}{81}\right)
+\]
+
+由 $|L(j\omega_c)|=1$ 得 $\omega_c=0.618228\ \mathrm{rad/s}$，相角为 $-162.4838^\circ$；由 $\phi(\omega_\pi)=-180^\circ$ 得 $\omega_\pi=2.988923\ \mathrm{rad/s}$。
+
+\[
+\mathrm{PM}=180^\circ+\phi(\omega_c)=17.5162^\circ,\qquad \mathrm{GM}_{\mathrm{dB}}=-20\log_{10}|L(j\omega_\pi)|=26.1786\ \mathrm{dB}
+\]
+
+四舍五入得到题给的 $17.5^\circ$ 和 $26.2\ \mathrm{dB}$。积分环节使低频幅频曲线以 $-20\ \mathrm{dB/dec}$ 下降，$0.2\ \mathrm{rad/s}$ 附近的一阶极点使斜率进一步降低；零点及二阶环节决定中高频变化。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch09/E9_1_bode.png}
+\caption{开环伯德图与0 dB、−180°参考线。}
+\end{figure}
+
+
+\subsection*{E9.13}
+由单位负反馈关系得闭环传递函数，按标准二阶形式确定参数：
+
+\[
+T(s)=\frac{150}{s^2+5s+150},\qquad \omega_n=\sqrt{150}=12.24745\ \mathrm{rad/s},\quad \zeta=\frac{5}{2\sqrt{150}}=0.204124
+\]
+
+(a) 因 $0<\zeta<1/\sqrt2$，闭环具有谐振峰。由标准二阶频率响应求得：
+
+\[
+M_r=\frac{1}{2\zeta\sqrt{1-\zeta^2}}=2.50217\quad(7.96635\ \mathrm{dB})
+\]
+
+(b) 谐振频率由幅值极值条件确定；带宽按相对直流增益下降3 dB定义。
+
+\[
+\omega_r=\omega_n\sqrt{1-2\zeta^2}=11.72604\ \mathrm{rad/s}
+\]
+
+\[
+\omega_B=\omega_n\sqrt{1-2\zeta^2+\sqrt{2-4\zeta^2+4\zeta^4}}=18.46579\ \mathrm{rad/s}
+\]
+
+(c) 对零初始条件下的单位阶跃输入，由频域确定的阻尼系数得：
+
+\[
+\mathrm{P.O.}=100\exp\!\left(-\frac{\pi\zeta}{\sqrt{1-\zeta^2}}\right)=51.9407\%
+\]
+
+
+\subsection*{E9.17}
+(a) 将增益单独提出。改变 $K>0$ 使幅频曲线上下平移 $20\log_{10}K$，相频曲线保持相同。
+
+\[
+L(j\omega)=\frac{K(2+j\omega)}{j\omega(15-\omega^2+2j\omega)},\quad \phi(\omega)=\arctan\frac{\omega}{2}-90^\circ-\operatorname{atan2}(2\omega,15-\omega^2)
+\]
+
+(b) 要求相角裕度 $30^\circ$，故穿越频率处相角为 $-150^\circ$。求解相角方程并令该处幅值为1：
+
+\[
+\omega_c=4.697076\ \mathrm{rad/s},\qquad K=\frac{\omega_c\sqrt{(15-\omega_c^2)^2+4\omega_c^2}}{\sqrt{4+\omega_c^2}}=10.813402
+\]
+
+\[
+\lim_{s\to0}sL(s)=K_v=\frac{2K}{15}=1.441787,\qquad e_{\mathrm{ss,ramp}}=\frac1{K_v}=0.693584
+\]
+
+上述误差对应单位斜率输入 $r(t)=t$。闭环特征多项式为 $s^3+2s^2+(15+K)s+2K$；其劳斯首列为 $1,2,15,2K$，在所得正增益下闭环稳定。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch09/E9_17_bode.png}
+\caption{单位增益与所设计增益的伯德图，竖线标出30°裕度对应穿越频率。}
+\end{figure}
+
+
+\subsection*{P9.3}
+(a) 对根 $s$ 定义阻尼系数 $\zeta=-\operatorname{Re}s/|s|$。给定 $0<\zeta_1<1$，令 $\theta_1=\arccos\zeta_1$，则满足要求的根位于以负实轴为中心的扇形内部。
+
+\[
+\mathcal D_\zeta=\{s:\ |\arg(-s)|<\theta_1\},\qquad \Gamma_{\zeta,R}=\partial\bigl(\mathcal D_\zeta\cap\{|s|<R\}\bigr)
+\]
+
+取足够大的 $R$ 包含全部特征根，轮廓由两条阻尼边界射线和左侧圆弧构成，并按正向绕行。若原点或边界上有根，先作小圆弧避让并单独计入边界根。对 $n$ 阶特征多项式 $q$，由辩值原理得：
+
+\[
+N_\zeta=\frac{1}{2\pi}\Delta_{\Gamma_{\zeta,R}}\arg q(s)
+\]
+
+当 $N_\zeta=n$ 且边界无根时，所有根的阻尼系数均大于 $\zeta_1$。
+
+(b) 取左半圆盘 $\operatorname{Re}s<-\sigma_1$ 的边界为 $\Gamma_{\sigma,R}$。直线段从 $-\sigma_1-jR$ 向上到 $-\sigma_1+jR$，再沿左半圆弧返回。$q(\Gamma_{\sigma,R})$ 绕原点的正向圈数给出实部小于 $-\sigma_1$ 的根数。
+
+\[
+z=s+\sigma_1,\qquad \Gamma_{\sigma,R}:\ s=-\sigma_1+j\omega\ (-R\leq\omega\leq R)\quad\hbox{及左半圆弧}
+\]
+
+(c) 取 $\sigma_1=1$，则平移后的多项式与直线上的映射分别为：
+
+\[
+p(z)=q(z-1)=z^3+8z^2+37z+50,\qquad p(j\omega)=50-8\omega^2+j(37\omega-\omega^3)
+\]
+
+由 $\omega=-\infty$ 到 $+\infty$，连续相角增加 $3\pi$；左侧大圆弧上 $p(z)\sim z^3$，相角再增加 $3\pi$。故总增量为 $6\pi$，柯西计数得到该区域内有3根。
+
+\[
+N_{\operatorname{Re}s<-1}=\frac{6\pi}{2\pi}=3,\qquad q(s)=(s+3)(s^2+8s+32),\quad s=-3,\,-4\pm4j
+\]
+
+因此该方程有实部小于 $-1$ 的特征根，且全部3根均满足这一条件。
+
+
+\subsection*{P9.5}
+按框图，三个给定时间常数对应一阶惯性环节。令环路传递函数为 $L=GH$：
+
+\[
+L(s)=\frac{K}{(s+1)(3s+1)(0.4s+1)}=\frac{K}{1.2s^3+4.6s^2+4.4s+1}
+\]
+
+(a) 对恒定参考速度 $r_0$，因 $H(0)=1$，相对稳态误差为 $1/(1+K)$。
+
+\[
+\frac{e_{\mathrm{ss}}}{r_0}=\frac1{1+K}<0.10\quad\Longrightarrow\quad K>9
+\]
+
+(b) 由特征多项式及劳斯条件得稳定增益区间：
+
+\[
+1.2s^3+4.6s^2+4.4s+1+K=0,\qquad 0<K<\frac{4.6\times4.4}{1.2}-1=15.866667
+\]
+
+两项要求合并为 $9<K<15.866667$。选取 $K=10$，相对误差为 $9.0909\%$。开环右半平面极点数 $P=0$，奈奎斯特曲线对 $-1$ 点的环绕数为0，故闭环右半平面根数 $Z=0$，系统稳定。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch09/P9_5_nyquist.png}
+\caption{K=10时的奈奎斯特曲线，含完整曲线、−1附近局部细节及频率方向，红叉为−1点。}
+\end{figure}
+
+(c) 由负实轴交点及单位幅值交点分别求裕度：
+
+\[
+\omega_\pi=1.914854\ \mathrm{rad/s},\quad \mathrm{GM}=1.586667=4.00971\ \mathrm{dB}
+\]
+
+\[
+\omega_c=1.524717\ \mathrm{rad/s},\quad \mathrm{PM}=14.21274^\circ
+\]
+
+
+\subsection*{P9.10}
+采用零初始条件，并按线圈电压与电流正向写 $E_0=(Ls+R)I$、阀芯静力平衡写 $Y=K_2I/K_s$。保留题给 $E_0=K_1(X-X_d)$，取反相放大器增益 $K_1=-k$，其中 $k>0$，得到负反馈。
+
+\[
+X=\frac{K_1K_2}{K_s(Ls+R)s(\tau_as+1)}(X-X_d),\qquad L_0(s)=\frac{2k}{(0.2s+0.1)s(0.4s+1)}
+\]
+
+(a) 相角裕度30°要求 $\arctan(2\omega_c)+\arctan(0.4\omega_c)=60^\circ$。由幅值条件得：
+
+\[
+\omega_c=0.548188\ \mathrm{rad/s},\qquad k=0.04163992,\qquad K_1=-0.04163992
+\]
+
+(b) 以相同相角裕度及穿越频率的标准二阶模型进行估计。标准二阶关系给出：
+
+\[
+\zeta\approx\frac{\sin\phi_m}{2\sqrt{\cos\phi_m}}=0.268642,\qquad \omega_n\approx\frac{\omega_c}{\sqrt{\sqrt{1+4\zeta^4}-2\zeta^2}}=0.589067\ \mathrm{rad/s}
+\]
+
+\[
+M_r\approx\frac1{2\zeta\sqrt{1-\zeta^2}}=1.93224,\quad \omega_r\approx0.54490\ \mathrm{rad/s},\quad \omega_B\approx0.86810\ \mathrm{rad/s}
+\]
+
+由完整三阶闭环频响核验，最大幅值为1.96113，谐振频率为 $0.57832\ \mathrm{rad/s}$，3 dB带宽为 $0.90569\ \mathrm{rad/s}$。二阶估计保留了主要谐振与通频带特征。
+
+(c) 对单位阶跃输入，二阶估计为：
+
+\[
+\mathrm{P.O.}\approx100e^{-\pi\zeta/\sqrt{1-\zeta^2}}=41.6373\%,\qquad T_s\approx\frac4{\zeta\omega_n}=25.2767\ \mathrm{s}
+\]
+
+\[
+\frac{X(s)}{X_d(s)}=\frac{0.08327985}{0.08s^3+0.24s^2+0.1s+0.08327985}
+\]
+
+完整模型单位阶跃结果为超调42.0104\%、2\%调节时间22.906 s。附加实极点约为 $-2.6784$，另两个极点为 $-0.16079\pm0.60234j$；这组主导复极点说明响应具有较明显的衰减振荡。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch09/P9_10_step.png}
+\caption{反相增益K1=−0.04163992时的单位阶跃响应及2\%稳态带。}
+\end{figure}
+
+
+\subsection*{P9.14}
+保留纯时延的精确频率响应。开环的幅值与相角为：
+
+\[
+|L(j\omega)|=\frac{K}{\omega\sqrt{1+0.01\omega^2}},\qquad \phi(\omega)=-90^\circ-\arctan(0.1\omega)-\frac{180^\circ}{\pi}0.2\omega
+\]
+
+(a) 在尼科尔斯图上，使开环曲线与闭环幅值2 dB等值线相切，得到允许的最大增益；取该边界值：
+
+\[
+K=2.476612,\qquad M_r=10^{2/20}=1.258925,\quad \omega_r=3.064757\ \mathrm{rad/s}
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch09/P9_14_nichols.png}
+\caption{纯时延系统的尼科尔斯曲线与闭环等幅线；设计曲线与2 dB线相切。}
+\end{figure}
+
+在正增益稳定区内，选择 $0<K\le2.476612$ 均满足峰值要求。相角裕度为 $48.87067^\circ$，第一临界增益为6.11527，所选增益位于稳定区间内。
+
+(b) 按标准二阶关系分别换算等效阻尼：
+
+\[
+\zeta_{M_r}=\sqrt{\frac{1-\sqrt{1-M_r^{-2}}}{2}}=0.443007,\qquad \zeta_{\mathrm{PM}}=\frac{\sin48.87067^\circ}{2\sqrt{\cos48.87067^\circ}}=0.464367
+\]
+
+两种换算分别匹配闭环谐振峰和开环穿越处相角。该系统包含纯时延和惯性环节，其频率响应形状与标准二阶模型不同，因此得到略有差异的等效阻尼；两者均反映中等阻尼的动态特征。
+
+(c) 从精确闭环频率响应求 $|T(j\omega_B)|=1/\sqrt2$，得：
+
+\[
+\omega_B=5.284830\ \mathrm{rad/s}
+\]
+
+
+\subsection*{P9.28}
+(a) 由相角 $\phi(\omega)=-90^\circ-\arctan\omega$，相角裕度45°对应 $\omega_c=1\ \mathrm{rad/s}$。
+
+\[
+\frac{K_P}{\omega_c\sqrt{1+\omega_c^2}}=1\quad\Longrightarrow\quad K_P=\sqrt2=1.414214
+\]
+
+(b) 由相角裕度换算阻尼并估计超调：
+
+\[
+\zeta=\frac{\sin45^\circ}{2\sqrt{\cos45^\circ}}=0.420448,\qquad \mathrm{P.O.}=100e^{-\pi\zeta/\sqrt{1-\zeta^2}}=23.32123\%
+\]
+
+(c) 本题闭环恰为标准二阶系统，因此上述关系精确适用。
+
+\[
+T(s)=\frac{\sqrt2}{s^2+s+\sqrt2},\quad \omega_n=2^{1/4},\quad \omega_d=\sqrt{\sqrt2-\frac14}=1.078987\ \mathrm{rad/s}
+\]
+
+\[
+y(t)=1-e^{-t/2}\left[\cos(\omega_dt)+\frac{1}{2\omega_d}\sin(\omega_dt)\right],\qquad t\ge0
+\]
+
+实际单位阶跃曲线的超调为23.32123\%，与相角裕度估计一致，首峰约在2.912 s。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch09/P9_28_step.png}
+\caption{比例增益KP=√2时的单位阶跃响应；实际超调与频域估计一致。}
+\end{figure}
+
+
+\subsection*{AP9.1}
+反馈环路同时包含控制器、动力学模型和传感器。用于裕度分析的环路传递函数为：
+
+\[
+L(s)=\frac{236607.5(s+10)(s+5)}{s(s+2)(s+1)(s^2+10s+\omega_n^2)}
+\]
+
+(a) 当 $\omega_n^2=15267$ 时，柔性二阶环节在约 $123.6\ \mathrm{rad/s}$ 附近产生明显谐振，使开环出现三个单位幅值交点。各交点处的相角裕度分别为：
+
+\[
+\begin{array}{c|ccc}\omega_c\ (\mathrm{rad/s})&18.52526&116.59873&128.78850\\\hline\mathrm{PM}\ ({}^\circ)&55.07583&49.22202&-51.02285\end{array}
+\]
+
+\[
+\omega_\pi=123.07260\ \mathrm{rad/s},\qquad \mathrm{GM}=0.640676=-3.86724\ \mathrm{dB}
+\]
+
+最高频穿越具有负相角裕度。完整闭环特征方程 $1+L=0$ 存在右半平面极点 $2.82821\pm123.12694j$，故该参数下系统不稳定。
+
+(b) 当 $\omega_n^2=9500$ 时，三个单位幅值交点及其裕度变为：
+
+\[
+\begin{array}{c|ccc}\omega_c\ (\mathrm{rad/s})&29.24340&81.85978&106.99747\\\hline\mathrm{PM}\ ({}^\circ)&65.35247&65.33717&-67.63563\end{array}
+\]
+
+\[
+\omega_\pi=96.84928\ \mathrm{rad/s},\qquad \mathrm{GM}=0.396935=-8.02561\ \mathrm{dB}
+\]
+
+此时右半平面极点为 $7.56389\pm97.60134j$。固有频率降低使谐振区向低频移动，与高增益控制频带的重叠加深；增益裕度下降约4.16 dB，最高频相角裕度进一步降低约16.61°，发散模态的增长速度加快。
+
+两组数据中，低频交点的正相角裕度描述该局部交点；完整稳定性由全部交点及闭环特征根共同确定。设计时应同时降低柔性模态附近的环路增益并保留足够的高频裕度。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch09/AP9_1_bode.png}
+\caption{两组固有频率参数的完整环路伯德图；谐振区产生三处单位幅值交点。}
+\end{figure}
+
+
+\section*{第10章}
+
+\subsection*{E10.1}
+采用稳定极点与校正零点相消的设计，取 $a=2$，开环及闭环化为：
+
+\[
+L(s)=\frac{K(s+2)}{s(s+2)}=\frac Ks,\qquad T(s)=\frac K{s+K}
+\]
+
+该系统具有积分环节。对零初始条件下的单位阶跃，响应与稳态误差为：
+
+\[
+y(t)=1-e^{-Kt},\qquad e_{\mathrm{ss}}=0,\qquad \mathrm{P.O.}=0
+\]
+
+按2\%准则，误差进入稳态带的时刻满足 $e^{-KT_s}=0.02$，故可取：
+
+\[
+a=2,\qquad K=\ln50=3.912023,\qquad T_s=\frac{\ln50}{K}=1\ \mathrm{s}
+\]
+
+所得响应单调上升，超调量满足不大于5\%的要求。相消的对象极点为 $-2$，其内部模态稳定。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/E10_1_step.png}
+\caption{PI校正后的单位阶跃响应：零稳态误差、零超调，2\%调节时间为1 s。}
+\end{figure}
+
+
+\subsection*{E10.6}
+由单位负反馈关系得闭环传递函数：
+
+\[
+T(s)=\frac{10s+40}{s(s+0.2)(s^2+15s+150)+10(s+4)}=\frac{10s+40}{s^4+15.2s^3+153s^2+40s+40}
+\]
+
+闭环极点分为两组共轭对。靠近虚轴的一组决定主要衰减振荡：
+
+\[
+s_{1,2}=-0.1206649\pm0.5036637j,\qquad s_{3,4}=-7.479335\pm9.653048j
+\]
+
+\[
+\omega_n\approx0.517916\ \mathrm{rad/s},\qquad \zeta\approx0.232982
+\]
+
+采用主导极点的标准二阶近似，得到：
+
+\[
+\mathrm{P.O.}\approx100e^{-\pi\zeta/\sqrt{1-\zeta^2}}=47.1119\%,\qquad T_s\approx\frac4{\zeta\omega_n}=33.1497\ \mathrm{s}
+\]
+
+完整四阶模型的实际计算为超调47.5439\%、2\%调节时间32.136 s，与题给47.5\%、32.1 s一致。以题给47.5\%和32.1 s为比较基准，超调估计低约0.39个百分点，调节时间估计高约1.05 s。闭环零点 $-4$ 及远端极点改变响应的振荡幅值和相位；$4/(\zeta\omega_n)$ 依据指数包络估算，而实际调节时间取最后一次进入2\%带的时刻，因此出现上述小幅偏差。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/E10_6_step.png}
+\caption{完整四阶闭环的单位阶跃响应及2\%稳态带。}
+\end{figure}
+
+
+\subsection*{E10.9}
+由速度误差常数要求，首先确定积分增益：
+
+\[
+L(s)=\frac{K_Ps+K_I}{s(s+1)},\quad K_v=\lim_{s\to0}sL(s)=K_I=5,\quad T(s)=\frac{K_Ps+5}{s^2+(1+K_P)s+5}
+\]
+
+闭环分子包含零点，按完整二阶传递函数确定超调。令 $\sigma=(1+K_P)/2$、$\omega_d=\sqrt{5-\sigma^2}$，零初始条件的阶跃误差为：
+
+\[
+e(t)=e^{-\sigma t}\left[\cos(\omega_dt)+\frac{1-\sigma}{\omega_d}\sin(\omega_dt)\right]
+\]
+
+由首峰处导数为零，并要求该峰值为1.05，联合求解得到：
+
+\[
+\dot y(t_p)=e^{-\sigma t_p}\left[K_P\cos(\omega_dt_p)+\frac{5+\sigma-2\sigma^2}{\omega_d}\sin(\omega_dt_p)\right]=0,\qquad e(t_p)=-0.05
+\]
+
+\[
+K_P=3.044974,\qquad K_I=5,\qquad t_p\approx1.2492\ \mathrm{s}
+\]
+
+所得闭环极点约为 $-2.022487\pm0.953702j$。实际阶跃计算给出超调5.0000\%，速度误差常数精确为5，单位斜坡稳态误差为0.2；两项设计指标均满足。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/E10_9_step.png}
+\caption{按完整PI闭环零点设计后的单位阶跃响应，超调为5\%。}
+\end{figure}
+
+
+\subsection*{P10.1}
+令归一化输出为 $z=K_1y$，并取 $J,K_1,K_2>0$。这样闭环稳态增益为1，设计环路写为：
+
+\[
+L(s)=\frac{K_1K_2G_c(s)}{Js^2}=\frac{A(s+z_0)}{s^2(s+p)},\qquad G_c(s)=\frac{AJ}{K_1K_2}\frac{s+z_0}{s+p},\quad p>z_0>0
+\]
+
+选择主导复极点 $s_d=-2.4\pm3.2j$，则 $\omega_n=4\ \mathrm{rad/s}$、$\zeta=0.6$，包络估计 $T_s\approx4/2.4=1.6667\ \mathrm{s}$。完整响应再按2\%带校核。
+
+伯德图法：以超前零极点及增益调节穿越频率和相角，同时用完整闭环极点校核阻尼。取高频极点 $p=24.8$，相角与幅值条件为：
+
+\[
+\phi_m=\arctan\frac{\omega_c}{z_0}-\arctan\frac{\omega_c}{p},\qquad \frac{A\sqrt{\omega_c^2+z_0^2}}{\omega_c^2\sqrt{\omega_c^2+p^2}}=1
+\]
+
+选取 $\omega_c=5.076889\ \mathrm{rad/s}$、$\phi_m=49.06095^\circ$，由幅相条件得 $z_0=20/7$、$A=112$。该选择的完整闭环复极点阻尼恰为0.6，具体校正器为：
+
+\[
+G_{c,B}(s)=\frac{112J}{K_1K_2}\frac{s+2.857143}{s+24.8},\qquad D_B(s)=(s+20)(s^2+4.8s+16)
+\]
+
+根轨迹法：取第三极点 $-12$，由目标特征多项式配系数得：
+
+\[
+(s+12)(s^2+4.8s+16)=s^3+16.8s^2+73.6s+192
+\]
+
+\[
+p=16.8,\qquad A=73.6,\qquad z_0=\frac{192}{73.6}=2.608696,\qquad G_{c,R}(s)=\frac{73.6J}{K_1K_2}\frac{s+2.608696}{s+16.8}
+\]
+
+在 $s_d$ 处，这一开环满足根轨迹相角条件 $\arg L(s_d)=(2k+1)\pi$ 和幅值条件 $|L(s_d)|=1$。两种设计的闭环主导极点均精确为 $-2.4\pm3.2j$，第三极点分别为 $-20$ 与 $-12$。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/P10_1_bode.png}
+\caption{两种超前设计的伯德图及穿越处相角特征。}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/P10_1_rootlocus.png}
+\caption{根轨迹设计的轨迹与所选闭环极点。}
+\end{figure}
+
+完整模型的2\%调节时间分别为1.8170 s与1.8684 s，均小于2.5 s。对应超调约30.59\%与33.61\%，反映超前零点对响应峰值的影响；题定阻尼指标由实际复极点核验。实际输出传递函数为归一化传递函数的 $1/K_1$ 倍。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/P10_1_step.png}
+\caption{归一化输出K1y的单位阶跃响应；两种设计均满足阻尼及调节时间要求。}
+\end{figure}
+
+
+\subsection*{P10.5}
+将放大器增益取为 $K_a=1$。选择PI控制器零点抵消对象的稳定慢极点 $-0.15$：
+
+\[
+G_c(s)=K_P+\frac{K_I}{s}=K_P\frac{s+0.15}{s},\qquad K_I=0.15K_P
+\]
+
+\[
+L(s)=\frac{3.75K_P}{s(0.15s+1)},\qquad T(s)=\frac{25K_P}{s^2+(20/3)s+25K_P}
+\]
+
+由10\%超调确定阻尼系数，并由一次项确定自然频率：
+
+\[
+\zeta=\frac{-\ln0.1}{\sqrt{\pi^2+\ln^2 0.1}}=0.591155,\qquad \zeta\omega_n=\frac{10}{3},\quad \omega_n=5.638679\ \mathrm{rad/s}
+\]
+
+\[
+K_P=\frac{\omega_n^2}{25}=1.271788,\qquad K_I=0.190768,\qquad K_a=1
+\]
+
+闭环具有积分作用，故单位阶跃稳态误差为零。超调的解析值为10\%，调节时间包络估计为1.2 s；完整响应最后进入2\%带的时刻为1.05105 s，满足不大于1.5 s的要求。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/P10_5_step.png}
+\caption{PI校正后的转台单位阶跃响应及2\%稳态带。}
+\end{figure}
+
+
+\subsection*{P10.13}
+(a) 对比例控制器，相角裕度随穿越频率变化为：
+
+\[
+\phi_m=90^\circ-\arctan\omega_c-\arctan\frac{\omega_c}{2}
+\]
+
+令相角裕度为50°，由 $\arctan\omega_c+\arctan(\omega_c/2)=40^\circ$，并联立幅值条件得：
+
+\[
+\omega_c=0.4917604\ \mathrm{rad/s},\qquad K=\frac{\omega_c\sqrt{1+\omega_c^2}\sqrt{4+\omega_c^2}}{4}=0.2821635
+\]
+
+\[
+T_a(s)=\frac{4K}{s^3+3s^2+2s+4K},\qquad |T_a(j\omega_B)|=\frac1{\sqrt2}\ \Longrightarrow\ \omega_B=0.8764068\ \mathrm{rad/s}
+\]
+
+(b) 要求 $K_v=\lim_{s\to0}sG_c(s)G(s)=2G_c(0)=2$，故滞后控制器的直流增益取1。令零点频率为 $z=0.05\ \mathrm{rad/s}$，由幅相条件联合求极点和穿越频率：
+
+\[
+G_c(s)=\frac{1+s/0.05}{1+s/p},\qquad |G_c(j\omega_c)G(j\omega_c)|=1,\quad \arg[G_c(j\omega_c)G(j\omega_c)]=-130^\circ
+\]
+
+\[
+p=0.01164108\ \mathrm{rad/s},\qquad \omega_c=0.4224480\ \mathrm{rad/s}
+\]
+
+因此可采用上述滞后校正器。其 $K_v=2$、相角裕度50.0000°，闭环极点均在左半平面；3 dB带宽为 $0.7638583\ \mathrm{rad/s}$。低频增益的提高改善斜坡跟踪精度，同时较低穿越频率保持所要求的相角裕度。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/P10_13_bode.png}
+\caption{比例控制与滞后校正的伯德图，二者相角裕度均为50°。}
+\end{figure}
+
+
+\subsection*{P10.19}
+(a) 保留 $T=0.5\ \mathrm{s}$ 的纯时延，选择适当的保守增益 $K=1$。闭环及单位阶跃稳态误差为：
+
+\[
+T_a(s)=\frac{e^{-0.5s}}{(s+1)(s+3)+e^{-0.5s}},\qquad e_{\mathrm{ss},a}=\frac1{1+K/3}=\frac34=75\%
+\]
+
+对零历史状态的单位阶跃进行纯时延模型求解，稳态输出为0.25，相对该稳态值的超调为1.1146\%，2\%调节时间约2.620 s，满足超调不大于30\%的要求。
+
+(b) 保持同一 $K=1$，要求校正后单位阶跃误差小于12\%，由直流环路增益得：
+
+\[
+e_{\mathrm{ss},b}=\frac1{1+2/(3b)}=\frac{3b}{3b+2}<0.12\quad\Longrightarrow\quad 0<b<\frac1{11}
+\]
+
+选择 $b=1/15$，得到滞后控制器和闭环传递函数：
+
+\[
+G_c(s)=\frac{s+2}{s+1/15},\qquad T_b(s)=\frac{(s+2)e^{-0.5s}}{(s+1/15)(s+1)(s+3)+(s+2)e^{-0.5s}}
+\]
+
+\[
+y_{\infty,b}=\frac{10}{11}=0.909091,\qquad e_{\mathrm{ss},b}=\frac1{11}=9.09091\%<12\%
+\]
+
+实际纯时延响应给出超调约18.6289\%、2\%调节时间约9.855 s。校正后稳态输出从0.25提高到0.909091，显著改善参考跟踪精度；低频增益的增加使调节过程延长，超调仍保持在30\%以内。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/P10_19_step.png}
+\caption{K=1固定时，校正前与b=1/15滞后校正后的纯时延阶跃响应。}
+\end{figure}
+
+
+\subsection*{P10.20}
+将两个相同的一阶超前环节均取直流增益1。由速度误差常数首先确定 $K=20$：
+
+\[
+G_c(s)=\left(\frac{1+s/z}{1+s/p}\right)^2,\qquad K_v=\lim_{s\to0}sG_c(s)G(s)=K=20
+\]
+
+选择设计穿越频率 $\omega_c=10\ \mathrm{rad/s}$，使闭环带宽留有余量。未校正对象在该频率的相角为 $-227.72631^\circ$，故两个环节共需提供92.72631°超前。
+
+\[
+\delta=46.363155^\circ,\qquad M=\left|G(j\omega_c)\right|^{-1/2}
+\]
+
+令 $x=\omega_c/z$、$y=\omega_c/p$。每个环节在穿越频率应满足 $(1+jx)/(1+jy)=Me^{j\delta}$，由实部和虚部分别得：
+
+\[
+y=\frac{\cos\delta-1/M}{\sin\delta},\qquad x=M(\sin\delta+y\cos\delta)
+\]
+
+\[
+z=4.711840\ \mathrm{rad/s},\qquad p=30.047487\ \mathrm{rad/s},\qquad G_c(s)=\left(\frac{1+s/4.711840}{1+s/30.047487}\right)^2
+\]
+
+完整五阶闭环的计算结果为 $K_v=20$、$\omega_c=10\ \mathrm{rad/s}$、相角裕度45.0000°，3 dB带宽 $\omega_B=18.16473\ \mathrm{rad/s}\ge4\ \mathrm{rad/s}$。所有闭环极点均在左半平面，三项指标满足。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/P10_20_bode.png}
+\caption{串联两个相同超前环节前后的伯德图。}
+\end{figure}
+
+
+\subsection*{P10.22}
+给定超前—滞后校正器直流增益为1，故仍取 $K=20$ 满足速度误差常数。选择 $\omega_c=3\ \mathrm{rad/s}$，由穿越处幅值为1、相角为 $-135^\circ$ 两个方程确定参数。
+
+\[
+L(s)=\frac{20}{s(1+s/2)(1+s/6)}\frac{(1+s/(10a))(1+s/b)}{(1+s/a)(1+s/(10b))}
+\]
+
+\[
+|L(j3)|=1,\qquad \arg L(j3)=-135^\circ
+\]
+
+幅值方程使用各零极点幅值的乘积，相角方程使用各一阶环节反正切之差：
+
+\[
+90^\circ-\arctan\frac32-\arctan\frac36+\arctan\frac3{10a}-\arctan\frac3a+\arctan\frac3b-\arctan\frac3{10b}=45^\circ
+\]
+
+\[
+a=0.10199737\ \mathrm{rad/s},\qquad b=1.07097560\ \mathrm{rad/s}
+\]
+
+对应滞后极点、零点分别为0.10199737、1.01997370 rad/s，超前零点、极点分别为1.07097560、10.70975597 rad/s。
+
+\[
+K_v=20,\qquad \mathrm{PM}=45.0000^\circ,\qquad \omega_B=5.512007\ \mathrm{rad/s}
+\]
+
+完整闭环极点均位于左半平面，且 $2\le\omega_B\le10\ \mathrm{rad/s}$。与只用双超前的方案相比，滞后环节降低中频增益，将带宽控制在指定范围内。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/P10_22_bode.png}
+\caption{所设计超前—滞后校正器的伯德图。}
+\end{figure}
+
+
+\subsection*{P10.43}
+先由闭环稳定性确定有限稳态超调量的适用增益区间。闭环特征多项式为：
+
+\[
+D(s)=s^4+4s^3+(5+K)s^2+(2+2K)s+20K
+\]
+
+劳斯表首列为：
+
+\[
+1,\quad4,\quad\frac{K+9}{2},\quad\frac{2(K^2-70K+9)}{K+9},\quad20K
+\]
+
+对 $K>0$，稳定性由 $K^2-70K+9>0$ 决定。精确临界增益及稳定区间为：
+
+\[
+K_-=35-4\sqrt{76}=0.12880845,\quad K_+=35+4\sqrt{76}=69.87119155
+\]
+
+\[
+0<K<K_-\quad\hbox{或}\quad K_+<K\le100
+\]
+
+在这两个稳定区间内，由完整单位阶跃响应计算相对稳态值1的超调，所得变化曲线如下。低增益区的响应逐渐出现较弱阻尼振荡；高增益稳定区的超调仍较大，例如 $K=100$ 时约105.73\%。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/P10_43_overshoot.png}
+\caption{0<K≤100内的两个稳定超调分支，分别放大低增益区与高增益区；两者之间闭环不稳定。}
+\end{figure}
+
+当 $K_-<K<K_+$ 时，劳斯首列有两次符号变化，闭环存在一对右半平面复极点，单位阶跃呈振幅增长的振荡。以 $K=10$ 为例：
+
+\[
+s=1.154536\pm3.023578j,\qquad s=-3.154536\pm3.023578j
+\]
+
+因此中间区间的响应持续发散，应以增长振荡描述，其稳态超调量无有限值。两个临界增益处具有虚轴共轭根，出现持续振荡。题面0.129与69.872是临界值的近似表示；按精确边界，上端极小区间 $69.87119155<K<69.872$ 已重新稳定。
+
+
+\subsection*{AP10.4}
+由位置反馈及速度反馈相加，闭环传递函数为：
+
+\[
+T(s)=\frac{10K_1}{s(s+10)+10K_1(1+K_2s)}=\frac{10K_1}{s^2+(10+10K_1K_2)s+10K_1}
+\]
+
+采用标准二阶配置，选取 $\omega_n=8\ \mathrm{rad/s}$、$\zeta=0.8$，则系数匹配得到：
+
+\[
+10K_1=64,\qquad10+10K_1K_2=12.8\quad\Longrightarrow\quad K_1=6.4,\quad K_2=0.04375\ \mathrm{s}
+\]
+
+\[
+T(s)=\frac{64}{s^2+12.8s+64},\qquad s=-6.4\pm4.8j
+\]
+
+由标准二阶响应，超调与调节时间估计为：
+
+\[
+\mathrm{P.O.}=100e^{-\pi(0.8)/\sqrt{1-0.8^2}}=1.51646\%<5\%,\qquad T_s\approx\frac4{0.8\times8}=0.625\ \mathrm{s}
+\]
+
+完整阶跃响应最后进入2\%带的时刻为0.4695 s，满足不大于1 s的要求。速度负反馈提高闭环阻尼，位置反馈保持单位稳态跟踪增益。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/AP10_4_step.png}
+\caption{K1=6.4、K2=0.04375 s时的位置单位阶跃响应。}
+\end{figure}
+
+
+\subsection*{AP10.7}
+前置滤波器位于反馈环路之外，不改变闭环特征方程。由 $\zeta=1/\sqrt2$，将目标复极点写成 $s=-x\pm jx$、$x>0$：
+
+\[
+D(s)=s(s+2)(s+8)(s+28)+K(s+3)=s^4+38s^3+296s^2+(448+K)s+3K
+\]
+
+将 $s=-x+jx$ 代入特征方程，分别令实部、虚部为零并消去 $K$，得到：
+
+\[
+K=-76x^2+592x-448,\qquad x^4-38x^3+205x^2-444x+336=0
+\]
+
+\[
+x=1.62082994,\qquad K=311.872509
+\]
+
+所得闭环极点为 $-1.62082994\pm1.62082994j$、$-6.24523777$ 和 $-28.51310234$，复根阻尼系数精确满足要求。
+
+(a) 分别计算无前置滤波 $G_p=1$ 和采用 $p=3$ 的两种情况。上升时间按首次从0到稳态值的时间计算，并同时给出10\%—90\%数值。
+
+\[
+T_0(s)=\frac{K(s+3)}{D(s)},\qquad T_3(s)=\frac{3K}{D(s)}
+\]
+
+\[
+\begin{array}{c|ccc}\hbox{情形}&\mathrm{P.O.}&T_{r,0\text{--}100}\ (\mathrm{s})&T_{r,10\text{--}90}\ (\mathrm{s})\\\hline G_p=1&6.60684\%&1.16403&0.75488\\p=3&3.91770\%&1.69886&1.00854\end{array}
+\]
+
+$p=3$ 时，滤波器极点与闭环分子零点 $-3$ 相消，削弱了该零点对初期快速上升和峰值的作用。
+
+(b) 在所给一阶滤波器族中，令完整响应峰值为1.01，求得允许的较快滤波方案：
+
+\[
+p=1.8749511\ \mathrm{rad/s},\qquad G_p(s)=\frac{1.8749511}{s+1.8749511}
+\]
+
+该方案的实际超调为1.0000\%，0—100\%上升时间约2.29454 s，10\%—90\%上升时间约1.25812 s。滤波降低超调并延缓上升；三种情况均保持单位直流增益及相同反馈环路极点。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/ch10/AP10_7_step.png}
+\caption{无前置滤波、p=3及1\%超调设计的单位阶跃响应比较。}
+\end{figure}
+
+\end{document}
