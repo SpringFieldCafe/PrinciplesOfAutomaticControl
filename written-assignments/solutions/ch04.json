@@ -1,0 +1,615 @@
+{
+  "chapter": 4,
+  "solutions": [
+    {
+      "id": "E4.2",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "闭环传递函数为"
+        },
+        {
+          "type": "eq",
+          "latex": "T(s)=\\frac{G}{1+G}=\\frac{100}{\\tau s+101}."
+        },
+        {
+          "type": "p",
+          "text": "（a）按相对灵敏度定义 $S_\\tau^T=(\\tau/T)(\\partial T/\\partial\\tau)$，得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_\\tau^T(s)=-\\frac{\\tau s}{\\tau s+101}=-\\frac{3s}{3s+101}}."
+        },
+        {
+          "type": "p",
+          "text": "于是固定 $s$ 时，小参数变化满足 $\\Delta T/T\\approx S_\\tau^T\\Delta\\tau/\\tau$。若先以开环传递函数为中间变量，则"
+        },
+        {
+          "type": "eq",
+          "latex": "S_G^T=\\frac1{1+G}=\\frac{\\tau s+1}{\\tau s+101},\\quad S_\\tau^G=-\\frac{\\tau s}{\\tau s+1},\\quad S_\\tau^T=S_G^TS_\\tau^G."
+        },
+        {
+          "type": "p",
+          "text": "（b）将闭环写成标准一阶形式："
+        },
+        {
+          "type": "eq",
+          "latex": "T(s)=\\frac{100/101}{(\\tau/101)s+1},\\qquad \\boxed{\\tau_{\\mathrm{cl}}=\\frac3{101}=0.029703\\ \\mathrm s}."
+        }
+      ],
+      "checks": [
+        "直接偏导与灵敏度链式法则相同；闭环极点为-101/3 s⁻¹。"
+      ]
+    },
+    {
+      "id": "E4.4",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "系统为单位负反馈，开环传递函数为"
+        },
+        {
+          "type": "eq",
+          "latex": "L(s)=\\frac{100K}{s(0.001s+1)}."
+        },
+        {
+          "type": "p",
+          "text": "闭环特征多项式为 $0.001s^2+s+100K$，在 $K>0$ 时稳定。"
+        },
+        {
+          "type": "p",
+          "text": "（a）开环含一个积分环节，位置误差常数为 $K_p=\\lim_{s\\to0}L(s)=\\infty$，故任意有限幅值的阶跃指令均有"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{e_{\\mathrm{ss,step}}=0}."
+        },
+        {
+          "type": "p",
+          "text": "（b）速度误差常数及斜坡稳态误差为"
+        },
+        {
+          "type": "eq",
+          "latex": "K_v=\\lim_{s\\to0}sL(s)=100K,\\quad e_{\\mathrm{ss}}=\\frac{A}{K_v}=\\frac{10}{100K}=\\frac{0.1}{K}\\ \\mathrm{cm}=\\frac1K\\ \\mathrm{mm}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac1K<0.1\\quad\\Longrightarrow\\quad\\boxed{K>10}."
+        },
+        {
+          "type": "p",
+          "text": "例如取 $K=20$，稳态位置误差为 $0.05\\,\\mathrm{mm}$；$K=10$ 对应误差恰为 $0.1\\,\\mathrm{mm}$。"
+        }
+      ],
+      "checks": [
+        "直接对误差传递函数应用终值定理，与误差常数法一致；单位换算10cm/s=100mm/s。"
+      ]
+    },
+    {
+      "id": "E4.6",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "记 $N=s^2+ps+10$、$D=s^3+2ps^2+4s+3-p$。由商的对数微分得"
+        },
+        {
+          "type": "eq",
+          "latex": "S_p^T=p\\left(\\frac{\\partial N/\\partial p}{N}-\\frac{\\partial D/\\partial p}{D}\\right)=p\\left[\\frac{s}{s^2+ps+10}-\\frac{2s^2-1}{s^3+2ps^2+4s+3-p}\\right]."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_p^T=\\frac{p\\left[sD-(2s^2-1)N\\right]}{ND}}."
+        },
+        {
+          "type": "p",
+          "text": "为计算稳态误差，先检查稳定条件。三阶劳斯判据给出"
+        },
+        {
+          "type": "eq",
+          "latex": "2p>0,\\quad 3-p>0,\\quad (2p)\\,4>3-p\\quad\\Longrightarrow\\quad\\boxed{\\frac13<p<3}."
+        },
+        {
+          "type": "p",
+          "text": "在此范围内，对于单位阶跃输入，$E(s)=[1-T(s)]/s$，从而"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{e_{\\mathrm{ss}}=1-T(0)=1-\\frac{10}{3-p}=-\\frac{p+7}{3-p}}."
+        },
+        {
+          "type": "p",
+          "text": "若阶跃幅值为 $A$，上述误差乘以 $A$。负误差表示稳定输出的终值大于指令幅值。$p=1/3$ 时存在虚轴极点，$p=3$ 时存在原点极点，其他正 $p$ 区间含右半平面极点，因而阶跃响应不收敛到有限稳态。"
+        }
+      ],
+      "checks": [
+        "符号微分与商法则结果一致；取p=.2、1、4求根，分别验证不稳定、稳定、不稳定区间。"
+      ]
+    },
+    {
+      "id": "E4.9",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "由框图节点关系，$sY=K_1[E-K_2Y]-T_d$，其中 $E=K(R-Y)$。因此"
+        },
+        {
+          "type": "eq",
+          "latex": "[s+K_1(K+K_2)]Y=KK_1R-T_d."
+        },
+        {
+          "type": "p",
+          "text": "（a）令 $T_d=0$，闭环传递函数为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{T(s)=\\frac{KK_1}{s+K_1(K+K_2)}}."
+        },
+        {
+          "type": "p",
+          "text": "（b）分别对 $K_1$ 和 $K$ 作相对微分，得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_{K_1}^T=\\frac{s}{s+K_1(K+K_2)}},\\qquad\\boxed{S_K^T=\\frac{s+K_1K_2}{s+K_1(K+K_2)}}."
+        },
+        {
+          "type": "p",
+          "text": "（c）置 $R=0$、$T_d=1/s$。在 $K_1(K+K_2)>0$ 时，扰动引起的终值为"
+        },
+        {
+          "type": "eq",
+          "latex": "Y_d(s)=-\\frac1{s[s+K_1(K+K_2)]},\\quad y_d(\\infty)=-\\frac1{K_1(K+K_2)}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{e_{\\mathrm{ss}}=E(\\infty)=\\frac{K}{K_1(K+K_2)}}."
+        },
+        {
+          "type": "p",
+          "text": "若将位置跟踪误差定义为 $r-y$，其扰动稳态值为 $1/[K_1(K+K_2)]$；框图标注的 $E$ 是该误差经 $K$ 缩放后的信号。"
+        },
+        {
+          "type": "p",
+          "text": "（d）在 $K=K_2=1$、$T_d=0$ 下，"
+        },
+        {
+          "type": "eq",
+          "latex": "Y(s)=\\frac{K_1}{s(s+2K_1)},\\quad \\boxed{y(t)=\\frac12(1-e^{-2K_1t})},\\quad \\tau=\\frac1{2K_1}."
+        },
+        {
+          "type": "p",
+          "text": "增大 $K_1$ 使响应更快，且终值保持为 $1/2$。题设 $1<K_1<10$ 为开区间，故最快响应只存在下确界 $\\tau\\to0.05\\,\\mathrm s$，没有取到该下确界的最优参数；可取任意接近10且小于10的值，例如 $K_1=9.9$ 时 $\\tau=0.050505\\,\\mathrm s$。若端点10允许取用，则最优值为 $K_1=10$。"
+        }
+      ],
+      "checks": [
+        "从两个加法点独立列方程并符号微分核对；对K1=2、5、9.9计算时间常数，分别为.25、.1、.050505s。"
+      ]
+    },
+    {
+      "id": "E4.11",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "定义 $P(s)=s^2+5s+6$，$D(s)=(s+10)P(s)+14K=s^3+15s^2+56s+60+14K$。由 $Y=G(R-HY)+T_d$ 得"
+        },
+        {
+          "type": "p",
+          "text": "（a）"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{T(s)=\\frac{Y}{R}=\\frac{KP(s)}{D(s)}}."
+        },
+        {
+          "type": "p",
+          "text": "（b）题设的跟踪误差为 $E=R-Y$，因此对单位阶跃输入、零扰动，"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{E(s)=\\frac{D(s)-KP(s)}{sD(s)}}."
+        },
+        {
+          "type": "p",
+          "text": "劳斯判据给出闭环稳定范围 $-30/7<K<390/7$。通常取正增益，即 $0<K<390/7$；在该范围内"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{e_{\\mathrm{ss}}=1-\\frac{6K}{60+14K}=\\frac{30+4K}{30+7K}}."
+        },
+        {
+          "type": "p",
+          "text": "（c）令 $R=0$，输出端扰动传递函数为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\frac{Y}{T_d}=\\frac1{1+GH}=\\frac{(s+10)P(s)}{D(s)}}."
+        },
+        {
+          "type": "p",
+          "text": "对 $T_d=1/s$，有"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{y_d(\\infty)=\\frac{30}{30+7K},\\qquad e_{\\mathrm{ss},d}=-\\frac{30}{30+7K}}."
+        },
+        {
+          "type": "p",
+          "text": "（d）$K$ 同时出现在闭环分子与分母中，故"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_K^T=1-\\frac{14K}{D(s)}=\\frac{(s+10)P(s)}{D(s)}}."
+        }
+      ],
+      "checks": [
+        "节点方程与反馈公式一致；用三阶Routh条件15×56>60+14K得到上界390/7。"
+      ]
+    },
+    {
+      "id": "P4.2",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "记 $P=s^2+1.75s+12.25$，故 $G=12.25/P$。开环指断开传感器反馈支路，保留执行机构与船体。"
+        },
+        {
+          "type": "p",
+          "text": "（a）开环与闭环指令传递函数分别为"
+        },
+        {
+          "type": "eq",
+          "latex": "T_{\\mathrm{ol}}=K_aG,\\qquad T_{\\mathrm{cl}}=\\frac{K_aG}{1+K_aK_1G}=\\frac{12.25K_a}{P+12.25K_aK_1}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_{K_a}^{T_{\\mathrm{ol}}}=1,\\quad S_{K_1}^{T_{\\mathrm{ol}}}=0},"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_{K_a}^{T_{\\mathrm{cl}}}=\\frac{P}{P+12.25K_aK_1},\\quad S_{K_1}^{T_{\\mathrm{cl}}}=-\\frac{12.25K_aK_1}{P+12.25K_aK_1}}."
+        },
+        {
+          "type": "p",
+          "text": "在零频率，闭环对执行机构增益的灵敏度由1降为 $1/(1+K_aK_1)$；对传感器增益的灵敏度为 $-K_aK_1/(1+K_aK_1)$。因此执行机构变化受到反馈抑制，传感器精度则直接影响闭环标定。"
+        },
+        {
+          "type": "p",
+          "text": "（b）取 $\\theta_d=0$。正向加入船体输入端的扰动力矩有"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{\\Theta_{\\mathrm{ol}}}{T_d}=G,\\qquad \\frac{\\Theta_{\\mathrm{cl}}}{T_d}=\\frac{G}{1+K_aK_1G}=\\frac{12.25}{s^2+1.75s+12.25(1+K_aK_1)}."
+        },
+        {
+          "type": "p",
+          "text": "对幅值为 $A$ 的阶跃扰动，在正增益条件下闭环稳定，终值为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\theta_{\\mathrm{ol}}(\\infty)=A,\\qquad \\theta_{\\mathrm{cl}}(\\infty)=\\frac{A}{1+K_aK_1}}."
+        },
+        {
+          "type": "p",
+          "text": "正值的环路增益积 $K_aK_1$ 的增大使静态扰动偏角减小。此比例反馈同时使自然频率变为 $3.5\\sqrt{1+K_aK_1}$，阻尼比变为 $0.25/\\sqrt{1+K_aK_1}$，衰减包络的指数率仍为 $0.875\\,\\mathrm{s}^{-1}$，因而静态抑制改善伴随更明显的相对振荡。"
+        }
+      ],
+      "checks": [
+        "由新二阶分母重新计算自然频率与阻尼比，其乘积恒为.875；DC扰动衰减比1/(1+KaK1)核对。"
+      ]
+    },
+    {
+      "id": "P4.4",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "由加法点关系得"
+        },
+        {
+          "type": "eq",
+          "latex": "Y=G[Q(UR-Y)+MR]=G(QU+M)R-GQY."
+        },
+        {
+          "type": "p",
+          "text": "（a）整理可得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{T(s)=\\frac{G(s)[Q(s)U(s)+M(s)]}{1+G(s)Q(s)}}."
+        },
+        {
+          "type": "p",
+          "text": "（b）保持 $Q,U,M$ 不变，对 $G$ 求相对灵敏度："
+        },
+        {
+          "type": "eq",
+          "latex": "S_G^T=\\frac GT\\frac{\\partial T}{\\partial G}=\\frac{G}{G(QU+M)/(1+GQ)}\\frac{QU+M}{(1+GQ)^2},"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_G^T=\\frac1{1+GQ}}."
+        },
+        {
+          "type": "p",
+          "text": "（c）该相对灵敏度仅由反馈环路乘积 $GQ$ 决定，与输入前置环节 $U$ 及前馈环节 $M$ 无关。相对灵敏度定义适用于所考察点 $T\\ne0$；$U,M$ 仍通过分子决定指令响应。"
+        }
+      ],
+      "checks": [
+        "对T进行符号偏导，化简后与1/(1+GQ)的差为零。"
+      ]
+    },
+    {
+      "id": "P4.6",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "记 $D_0(s)=(\\tau_1s+1)(20s+1)$。由 $V=G[G_1(R-V)-K_g\\Delta T_d]$ 可得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac VR=\\frac{K_eK_1}{D_0+K_eK_1},\\qquad \\frac{V}{\\Delta T_d}=-\\frac{K_eK_g(\\tau_1s+1)}{D_0+K_eK_1}."
+        },
+        {
+          "type": "p",
+          "text": "（a）对发动机增益 $K_e$ 的闭环相对灵敏度为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_{K_e}^T=\\frac{D_0(s)}{D_0(s)+K_eK_1}},\\qquad S_{K_e}^T(0)=\\frac1{1+K_eK_1}."
+        },
+        {
+          "type": "p",
+          "text": "（b）正负载扰动使车速下降。对 $\\Delta T_d=\\Delta d/s$，在正增益及 $\\tau_1>0$ 时系统稳定，其稳态车速改变量为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\Delta v(\\infty)=-\\frac{K_eK_g}{1+K_eK_1}\\Delta d\\approx-\\frac{K_g}{K_1}\\Delta d\\quad(K_eK_1\\gg1)}."
+        },
+        {
+          "type": "p",
+          "text": "（c）将指令与负载共同作用代入，稳态车速为"
+        },
+        {
+          "type": "eq",
+          "latex": "v(\\infty)=\\frac{30K_eK_1-K_eK_g\\Delta d}{1+K_eK_1}."
+        },
+        {
+          "type": "p",
+          "text": "令稳态车速为零，分子须为零，故"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\Delta d_{\\mathrm{stall}}=30\\frac{K_1}{K_g}=15}."
+        },
+        {
+          "type": "p",
+          "text": "该值在所用线性静态模型中与 $K_e$ 无关。按题意 $\\Delta d$ 以负载占汽车自重的比值表示，则15对应自重的15倍；若以百分数记录，同一比值写作1500%。在大环路增益近似下，车速关系简化为 $v(\\infty)\\approx30-2\\Delta d$。"
+        }
+      ],
+      "checks": [
+        "精确静态式求零点得到30K1/Kg，未依赖高增益近似；Ke取10、100、1000代入均同。"
+      ]
+    },
+    {
+      "id": "P4.8",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "记 $P=s^2+25s+200$、$Q=(0.1s+1)P$。闭环指令传递函数为"
+        },
+        {
+          "type": "eq",
+          "latex": "T(s)=\\frac{200K}{Q+200K}."
+        },
+        {
+          "type": "p",
+          "text": "（a）对 $K$ 求相对灵敏度得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_K^T=\\frac{Q}{Q+200K}=\\frac{0.1s^3+3.5s^2+45s+200}{0.1s^3+3.5s^2+45s+200(1+K)}}."
+        },
+        {
+          "type": "p",
+          "text": "（b）令 $R=0$，扰动通道为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\frac{Y}{T_d}=\\frac{200(0.1s+1)}{Q+200K}}."
+        },
+        {
+          "type": "p",
+          "text": "对幅值为 $A$ 的阶跃环境温度变化，稳定时有"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{y_d(\\infty)=\\frac{A}{1+K}},\\qquad S_K^T(0)=\\frac1{1+K}."
+        },
+        {
+          "type": "p",
+          "text": "环境温度降低对应 $A<0$；增大正增益可减小温度下降的稳态幅值。由三阶劳斯条件，"
+        },
+        {
+          "type": "eq",
+          "latex": "K>-1,\\quad 3.5\\times45>0.1\\times200(1+K)\\quad\\Longrightarrow\\quad-1<K<\\frac{55}{8}."
+        },
+        {
+          "type": "p",
+          "text": "因此对正增益，应在 $0<K<6.875$ 内选择；该区间内上述终值计算成立。"
+        }
+      ],
+      "checks": [
+        "展开Q的系数为[.1,3.5,45,200]，三阶Routh上界55/8；K=1稳定、K=7不稳定的根计算通过。"
+      ]
+    },
+    {
+      "id": "P4.17",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "电机转矩增益 $K_m/R_f=30$。由框图有"
+        },
+        {
+          "type": "eq",
+          "latex": "[s(Js+b)+30KK_f]\\Theta=30KK_i\\Theta_d-T_d."
+        },
+        {
+          "type": "p",
+          "text": "代入给定参数，指令与扰动通道为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac\\Theta{\\Theta_d}=\\frac{30K}{0.2s^2+s+30K},\\qquad\\frac\\Theta{T_d}=-\\frac1{0.2s^2+s+30K}."
+        },
+        {
+          "type": "p",
+          "text": "（a）取 $K=20$，单位阶跃输入时，"
+        },
+        {
+          "type": "eq",
+          "latex": "\\Theta(s)=\\frac{3000}{s(s^2+5s+3000)},\\quad \\omega_n=\\sqrt{3000},\\quad\\omega_d=\\sqrt{2993.75}=54.7152\\ \\mathrm{rad/s}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\theta(t)=1-e^{-2.5t}\\left[\\cos(\\omega_dt)+\\frac{2.5}{\\omega_d}\\sin(\\omega_dt)\\right],\\quad t\\ge0.}"
+        },
+        {
+          "type": "p",
+          "text": "若阶跃幅值为 $A_r$，将上述响应乘以 $A_r$。"
+        },
+        {
+          "type": "p",
+          "text": "（b）取 $\\theta_d=0$、$T_d=A/s$，$K=20$ 时，"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\theta(t)=-\\frac{A}{600}\\left\\{1-e^{-2.5t}\\left[\\cos(\\omega_dt)+\\frac{2.5}{\\omega_d}\\sin(\\omega_dt)\\right]\\right\\}}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\theta(\\infty)=-\\frac A{600},\\qquad e_{\\mathrm{ss},d}=\\frac A{600}}."
+        },
+        {
+          "type": "p",
+          "text": "一般正增益下，负载导致稳态角偏移 $-A/(30K)$，增大 $K$ 可减小该偏移。"
+        },
+        {
+          "type": "p",
+          "text": "（c）无扰动单位斜坡输入时，开环速度误差常数为"
+        },
+        {
+          "type": "eq",
+          "latex": "K_v=\\lim_{s\\to0}s\\frac{30K}{s(0.2s+1)}=30K,\\qquad\\boxed{e_{\\mathrm{ss}}=\\frac1{30K}=\\frac1{600}\\quad(K=20)}."
+        }
+      ],
+      "checks": [
+        "直接从力矩平衡列出.2θ″+θ′+30Kθ=30Kθd-Td；阶跃初值0、终值1及负载符号已核对。"
+      ]
+    },
+    {
+      "id": "AP4.3",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "记闭环特征多项式 $D=7s^2+55s+40$，其两极点为 $-0.810978$ 与 $-7.046165$，均为负实数。"
+        },
+        {
+          "type": "p",
+          "text": "（a）无扰动时，$R(s)=1/s-1/s^2$，故"
+        },
+        {
+          "type": "eq",
+          "latex": "E_r(s)=\\frac{1}{1+CG}R(s)=\\frac{7(s+5)(s-1)}{sD(s)},\\qquad\\boxed{e_{\\mathrm{ss},r}=-\\frac78=-0.875}."
+        },
+        {
+          "type": "p",
+          "text": "（b）令 $\\alpha=(55-\\sqrt{1905})/14$、$\\beta=(55+\\sqrt{1905})/14$。误差的完整时域表达式为"
+        },
+        {
+          "type": "eq",
+          "latex": "e_r(t)=-\\frac78+\\left(\\frac{15}{16}+\\frac{393}{16\\sqrt{1905}}\\right)e^{-\\alpha t}+\\left(\\frac{15}{16}-\\frac{393}{16\\sqrt{1905}}\\right)e^{-\\beta t},\\quad t\\ge0."
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch04/AP4.3_tracking.png",
+          "caption": "规定路径下的跟踪误差，虚线为稳态值−0.875。"
+        },
+        {
+          "type": "p",
+          "text": "（c）$R=0$，扰动在对象输入端以负号加入，因此 $Y_d=-G T_d/(1+CG)$、$E_d=-Y_d$。对单位阶跃扰动，"
+        },
+        {
+          "type": "eq",
+          "latex": "E_d(s)=\\frac{70}{sD(s)},\\qquad\\boxed{e_{\\mathrm{ss},d}=\\frac74=1.75}."
+        },
+        {
+          "type": "p",
+          "text": "（d）相应时域表达式为"
+        },
+        {
+          "type": "eq",
+          "latex": "e_d(t)=\\frac74\\left[1-\\frac{\\beta e^{-\\alpha t}-\\alpha e^{-\\beta t}}{\\beta-\\alpha}\\right],\\quad t\\ge0."
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch04/AP4.3_disturbance.png",
+          "caption": "单位阶跃负载引起的误差，稳态值为1.75。"
+        }
+      ],
+      "checks": [
+        "使用SciPy状态空间时域响应与所列双指数解析式在2001个点比较，最大误差见numeric_results.json；两个终值与终值定理相同。"
+      ]
+    },
+    {
+      "id": "AP4.8",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "机床增益取物理正值 $b>0$。节点关系为 $Y=b[K(R-Y)-T_d]/(s+2)$。"
+        },
+        {
+          "type": "p",
+          "text": "（a）整理得到"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{T(s)=\\frac{Y}{R}=\\frac{bK}{s+2+bK}}."
+        },
+        {
+          "type": "p",
+          "text": "（b）由相对灵敏度定义，"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{S_b^T=\\frac bT\\frac{\\partial T}{\\partial b}=\\frac{s+2}{s+2+bK}}."
+        },
+        {
+          "type": "p",
+          "text": "（c）扰动传递函数与幅值为 $A$ 的阶跃扰动终值为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac Y{T_d}=-\\frac b{s+2+bK},\\qquad y_d(\\infty)=-\\frac{bA}{2+bK}."
+        },
+        {
+          "type": "p",
+          "text": "对每个固定频率 $\\omega$，"
+        },
+        {
+          "type": "eq",
+          "latex": "\\left|S_b^T(j\\omega)\\right|=\\frac{\\sqrt{\\omega^2+4}}{\\sqrt{\\omega^2+(2+bK)^2}},\\qquad \\left|\\frac{Y(j\\omega)}{T_d(j\\omega)}\\right|=\\frac b{\\sqrt{\\omega^2+(2+bK)^2}}."
+        },
+        {
+          "type": "p",
+          "text": "二者均随 $K$ 增大而减小，且闭环极点 $-(2+bK)<0$。因此在题设范围内取"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{K_{\\mathrm{opt}}=50},\\quad S_b^T(s)=\\frac{s+2}{s+2+50b},\\quad y_d(\\infty)=-\\frac{bA}{2+50b}."
+        }
+      ],
+      "checks": [
+        "对两个幅频表达式关于正K求导均为负，稳定极点符号核对通过。"
+      ]
+    }
+  ]
+}
