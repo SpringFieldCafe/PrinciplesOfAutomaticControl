@@ -14,3 +14,10 @@ LICENSE text eol=lf
 *.jpg binary
 *.pdf binary
 *.docx binary
+
+# Keep published numerical and source hashes consistent across checkouts.
+/written-assignments/**/*.csv text eol=lf
+/written-assignments/**/*.json text eol=lf
+/written-assignments/**/*.tex text eol=lf
+/written-assignments/**/*.txt text eol=lf
+/written-assignments/**/*.svg text eol=lf
