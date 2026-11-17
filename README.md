@@ -1,6 +1,8 @@
 # 自动控制原理
 
-本项目分为 [上机实验](computer-labs/) 和 [书面作业](written-assignments/) 两部分。上机实验整理 8 个实验的原始课件、数值分析与绘图源码；八个实验的代码均已实际运行，实验一另附三份可编辑的 Xcos 闭环模型。书面作业目录预留，待题目材料到位后补充。
+本项目分为 [上机实验](computer-labs/) 和 [书面作业](written-assignments/) 两部分。上机实验包含 8 个实验的原始课件、已实际运行的数值分析与绘图源码，实验一另附三份可编辑的 Xcos 闭环模型。书面作业包含第 2、4、5、6、7、8、9、10 章共 75 题的自写解答、可编辑 Word 公式、LaTeX 源稿、计算代码、数值数据及 47 张结果图。
+
+书面作业可阅读[公开解答](written-assignments/report/automatic-control-2026-solutions-public.docx)及 [AP6.5 与 P7.11 模型比较](written-assignments/report/interpretation-comparison-public.docx)；公开版按教材题号编排，题目截图保留在本地。计算与绘图入口为 `written-assignments/src/run.py`，依赖与运行方法见 [RUNNING.txt](written-assignments/RUNNING.txt)，逐图数据和源码对应见 [TRACEABILITY.json](written-assignments/TRACEABILITY.json)。[comparison/](written-assignments/comparison/) 单独给出两题各参数假设的形式化推导、根轨迹及稳定和阻尼范围。
 
 | 目录 | 实验 | Octave 数值入口 |
 | --- | --- | --- |
@@ -19,6 +21,6 @@
 
 实验二、七计算后调用同一入口的 `'plot'` 模式；实验三、五分别调用 `plot_exp03()`、`plot_exp05()`。独立 Python 绘图脚本位于相应 `src/` 中。实验八的 `'robust'` 模式计算参数扰动，实验六的 `verify_exp06()` 核验辨识结果；实验一的 `.zcos` 模型可在 Xcos 中打开、编辑和运行。
 
-Word 报告、生成图表与数据、交付 ZIP、软件环境和本地协作材料保留在本地，由 Git 忽略规则排除，不随仓库发布。原始课件及其备注保持原样。
+含身份信息的实验 Word 报告与模板、书面作业原件及题目截图、私下提交版、交付 ZIP、软件环境和本地协作材料保留在本地。上机实验生成的图表与数据仍默认忽略；书面作业公开数据和图表逐项核查后纳入。原始实验课件及其备注保持原样。
 
-本仓库的代码、说明和实验 PPT 均采用 [MIT 许可证](LICENSE)。课件中引用的外部资料保留其原有权属。
+本仓库的代码、说明、实验 PPT 及新增自写解答与计算成果采用 [MIT 许可证](LICENSE)。教材题面和其他外部资料保留原有权属，详见书面作业 [NOTICE.txt](written-assignments/NOTICE.txt)。
