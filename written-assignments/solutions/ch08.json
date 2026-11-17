@@ -1,0 +1,411 @@
+{
+  "chapter": 8,
+  "solutions": [
+    {
+      "id": "E8.5",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "低频斜率为 $-20\\ \\mathrm{dB/dec}$，对应原点积分环节。每个一阶零点使斜率增加 $20\\ \\mathrm{dB/dec}$，每个一阶极点使其减少相同数值。"
+        },
+        {
+          "type": "p",
+          "text": "在 $\\omega=2\\ \\mathrm{rad/s}$ 处，斜率由 $-20$ 变为 $0$，对应已知零点 $1+0.5s$；在 $4\\ \\mathrm{rad/s}$ 处由 $0$ 变为 $+20$，故另一零点满足"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac1a=4\\quad\\Longrightarrow\\quad a=\\frac14\\ \\mathrm{s}."
+        },
+        {
+          "type": "p",
+          "text": "在 $8\\ \\mathrm{rad/s}$ 处斜率减少至 $0$，对应已知极点；在 $24\\ \\mathrm{rad/s}$ 处再减为 $-20$，故"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac1b=24\\quad\\Longrightarrow\\quad b=\\frac1{24}\\ \\mathrm{s}."
+        },
+        {
+          "type": "p",
+          "text": "最后 $36\\ \\mathrm{rad/s}$ 处斜率变为 $-40$，与末级已知极点一致。将图中低频 $-20\\ \\mathrm{dB/dec}$ 直线延长，其与 $0\\ \\mathrm{dB}$ 线交于 $\\omega=8\\ \\mathrm{rad/s}$；低频近似为 $|G(j\\omega)|\\approx K/\\omega$，故"
+        },
+        {
+          "type": "eq",
+          "latex": "20\\log_{10}(K/8)=0\\quad\\Longrightarrow\\quad K=8."
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{K=8,\\quad a=0.25\\ \\mathrm{s},\\quad b=1/24\\ \\mathrm{s}.}"
+        }
+      ],
+      "checks": [
+        "斜率变化依次+20,+20,−20,−20,−20 dB/dec，与所有零极点匹配。"
+      ]
+    },
+    {
+      "id": "E8.6",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "代入 $K=20$，开环幅值与相角为"
+        },
+        {
+          "type": "eq",
+          "latex": "|L(j\\omega)|=\\frac{20}{\\omega\\sqrt{1+(\\omega/8)^2}\\sqrt{1+(\\omega/120)^2}},"
+        },
+        {
+          "type": "eq",
+          "latex": "\\phi(\\omega)=-90^\\circ-\\arctan(\\omega/8)-\\arctan(\\omega/120)."
+        },
+        {
+          "type": "p",
+          "text": "幅频渐近线的拐点为 $8,120\\ \\mathrm{rad/s}$，三段斜率依次为 $-20,-40,-60\\ \\mathrm{dB/dec}$。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch08/E8_6.png",
+          "caption": "图 E8.6 手臂控制环路的伯德图，标出 0 dB 交叉频率。"
+        },
+        {
+          "type": "p",
+          "text": "令幅值为 $1$，平方整理得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega^2\\left(1+\\frac{\\omega^2}{64}\\right)\\left(1+\\frac{\\omega^2}{14400}\\right)=400."
+        },
+        {
+          "type": "p",
+          "text": "该式左端在 $\\omega>0$ 单调递增，因而正解唯一。实际求解得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\omega_c\\approx11.42203\\ \\mathrm{rad/s}}."
+        },
+        {
+          "type": "p",
+          "text": "该点相角约为 $-150.430^\\circ$，与伯德图中的交点一致。"
+        }
+      ],
+      "checks": [
+        "wc=11.422029625635203；|L(jwc)|−1=−1.1e−16。"
+      ]
+    },
+    {
+      "id": "E8.14",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "反馈传感器包含在开环函数中，故"
+        },
+        {
+          "type": "eq",
+          "latex": "L(s)=G_c(s)G(s)H(s)=\\frac{20}{s(s+1.4)(s+10)}."
+        },
+        {
+          "type": "p",
+          "text": "由此得到幅值和相位表达式："
+        },
+        {
+          "type": "eq",
+          "latex": "|L(j\\omega)|=\\frac{20}{\\omega\\sqrt{\\omega^2+1.96}\\sqrt{\\omega^2+100}},\\qquad\\phi(\\omega)=-90^\\circ-\\arctan\\frac\\omega{1.4}-\\arctan\\frac\\omega{10}."
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch08/E8_14.png",
+          "caption": "图 E8.14 含传感器反馈环节的开环伯德图。"
+        },
+        {
+          "type": "p",
+          "text": "令 $20\\log_{10}|L(j\\omega_c)|=0$，即幅值为 $1$，得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_c^2(\\omega_c^2+1.96)(\\omega_c^2+100)=400,\\qquad\\omega_c\\approx1.11184666\\ \\mathrm{rad/s}."
+        },
+        {
+          "type": "p",
+          "text": "代回相角表达式，得到题求相角"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{\\phi(\\omega_c)\\approx-134.80012^\\circ}."
+        },
+        {
+          "type": "p",
+          "text": "相应相位裕度为 $180^\\circ+\\phi(\\omega_c)\\approx45.20^\\circ$。"
+        }
+      ],
+      "checks": [
+        "wc=1.1118466578211712；幅值残差0；相角−134.8001206868441°。"
+      ]
+    },
+    {
+      "id": "P8.1",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "令 $L(j\\omega)=u(\\omega)+jv(\\omega)$，按 $\\omega:0\\to+\\infty$ 描绘轨迹，箭头表示频率增大的方向。各曲线由下列实部、虚部及关键点确定。"
+        },
+        {
+          "type": "p",
+          "text": "（a）记 $D_a=(1-0.75\\omega^2)^2+(3.25\\omega)^2$，则"
+        },
+        {
+          "type": "eq",
+          "latex": "u_a=\\frac{1-0.75\\omega^2}{D_a},\\qquad v_a=-\\frac{3.25\\omega}{D_a}."
+        },
+        {
+          "type": "p",
+          "text": "起点为 $(1,0)$，经第四象限，在 $\\omega=\\sqrt{4/3}$ 时穿过负虚轴，随后经第三象限趋于原点，相角趋于 $-180^\\circ$。"
+        },
+        {
+          "type": "p",
+          "text": "（b）记 $D_b=(1+\\omega^2)^2$，则"
+        },
+        {
+          "type": "eq",
+          "latex": "u_b=5\\frac{(1-\\omega^2)^2-2.8\\omega^2}{D_b},\\qquad v_b=17\\frac{\\omega(1-\\omega^2)}{D_b}."
+        },
+        {
+          "type": "p",
+          "text": "低频起点为 $(5,0)$，先进入上半平面；在 $\\omega=1$ 时经过 $(-3.5,0)$，再进入下半平面，最终回到高频极限 $(5,0)$。"
+        },
+        {
+          "type": "p",
+          "text": "（c）记 $D_c=(8-\\omega^2)^2+36\\omega^2$，则"
+        },
+        {
+          "type": "eq",
+          "latex": "u_c=\\frac{14\\omega^2-64}{D_c},\\qquad v_c=\\frac{\\omega(56-\\omega^2)}{D_c}."
+        },
+        {
+          "type": "p",
+          "text": "起点为 $(-1,0)$，从上半平面向右运动，在 $\\omega=\\sqrt{56}$ 时经过 $(1/6,0)$，最后从第四象限趋于原点。"
+        },
+        {
+          "type": "p",
+          "text": "（d）实部和虚部为"
+        },
+        {
+          "type": "eq",
+          "latex": "u_d=-\\frac{20(\\omega^2+40)}{(\\omega^2+4)(\\omega^2+16)},\\qquad v_d=\\frac{40(\\omega^2-32)}{\\omega(\\omega^2+4)(\\omega^2+16)}."
+        },
+        {
+          "type": "p",
+          "text": "低频时 $u_d\\to-12.5,v_d\\to-\\infty$，曲线从竖直渐近线附近进入图中；在 $\\omega=\\sqrt{32}$ 时经过 $(-5/6,0)$，最终由上半平面趋向原点。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch08/P8_1.png",
+          "caption": "图 P8.1 四个传递函数的正频率极坐标轨迹；箭头指向频率增大方向。"
+        }
+      ],
+      "checks": [
+        "四组解析实虚部与独立复数传递式在4000频点核对；最大绝对误差7.3e−12（d低频幅值较大）。"
+      ]
+    },
+    {
+      "id": "P8.6",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "（a）初始斜率 $-20\\ \\mathrm{dB/dec}$ 给出一个积分环节；$1\\ \\mathrm{rad/s}$ 处增加 $20\\ \\mathrm{dB/dec}$ 给出一个零点；$10\\ \\mathrm{rad/s}$ 处减少 $40\\ \\mathrm{dB/dec}$ 给出两个极点的合成转折。平台高度为 $12\\ \\mathrm{dB}$，故 $K=10^{12/20}\\approx3.98107$。"
+        },
+        {
+          "type": "p",
+          "text": "按两个相同实极点的标准实现，可取"
+        },
+        {
+          "type": "eq",
+          "latex": "G_a(s)=\\frac{10^{0.6}(1+s)}{s(1+s/10)^2}."
+        },
+        {
+          "type": "p",
+          "text": "其精确相角为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\phi_a(\\omega)=-90^\\circ+\\arctan\\omega-2\\arctan(\\omega/10)."
+        },
+        {
+          "type": "p",
+          "text": "一阶零极点的相位渐近线在各自拐点前一十倍频到后一十倍频之间线性变化。故本模型的合成相位在 $0.1,1,10,100\\ \\mathrm{rad/s}$ 处依次为 $-90^\\circ,-45^\\circ,-90^\\circ,-180^\\circ$，其间按对数频率连线。"
+        },
+        {
+          "type": "p",
+          "text": "幅频直线本身给出了二阶自然频率 $10\\ \\mathrm{rad/s}$，而二阶阻尼还需由转折附近的曲线确定。若允许一般稳定二阶因子，同一幅频渐近线对应的最小相位模型族为"
+        },
+        {
+          "type": "eq",
+          "latex": "G_a(s)=\\frac{10^{0.6}(1+s)}{s\\left[1+2\\zeta(s/10)+(s/10)^2\\right]},\\qquad\\zeta>0."
+        },
+        {
+          "type": "p",
+          "text": "上面的重复实极点模型对应 $\\zeta=1$，用于给出一组完整的相位近似线。"
+        },
+        {
+          "type": "p",
+          "text": "（b）低频斜率 $+20\\ \\mathrm{dB/dec}$ 表示原点零点，且低频延长线于 $1\\ \\mathrm{rad/s}$ 处通过 $0\\ \\mathrm{dB}$，故低频为 $|G_b|\\approx\\omega$。平台 $20\\ \\mathrm{dB}$ 对应幅值 $10$，第一个极点频率为 $10\\ \\mathrm{rad/s}$。"
+        },
+        {
+          "type": "p",
+          "text": "设第二个极点频率为 $\\omega_2$，高频渐近线为 $10\\omega_2/\\omega$，由其在 $500\\ \\mathrm{rad/s}$ 处等于 $1$ 得 $\\omega_2=50\\ \\mathrm{rad/s}$。因此"
+        },
+        {
+          "type": "eq",
+          "latex": "G_b(s)=\\frac{s}{(1+s/10)(1+s/50)}=\\frac{500s}{(s+10)(s+50)}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\phi_b(\\omega)=90^\\circ-\\arctan(\\omega/10)-\\arctan(\\omega/50)."
+        },
+        {
+          "type": "p",
+          "text": "相位近似线从 $+90^\\circ$ 出发；两个极点分别在 $1\\!\\sim\\!100$ 与 $5\\!\\sim\\!500\\ \\mathrm{rad/s}$ 贡献从 $0$ 到 $-90^\\circ$ 的线性变化，高频趋于 $-90^\\circ$。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch08/P8_6.png",
+          "caption": "图 P8.6 幅频与相频近似线；（a）按两个相同实极点实现，（b）由所给渐近线确定。"
+        }
+      ],
+      "checks": [
+        "从20dB平台和高频0dB点反求拐点10、50；相位渐近线与实际复数频响已生成。"
+      ]
+    },
+    {
+      "id": "P8.14",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "输入端 $R_1C_1$ 构成低通环节，输出端 $C_2R_2$ 构成高通环节；受控电压源增益为 $K$。因而"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{V_2}{V_1}=\\frac1{1+R_1C_1s},\\qquad\\frac{V_0}{K V_2}=\\frac{R_2C_2s}{1+R_2C_2s}."
+        },
+        {
+          "type": "p",
+          "text": "代入 $R_1C_1=10^{-7}\\ \\mathrm{s}$、$R_2C_2=10^{-3}\\ \\mathrm{s}$ 和 $K=100$，得"
+        },
+        {
+          "type": "eq",
+          "latex": "G(s)=\\frac{100\\times10^{-3}s}{(1+10^{-7}s)(1+10^{-3}s)}=\\frac{10^9s}{(s+1000)(s+10^7)}."
+        },
+        {
+          "type": "p",
+          "text": "（a）两个转折频率为 $10^3$ 和 $10^7\\ \\mathrm{rad/s}$，低频上升斜率为 $+20\\ \\mathrm{dB/dec}$，中频近似水平，高频下降斜率为 $-20\\ \\mathrm{dB/dec}$。相角为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\phi(\\omega)=90^\\circ-\\arctan(\\omega/1000)-\\arctan(\\omega/10^7)."
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch08/P8_14.png",
+          "caption": "图 P8.14 带通放大器的伯德图，标出低、高转折频率。"
+        },
+        {
+          "type": "p",
+          "text": "（b）在 $10^3\\ll\\omega\\ll10^7\\ \\mathrm{rad/s}$ 内，有"
+        },
+        {
+          "type": "eq",
+          "latex": "|G(j\\omega)|\\approx\\frac{10^9\\omega}{\\omega\\times10^7}=100,\\qquad20\\log_{10}100=40\\ \\mathrm{dB}."
+        },
+        {
+          "type": "p",
+          "text": "峰值位于几何中心 $\\omega_m=\\sqrt{10^3\\times10^7}=10^5\\ \\mathrm{rad/s}$，实际峰值为 $99.9900$，即约 $39.9991\\ \\mathrm{dB}$。"
+        },
+        {
+          "type": "p",
+          "text": "（c）按题面“幅值为 $-3\\ \\mathrm{dB}$”的绝对标度，令 $A=10^{-3/20}$，并令 $x=\\omega^2$，得"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{10^{18}x}{(x+10^6)(x+10^{14})}=A^2."
+        },
+        {
+          "type": "p",
+          "text": "求该二次方程的两正根并开平方，得到"
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_L\\approx7.07964\\ \\mathrm{rad/s},\\qquad\\omega_H\\approx1.41250215\\times10^9\\ \\mathrm{rad/s}."
+        },
+        {
+          "type": "p",
+          "text": "若采用带通滤波器通常所说的“相对通带下降约 $3\\ \\mathrm{dB}$”截止频率，则幅值约为 $100/\\sqrt2$，相应角频率约为 $10^3,10^7\\ \\mathrm{rad/s}$。以实际峰值的半功率为准精算，分别为 $999.8001$ 和 $1.00019998\\times10^7\\ \\mathrm{rad/s}$。"
+        }
+      ],
+      "checks": [
+        "电路时间常数和代数传递式核验；绝对−3dB两点、相对峰值半功率两点分别数值解幅值方程。"
+      ]
+    },
+    {
+      "id": "P8.24",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "（a）由低频幅值约 $0\\ \\mathrm{dB}$，读得直流增益约为 $1$；由相位经过 $-90^\\circ$ 的位置，读得 $\\omega_n\\approx0.9\\ \\mathrm{rad/s}$；谐振峰约 $12\\ \\mathrm{dB}$，对应 $M_r\\approx10^{12/20}=3.9811$。"
+        },
+        {
+          "type": "p",
+          "text": "采用单位直流增益标准二阶模型，谐振峰与阻尼比关系为"
+        },
+        {
+          "type": "eq",
+          "latex": "M_r=\\frac1{2\\zeta\\sqrt{1-\\zeta^2}},\\qquad\\zeta=\\sqrt{\\frac{1-\\sqrt{1-M_r^{-2}}}{2}}\\approx0.1266."
+        },
+        {
+          "type": "p",
+          "text": "因此由图中主导谐振特征建立的二阶近似为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\boxed{T_2(s)\\approx\\frac{0.81}{s^2+0.22790s+0.81}}."
+        },
+        {
+          "type": "p",
+          "text": "这些系数由原图读数获得；保留约两位有效数字可写为 $\\zeta\\approx0.13,\\omega_n\\approx0.9\\ \\mathrm{rad/s}$。"
+        },
+        {
+          "type": "p",
+          "text": "（b）以相对直流增益下降 $3\\ \\mathrm{dB}$ 为带宽定义，标准二阶带宽为"
+        },
+        {
+          "type": "eq",
+          "latex": "\\omega_B=\\omega_n\\sqrt{1-2\\zeta^2+\\sqrt{2-4\\zeta^2+4\\zeta^4}}\\approx1.38\\ \\mathrm{rad/s}."
+        },
+        {
+          "type": "p",
+          "text": "（c）阶跃超调量和 2% 调节时间的常用估算分别为"
+        },
+        {
+          "type": "eq",
+          "latex": "M_p=\\exp\\left(-\\frac{\\pi\\zeta}{\\sqrt{1-\\zeta^2}}\\right)\\times100\\%\\approx67.0\\%,\\qquad t_s\\approx\\frac4{\\zeta\\omega_n}\\approx35.1\\ \\mathrm{s}."
+        },
+        {
+          "type": "p",
+          "text": "若按该二阶模型的精确阶跃式"
+        },
+        {
+          "type": "eq",
+          "latex": "y(t)=1-\\frac{e^{-\\zeta\\omega_n t}}{\\sqrt{1-\\zeta^2}}\\sin\\!\\left(\\omega_n\\sqrt{1-\\zeta^2}\\,t+\\arccos\\zeta\\right)"
+        },
+        {
+          "type": "p",
+          "text": "求最后一次进入并持续留在 $0.98\\le y\\le1.02$ 范围内的时刻，得到 $t_s\\approx32.52\\ \\mathrm{s}$。因此 $35.1\\ \\mathrm{s}$ 是常用极点公式的估算值，而按此读图二阶模型精算的 2% 调节时间约为 $32.5\\ \\mathrm{s}$。下图由该模型实际计算，显示低阻尼对应的明显超调与较慢衰减。"
+        },
+        {
+          "type": "figure",
+          "path": "figures/ch08/P8_24.png",
+          "caption": "图 P8.24 由读图参数建立的二阶近似模型的单位阶跃响应。"
+        }
+      ],
+      "checks": [
+        "图读Mr≈12dB、ωn≈.9；模型ζ=.1266132858、带宽1.382508169、超调66.96537%、4/(ζωn)=35.10251248s；严格2%模型调节时间32.52048794s，已计算阶跃序列及最后带边交叉。"
+      ]
+    }
+  ]
+}
