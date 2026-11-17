@@ -1,0 +1,7 @@
+{
+  "P2.32_symbolic_residual": "0",
+  "P2.26_determinant_residual": "0",
+  "E2.2_Rstar": 1353.3528323661271,
+  "E2.2_derivative": -135.33528323661272,
+  "E2.2_finite_difference": -135.33528323819155
+}
