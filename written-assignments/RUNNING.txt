@@ -1,0 +1,21 @@
+书面作业计算、图表与解答源稿
+
+范围：第2、4、5、6、7、8、9、10章，共75题；47幅自制PNG。
+solutions/chXX.json保留自写解答正文、LaTeX公式、图注及数学核查说明。
+未包含原题Word、原题截图、题设转录摘要、身份信息、Word拼装代码或内部审查记录。
+
+运行环境：Python 3.12；NumPy、SciPy、SymPy、Matplotlib（具体已验版本见DEPENDENCIES.txt）。
+不需要Microsoft Word、MATLAB、Octave或另附的原题截图。
+从任意工作目录调用本项目中src/run.py的实际位置，例如在written-assignments中运行：
+  python src/run.py --chapter ch07
+  python src/run.py --all
+重新计算会更新对应data/chXX与figures/chXX。第5、7、10章包含扫描/优化，运行较慢。
+入口按最终出图顺序运行计算与修图；ch07/enhance.py先执行calculate.py。
+data中的CSV是实际计算结果，numeric_results.json保存参数、极点、指标与数值残差。
+输入与输出均按源码位置定位；Matplotlib配置和临时缓存放本目录下忽略的.local/。
+导出可修改LaTeX源稿：python src/export_solutions.py；输出solutions/solutions.tex。
+LaTeX图路径以written-assignments为基准；编译前在此目录执行XeLaTeX（ctex/amsmath/graphicx）。
+报告Word的生成与排版依赖保留在本地，不作为计算与绘图的运行依赖。
+
+P7.11采用明确的秒时间变量及所列电机系数数值约定。历史毫秒参数假设不混入本组数据。
+本组图表与数值来自对应源码计算；figures/data的SHA256与题号映射见TRACEABILITY.json。
