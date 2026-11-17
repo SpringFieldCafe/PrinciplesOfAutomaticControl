@@ -1,0 +1,10 @@
+已验计算/绘图环境
+numpy==1.26.4
+scipy==1.13.1
+sympy==1.13.2
+matplotlib==3.9.2
+python==3.12.7
+
+包均以常规import方式调用，不重分发上游源代码或二进制。
+安装依赖时使用所选环境或命令级配置；不需要Office、latex2mathml或Word拼装依赖。
+LaTeX稿的可选编译另需CTeX、amsmath、amssymb、graphicx。
